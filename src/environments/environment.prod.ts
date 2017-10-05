@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  host: "http://xsknet.dyndns.org:8080"
 };

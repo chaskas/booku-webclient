@@ -19,6 +19,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MdSnackBarModule } from '@angular/material';
 import { MdSliderModule } from '@angular/material';
 import { MdMenuModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material';
 import { MdTableModule } from '@angular/material';
 import { MdSortModule } from '@angular/material';
 import { MdPaginatorModule } from '@angular/material';

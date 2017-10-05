@@ -3,29 +3,33 @@ import { CommonModule } from '@angular/common';
 
 import { RouterModule, Routes } from '@angular/router';
 
+import { LayoutComponent } from '../../components/layout/layout.component';
+import { NewComponent } from '../../components/clients/new/new.component';
+import { ListComponent } from '../../components/clients/list/list.component';
 
-// const routes: Routes = [
-//  {  path: '', component: DashboardComponent ,
-//       children:[
+
+ const routes: Routes = [
+  {  path: '', component: LayoutComponent,
+       children:[
 //         { path: '', component: CalendarComponent },
 //         { path: 'members/new', component: MemberNewComponent, canActivate: [Angular2TokenService] },
 //         { path: 'members/:type', component: MemberListComponent, canActivate: [Angular2TokenService] },
 //         { path: 'members/edit/:id', component: MemberEditComponent, canActivate: [Angular2TokenService] },
 //         { path: 'members/show/:id', component: MemberShowComponent, canActivate: [Angular2TokenService] },
 //         { path: 'events/show/:id', component: EventShowComponent, canActivate: [Angular2TokenService] },
-//         { path: 'users', component: UsersListComponent, canActivate: [Angular2TokenService] },
-//         { path: 'users/new', component: RegisterComponent, canActivate: [Angular2TokenService] },
+         { path: 'clients/new', component: NewComponent },
+         { path: 'clients', component: ListComponent }
 //
-//       ]
-//  },
+       ]
+  },
 //  { path: 'signin', component: LoginComponent },
 //  { path: 'signout', component: LogoutComponent, canActivate: [Angular2TokenService] }
-// ];
+ ];
 
 @NgModule({
   imports: [
     CommonModule,
-    // RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes)
   ],
   exports: [ RouterModule ],
   declarations: []

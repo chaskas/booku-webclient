@@ -1,0 +1,51 @@
+<md-toolbar>
+
+
+  <div fxLayout="row" fxShow="false" fxShow.gt-xs>
+    <button md-button [mdMenuTriggerFor]="menuCabana">Cabañas<md-icon>keyboard_arrow_down</md-icon></button>
+    <button md-button routerLink="/">Canchas</button>
+    <button md-button routerLink="/">Salon de eventos</button>
+    <button md-button [mdMenuTriggerFor]="menuSalas">Salas de capacitación<md-icon>keyboard_arrow_down</md-icon></button>
+    <button md-button routerLink="/">SPA</button>
+    <button md-button routerLink="/clients/new">Clientes</button>
+  </div>
+
+  <span class="fill-remaining-space"></span>
+
+
+  <span><a routerLink="/signout" fxShow="false" fxShow.gt-xs><md-icon>exit_to_app</md-icon> </a></span>
+
+</md-toolbar>
+
+<md-menu #menuCabana="mdMenu">
+  <button md-menu-item routerLink="/">
+    Cabaña 1
+  </button>
+  <button md-menu-item routerLink="/">
+    Cabaña 2
+  </button>
+  <button md-menu-item routerLink="/">
+    Cabaña 3
+  </button>
+  <button md-menu-item routerLink="/">
+    Cabaña 4
+  </button>
+  <button md-menu-item routerLink="/">
+    Cabaña 5
+  </button>
+</md-menu>
+
+<md-menu #menuSalas="mdMenu">
+  <button md-menu-item routerLink="/">
+    Sala 1
+  </button>
+  <button md-menu-item routerLink="/">
+    Sala 2
+  </button>
+  <button md-menu-item routerLink="/">
+    Sala 3
+  </button>
+
+</md-menu>
+
+<router-outlet></router-outlet>
