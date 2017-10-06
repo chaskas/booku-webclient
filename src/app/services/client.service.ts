@@ -39,9 +39,9 @@ export class ClientService {
                           address: client.address,
                           phone: client.phone,
                           car_license: client.car_license,
-						  car_brand: client.car_brand,
-						  car_model: client.car_model,
-						  car_color: client.car_color
+            						  car_brand: client.car_brand,
+            						  car_model: client.car_model,
+            						  car_color: client.car_color
                         });
 
     let headers      = new Headers({ 'Content-Type': 'application/json' });
@@ -58,6 +58,57 @@ export class ClientService {
                .toPromise()
                .then(response => response.json() as Client[])
                .catch(this.handleError);
+  }
+
+  getClient(id: number): Promise<Client> {
+    return this.http.get(this.url + '/' + id)
+               .toPromise()
+               .then(response => response.json() as Client)
+               .catch(this.handleError);
+  }
+
+  updateClient(id: number, client: Client): Promise<Client>
+  {
+    client.id = id;
+    const url = `${this.url}/${client.id}`;
+
+    var rut = "";
+
+    if(client.rut.includes("-")){
+      rut = client.rut.substring(0,client.rut.indexOf("-"))
+    } else {
+      rut = client.rut.substring(0,client.rut.length-1);
+    }
+
+    let body = JSON.stringify({
+                          id: client.id,
+                          rut: rut,
+                          first_name: client.first_name,
+                          last_name: client.last_name,
+                          email: client.email,
+                          address: client.address,
+                          phone: client.phone,
+                          car_license: client.car_license,
+                          car_brand: client.car_brand,
+                          car_model: client.car_model,
+                          car_color: client.car_color
+                        });
+
+    let headers      = new Headers({ 'Content-Type': 'application/json' });
+    let options      = new RequestOptions({ headers: headers });
+
+    return this.http.put(url,body, options)
+             .toPromise()
+             .then(response => response.json() as Client)
+             .catch(this.handleError);
+  }
+
+  deleteClient(id: number): Promise<any>
+  {
+    const url = `${this.url}/${id}`;
+    return this.http.delete(url)
+                .toPromise()
+                .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any>

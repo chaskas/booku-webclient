@@ -12,7 +12,7 @@ import { MaterialModule } from './modules/material/material.module';
 
 //Services
 import { ClientService } from './services/client.service';
-
+import { DialogsServiceService } from './services/dialogs-service.service';
 // Classes
 import { AppConfig } from './config/app-config';
 
@@ -28,6 +28,9 @@ import { EditComponent } from './components/clients/edit/edit.component';
 import { CustomValidators } from 'ng2-validation';
 import { Ng2Rut, RutValidator } from './utils/rut/ng2-rut.module';
 
+
+import { ClientsDatabase } from './components/clients/list/clients-database';
+import { DialogComponent } from './utils/dialog/dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,16 +38,20 @@ import { Ng2Rut, RutValidator } from './utils/rut/ng2-rut.module';
     ListComponent,
     DetailComponent,
     NewComponent,
-    EditComponent
+    EditComponent,
+    DialogComponent
     
   ],
   imports: [
     BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule
   ],
+  entryComponents: [DialogComponent],
   providers: [
       AppConfig,
       ClientService,
       RutValidator,
+      ClientsDatabase,
+      DialogsServiceService,
       { provide: LOCALE_ID, useValue: "es-CL" }
   ],
   bootstrap: [AppComponent]

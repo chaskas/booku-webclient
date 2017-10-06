@@ -6,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from '../../components/layout/layout.component';
 import { NewComponent } from '../../components/clients/new/new.component';
 import { ListComponent } from '../../components/clients/list/list.component';
+import { DetailComponent } from '../../components/clients/detail/detail.component';
+import { EditComponent } from '../../components/clients/edit/edit.component';
 
 
  const routes: Routes = [
@@ -18,6 +20,8 @@ import { ListComponent } from '../../components/clients/list/list.component';
 //         { path: 'members/show/:id', component: MemberShowComponent, canActivate: [Angular2TokenService] },
 //         { path: 'events/show/:id', component: EventShowComponent, canActivate: [Angular2TokenService] },
          { path: 'clients/new', component: NewComponent },
+         { path: 'clients/detail/:id', component: DetailComponent },
+         { path: 'clients/edit/:id', component: EditComponent },
          { path: 'clients', component: ListComponent }
 //
        ]

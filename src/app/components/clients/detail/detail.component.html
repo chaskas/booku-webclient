@@ -1,3 +1,91 @@
-<p>
-  detail works!
-</p>
+<div class="container">
+  <div fxLayout="column">
+    <ng-container *ngIf="client">
+      <div fxLayout="row">
+        <md-card class="full-width">
+          <md-card-header>
+            <md-card-title>Detalle</md-card-title>
+            <span class="fill-remaining-space"></span>
+            <button md-button [routerLink]="['/clients']">Volver</button>
+          </md-card-header>
+
+          <md-card-content class="inputs-wrapper">
+
+            <span></span>
+
+            <div class="input-wrapper">
+               <md-input-container class="full-width">
+                 <input mdInput placeholder="Rut" [value]="client.rut" readonly="true">
+               </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+               <input mdInput placeholder="Nombre" [value]="client.first_name" readonly="true">
+               </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+              <input mdInput placeholder="Apellido" [value]="client.last_name" readonly="true">
+              </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+              <input type="email" mdInput placeholder="Email" [value]="client.email" readonly="true">
+              </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+              <input mdInput placeholder="Direccion" [value]="client.address" readonly="true">
+              </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+              <input mdInput placeholder="Ciudad" [value]="client.city" readonly="true">
+              </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+               <input mdInput placeholder="Teléfono" [value]="client.phone" readonly="true"></md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+              <input mdInput placeholder="Patente" [value]="client.car_license" readonly="true">
+              </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+              <input mdInput placeholder="Marca" [value]="client.car_brand" readonly="true">
+              </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+              <input mdInput placeholder="Modelo" [value]="client.car_model" readonly="true">
+              </md-input-container>
+            </div>            
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+              <input mdInput placeholder="Color" [value]="client.car_color" readonly="true">
+              </md-input-container>
+            </div>
+
+        </md-card-content>
+
+        <md-card-actions class="actions">
+            <button [routerLink]="['/clients/edit',client.id]" md-button type="button">Editar Cliente</button>
+        </md-card-actions>
+
+        </md-card>
+      </div>
+    </ng-container>
+  </div>
+</div>

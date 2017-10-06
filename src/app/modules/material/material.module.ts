@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdToolbarModule } from '@angular/material';
 import { MdCardModule } from '@angular/material';
 import { MdButtonModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
 import { MdIconModule } from '@angular/material';
 import { MdGridListModule } from '@angular/material';
 import { MdInputModule } from '@angular/material';
@@ -48,7 +49,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     MdTableModule,
     MdSortModule,
     MdPaginatorModule,
-    CdkTableModule
+    CdkTableModule,
+    MatButtonModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -71,7 +73,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     MdTableModule,
     MdSortModule,
     MdPaginatorModule,
-    CdkTableModule
+    CdkTableModule,
+    MatButtonModule
   ],
   declarations: []
 })

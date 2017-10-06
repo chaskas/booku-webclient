@@ -1,32 +1,7 @@
-
 <div class="container">
-	<table>
-		<thead>
-			<tr>
-				<th>RUT</th>
-				<th>Nombre completo</th>
-				<th>Email</th>
-				<th>Telefono</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr *ngFor="let client of clients">
-				<td>{{ client.rut}}</td>
-				<td>{{ client.first_name}} {{client.last_name}}</td>
-				<td>{{ client.email}}</td>
-				<td>{{ client.phone}}</td>
-			</tr>
-		</tbody>
-	</table>
-
-</div>
-
-
-
-<!--<div class="container">
 
   <div fxLayout="row" class="header">
-    <span class="title">{{ title }}</span>
+    <span class="title"> {{title}}</span>
     <span class="fill-remaining-space"></span>
     <a routerLink="/clients/new" md-raised-button> <md-icon>add</md-icon> Nuevo</a>
   </div>
@@ -45,12 +20,35 @@
       <md-table #table [dataSource]="dataSource" mdSort class="full-width">
         <ng-container cdkColumnDef="rut">
           <md-header-cell *cdkHeaderCellDef md-sort-header class="title-center"> Rut </md-header-cell>
-          <md-cell *cdkCellDef="let row" class="text-center"> {{ row.rut }} </md-cell>
+          <md-cell *cdkCellDef="let row" class="text-center" [routerLink]="['/clients/detail', row.id]"> {{ row.rut }} </md-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="full_name">
           <md-header-cell *cdkHeaderCellDef md-sort-header> Nombre Completo </md-header-cell>
           <md-cell *cdkCellDef="let row">{{ row.first_name }} {{ row.last_name }} </md-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="email">
+          <md-header-cell *cdkHeaderCellDef md-sort-header> Email </md-header-cell>
+          <md-cell *cdkCellDef="let row">{{ row.email }}</md-cell>
+        </ng-container>        
+
+        <ng-container cdkColumnDef="phone">
+          <md-header-cell *cdkHeaderCellDef md-sort-header> Telefono </md-header-cell>
+          <md-cell *cdkCellDef="let row" >{{ row.phone }}</md-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="car_license">
+          <md-header-cell *cdkHeaderCellDef md-sort-header> Patente </md-header-cell>
+          <md-cell *cdkCellDef="let row">{{ row.car_license }}</md-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="icons">
+          <md-header-cell *cdkHeaderCellDef md-sort-header> Opciones </md-header-cell>
+          <md-cell *cdkCellDef="let row">
+          <button  md-icon-button [routerLink]="['/clients/detail',row.id]"><md-icon>update</md-icon></button>
+          <button  md-icon-button (click)="openDialog()"><md-icon>delete</md-icon></button>
+          </md-cell>
         </ng-container>
 
         <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
@@ -69,6 +67,6 @@
 
   </div>
 
-</div> -->
+</div> 
 
 
