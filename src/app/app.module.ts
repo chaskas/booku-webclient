@@ -12,6 +12,7 @@ import { MaterialModule } from './modules/material/material.module';
 
 //Services
 import { ClientService } from './services/client.service';
+import { PTypeService } from './services/ptype.service';
 import { DialogsServiceService } from './services/dialogs-service.service';
 // Classes
 import { AppConfig } from './config/app-config';
@@ -40,7 +41,7 @@ import { DialogComponent } from './utils/dialog/dialog.component';
     NewComponent,
     EditComponent,
     DialogComponent
-    
+
   ],
   imports: [
     BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule
@@ -49,6 +50,7 @@ import { DialogComponent } from './utils/dialog/dialog.component';
   providers: [
       AppConfig,
       ClientService,
+      PTypeService,
       RutValidator,
       ClientsDatabase,
       DialogsServiceService,
