@@ -22,7 +22,6 @@ export class LayoutComponent implements OnInit {
 
   handleGetPtypesSuccess(ptypes: PType[]){
     this.ptypes = ptypes;
-    console.log(ptypes);
   }
 
 }
