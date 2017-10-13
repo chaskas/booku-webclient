@@ -8,6 +8,8 @@ import { CustomValidators } from 'ng2-validation';
 import { RutValidator } from '../../../utils/rut/ng2-rut.module';
 
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-new',
   templateUrl: './new.component.html',
@@ -24,6 +26,7 @@ export class NewComponent implements OnInit {
   	private rv: RutValidator,
     public snackBar: MdSnackBar,
   	private clientService: ClientService,
+    private _router: Router,
   	private formBuilder: FormBuilder
 
   ) {
@@ -52,10 +55,10 @@ export class NewComponent implements OnInit {
 		address: ['', [Validators.required]],
 		city: ['', [Validators.required]],
 		phone: ['', [Validators.required]],
-		car_license: ['', [Validators.required]],
-		car_brand: ['', [Validators.required]],
-		car_model: ['', [Validators.required]],
-		car_color: ['', [Validators.required]]
+		car_license: ['', ],
+		car_brand: ['', ],
+		car_model: ['', ],
+		car_color: ['', ]
 	  });
 	}
 
@@ -64,6 +67,8 @@ export class NewComponent implements OnInit {
 	   this.snackBar.open("Miembro Registrado correctamente", "OK", {
 	     duration: 2000,
 	   });
+     this._router.navigate(['/clients/']);
+
     }
 
 

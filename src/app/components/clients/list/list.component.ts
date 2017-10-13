@@ -22,6 +22,8 @@ import { Client } from '../../../model/client';
 import { ClientsDatabase } from './clients-database';
 import { ClientDataSource } from './client-datasource';
 import { DialogsServiceService } from '../../../services/dialogs-service.service';
+
+import { rutClean } from 'rut-helpers';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -63,17 +65,17 @@ export class ListComponent implements OnInit {
         });
   }
 
-  public openDialog() {
+  public openDialog(id: number) {
     this.dialogsService
       .confirm('Confirmar', '¿Seguro que quiere eliminar?')
-      .subscribe(res => this.deleteClient(res));
+      .subscribe(res => this.deleteClient(res, id));
   }
 
-  deleteClient(res: boolean): void
+  deleteClient(res: boolean, id: number): void
   {
     if(res) {
-      this.clientService.deleteClient(this.client.id).then((data) => {
-        this._router.navigate(['clients/']);
+      this.clientService.deleteClient(id).then((data) => {
+        this._router.navigate(['/clients/']);
       });
     }
   }  
@@ -83,5 +85,18 @@ export class ListComponent implements OnInit {
     this.errors = error.json().errors.full_messages;
   }
 
+  formatRut(rut: string) {
+    rut = rutClean(rut);
+    var rutDigits = parseInt(rut, 10);
+    var m = 0;
+    var s = 1;
+    while (rutDigits > 0) {
+        s = (s + rutDigits % 10 * (9 - m++ % 6)) % 11;
+        rutDigits = Math.floor(rutDigits / 10);
+    }
+    var checkDigit = (s > 0) ? String((s - 1)) : 'K';
+
+  return rut + "-" + checkDigit;
+  }
 
 }

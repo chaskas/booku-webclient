@@ -4,6 +4,7 @@ export class Place {
 
 	id: number;
 	ptype_id: number;
+	name: string;
 	capacity: number;
 	price: number;
 	opening: string;

@@ -1,0 +1,64 @@
+<div class="container">
+  <form [formGroup]="placeForm" (submit)="createPlace()">
+    <div fxLayout="row">
+
+        <md-card class="full-width">
+
+          <md-card-header>
+            <md-card-title>Nuevo Espacio</md-card-title>
+            <span class="fill-remaining-space"></span>
+            <button md-button routerLink="place/list">Volver</button>
+          </md-card-header>
+
+          <md-card-content class="inputs-wrapper">
+
+            <span></span>
+
+            <div class="input-wrapper">
+              <md-select placeholder="Tipo Espacio" formControlName="ptype_id" required class="full-width select">
+                 <md-option *ngFor="let ptype of ptypes" [value]="ptype.id">{{ptype.name}}</md-option>
+              </md-select>
+            </div>           
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+               <input mdInput placeholder="Nombre" formControlName="name" required>
+               </md-input-container>
+            </div> 
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+               <input mdInput type="number" placeholder="Capacidad" formControlName="capacity" required>
+               </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+               <input mdInput type="number" placeholder="Precio" formControlName="price" required>
+               </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+               <input mdInput type="time" placeholder="Horario apertura" formControlName="opening" required>
+               </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+               <input mdInput type="time" placeholder="Horario cierre" formControlName="closing" required>
+               </md-input-container>
+            </div>
+
+        </md-card-content>
+
+        <md-card-actions class="actions">
+          <button md-raised-button type="submit" [disabled]="!placeForm.valid">Aceptar</button>
+
+        </md-card-actions>
+
+    </md-card>
+
+    </div>
+  </form>
+</div>

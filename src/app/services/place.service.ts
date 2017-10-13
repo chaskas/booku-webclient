@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { AppConfig } from '../config/app-config';
 import { Place } from '../model/place';
+import { PType } from '../model/ptype';
 
 @Injectable()
 export class PlaceService {
@@ -20,9 +21,11 @@ export class PlaceService {
 
   createPlace(place: Place) : Promise<Place>
 	{
+    let url = this.config.get('host') + '/places';
 
     let body = JSON.stringify({
                       ptype_id: place.ptype_id,
+                      name: place.name,
                       capacity: place.capacity,
                       price: place.price,
                       opening: place.opening,
@@ -62,6 +65,7 @@ export class PlaceService {
     let body = JSON.stringify({
                           id: place.id,
                           ptype_id: place.ptype_id,
+                          name: place.name,
                           capacity: place.capacity,
                           price: place.price,
                           opening: place.opening,

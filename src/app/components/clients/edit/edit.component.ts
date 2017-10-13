@@ -28,7 +28,7 @@ export class EditComponent implements OnInit {
   	  private clientService: ClientService,
       private dialogsService: DialogsServiceService,
   	  private rv: RutValidator,
-	  private formBuilder: FormBuilder,
+	    private formBuilder: FormBuilder,
       private route: ActivatedRoute,
       public snackBar: MdSnackBar,
       private _router: Router
@@ -74,6 +74,18 @@ export class EditComponent implements OnInit {
   {
     this.client = client;
 
+    var rut = rutClean(client.rut);
+    var rutDigits = parseInt(rut, 10);
+    var m = 0;
+    var s = 1;
+    while (rutDigits > 0) {
+        s = (s + rutDigits % 10 * (9 - m++ % 6)) % 11;
+        rutDigits = Math.floor(rutDigits / 10);
+    }
+    var checkDigit = (s > 0) ? String((s - 1)) : 'K';
+
+    client.rut = client.rut + "-" + checkDigit;
+    
     this.clientForm.setValue({
       rut: client.rut,
       first_name: client.first_name,
@@ -112,6 +124,7 @@ export class EditComponent implements OnInit {
     this.snackBar.open("Miembro actualizado correctamente", undefined, {
       duration: 2000,
     });
+    this._router.navigate(['/clients']);
   }
 
   private _handleError(error: any) {
