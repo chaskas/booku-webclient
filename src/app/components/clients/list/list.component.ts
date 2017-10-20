@@ -15,6 +15,7 @@ import 'rxjs/add/operator/toPromise';
 import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
 import { MdSort } from '@angular/material';
 import { MdPaginator } from '@angular/material';
+import { Angular2TokenService } from 'angular2-token';
 
 import { ClientService } from '../../../services/client.service';
 import { Client } from '../../../model/client';
@@ -49,10 +50,16 @@ export class ListComponent implements OnInit {
     private _router: Router,
     private route: ActivatedRoute,
     public _clientsDatabase: ClientsDatabase,
-    private dialogsService: DialogsServiceService
+    private dialogsService: DialogsServiceService,
+    private _tokenService: Angular2TokenService
   	) { }
 
   ngOnInit() {
+    this._tokenService.validateToken().subscribe(
+      res =>      console.log("Token Valid!"),
+      error =>    this._handleTokenError(error)
+    );
+
     this._clientsDatabase = new ClientsDatabase(this.route, this.clientService);
     this.dataSource = new ClientDataSource(this._clientsDatabase, this.sort, this.paginator);
 
@@ -97,6 +104,13 @@ export class ListComponent implements OnInit {
     var checkDigit = (s > 0) ? String((s - 1)) : 'K';
 
   return rut + "-" + checkDigit;
+  }
+
+  private _handleTokenError(error: any) {
+    var config: MdSnackBarConfig = new MdSnackBarConfig();
+    config.duration = 1000;
+    this.snackBar.open("Su sesión ha expirado.", undefined, config);
+    this._router.navigate(['/signin']);
   }
 
 }

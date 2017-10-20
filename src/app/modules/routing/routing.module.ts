@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RouterModule, Routes } from '@angular/router';
+import { Angular2TokenService } from 'angular2-token';
 
 import { LayoutComponent } from '../../components/layout/layout.component';
 //Clients
@@ -20,30 +21,32 @@ import { PlaceListComponent } from '../../components/place/place-list/place-list
 import { PlaceEditComponent } from '../../components/place/place-edit/place-edit.component';
 import { PlaceDetailComponent } from '../../components/place/place-detail/place-detail.component';
 
-
+import { LoginComponent } from '../../components/session/login/login.component';
+import { RegisterComponent } from '../../components/session/register/register.component';
+import { LogoutComponent } from '../../components/session/logout/logout.component';
  const routes: Routes = [
   {  path: '', component: LayoutComponent,
        children:[
          //Clients
-         { path: 'clients/new', component: NewComponent },
-         { path: 'clients/detail/:id', component: DetailComponent },
-         { path: 'clients/edit/:id', component: EditComponent },
-         { path: 'clients', component: ListComponent },
+         { path: 'clients/new', component: NewComponent, canActivate: [Angular2TokenService] },
+         { path: 'clients/detail/:id', component: DetailComponent, canActivate: [Angular2TokenService] },
+         { path: 'clients/edit/:id', component: EditComponent, canActivate: [Angular2TokenService] },
+         { path: 'clients', component: ListComponent, canActivate: [Angular2TokenService] },
          //PType
-         { path: 'ptype/new', component: PtypeNewComponent },
-         { path: 'ptype/list', component: PtypeListComponent },
-         { path: 'ptype/edit/:id', component: PtypeEditComponent },
-         { path: 'ptype/detail/:id', component: PtypeDetailComponent },
+         { path: 'ptype/new', component: PtypeNewComponent, canActivate: [Angular2TokenService] },
+         { path: 'ptype/list', component: PtypeListComponent, canActivate: [Angular2TokenService] },
+         { path: 'ptype/edit/:id', component: PtypeEditComponent, canActivate: [Angular2TokenService] },
+         { path: 'ptype/detail/:id', component: PtypeDetailComponent, canActivate: [Angular2TokenService] },
          //Place
-         { path: 'place/new', component: PlaceNewComponent },
-         { path: 'place/edit/:id', component: PlaceEditComponent },
-         { path: 'place/list', component: PlaceListComponent },
-         { path: 'place/detail/:id', component: PlaceDetailComponent }
+         { path: 'place/new', component: PlaceNewComponent, canActivate: [Angular2TokenService] },
+         { path: 'place/edit/:id', component: PlaceEditComponent, canActivate: [Angular2TokenService] },
+         { path: 'place/list', component: PlaceListComponent, canActivate: [Angular2TokenService] },
+         { path: 'place/detail/:id', component: PlaceDetailComponent, canActivate: [Angular2TokenService] }
 //
        ]
   },
-//  { path: 'signin', component: LoginComponent },
-//  { path: 'signout', component: LogoutComponent, canActivate: [Angular2TokenService] }
+  { path: 'signin', component: LoginComponent },
+  { path: 'signout', component: LogoutComponent, canActivate: [Angular2TokenService] }
  ];
 
 @NgModule({

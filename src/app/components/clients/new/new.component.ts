@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { ClientService } from '../../../services/client.service';
 import { Client } from '../../../model/client';
+import { Angular2TokenService } from 'angular2-token';
 
 import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
 import { CustomValidators } from 'ng2-validation';
@@ -27,9 +28,14 @@ export class NewComponent implements OnInit {
     public snackBar: MdSnackBar,
   	private clientService: ClientService,
     private _router: Router,
-  	private formBuilder: FormBuilder
+  	private formBuilder: FormBuilder,
+    private _tokenService: Angular2TokenService
 
   ) {
+    this._tokenService.validateToken().subscribe(
+      res =>      console.log("Token Valid!"),
+      error =>    this._handleTokenError(error)
+    );
 
   	this.createForm();
    }
@@ -76,5 +82,12 @@ export class NewComponent implements OnInit {
       this.snackBar.open(error.json()['rut'], null, {
         duration: 2000,
       });
+  }
+  
+  private _handleTokenError(error: any) {
+    var config: MdSnackBarConfig = new MdSnackBarConfig();
+    config.duration = 1000;
+    this.snackBar.open("Su sesión ha expirado.", undefined, config);
+    this._router.navigate(['/signin']);
   }
 }

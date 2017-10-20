@@ -5,6 +5,7 @@ import { LOCALE_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { Angular2TokenService } from 'angular2-token';
 
 // Modules
 import { RoutingModule } from './modules/routing/routing.module';
@@ -14,10 +15,10 @@ import { MaterialModule } from './modules/material/material.module';
 import { ClientService } from './services/client.service';
 import { PlaceService } from './services/place.service';
 import { PTypeService } from './services/ptype.service';
+import { SessionService } from './services/session.service';
 import { DialogsServiceService } from './services/dialogs-service.service';
 // Classes
 import { AppConfig } from './config/app-config';
-
 
 // Components 
 import { DialogComponent } from './utils/dialog/dialog.component';
@@ -47,6 +48,10 @@ import { ClientsDatabase } from './components/clients/list/clients-database';
 import { PTypesDatabase } from './components/ptype/ptype-list/ptypes-database';
 import { PlacesDatabase } from './components/place/place-list/places-database';
 
+import { LoginComponent } from './components/session/login/login.component';
+import { LogoutComponent } from './components/session/logout/logout.component';
+import { RegisterComponent } from './components/session/register/register.component';
+
 
 
 @NgModule({
@@ -65,7 +70,10 @@ import { PlacesDatabase } from './components/place/place-list/places-database';
     PtypeListComponent,
     PtypeNewComponent,
     PtypeEditComponent,
-    PtypeDetailComponent
+    PtypeDetailComponent,
+    LoginComponent,
+    LogoutComponent,
+    RegisterComponent
 
   ],
   imports: [
@@ -82,6 +90,8 @@ import { PlacesDatabase } from './components/place/place-list/places-database';
       PTypesDatabase,
       PlacesDatabase,
       DialogsServiceService,
+      Angular2TokenService,
+      SessionService,
       { provide: LOCALE_ID, useValue: "es-CL" }
   ],
   bootstrap: [AppComponent]
