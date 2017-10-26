@@ -6,6 +6,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import 'rxjs/add/operator/switchMap';
 
 import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { Angular2TokenService } from 'angular2-token';
 
 import { rutClean } from 'rut-helpers';
 
@@ -21,7 +22,10 @@ export class DetailComponent implements OnInit {
   client: Client;
   constructor(
   	private clientService: ClientService,
-  	private route: ActivatedRoute
+  	private route: ActivatedRoute,
+    public snackBar: MdSnackBar,
+    private _router: Router,
+    private _tokenService: Angular2TokenService,
   	) { 
 
 	this.route.params
@@ -48,4 +52,11 @@ export class DetailComponent implements OnInit {
 
     client.rut = client.rut + "-" + checkDigit;
 	}
+
+  private _handleTokenError(error: any) {
+    var config: MdSnackBarConfig = new MdSnackBarConfig();
+    config.duration = 1000;
+    this.snackBar.open("Su sesión ha expirado.", undefined, config);
+    this._router.navigate(['/signin']);
+  }
 }
