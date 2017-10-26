@@ -47,6 +47,15 @@ export class PlaceService {
 
   }
 
+  getPlacesByPType(ptype_id: number): Promise<Place[]> {
+
+    return this.http.get(this.url + '/ptype/' + ptype_id)
+                 .toPromise()
+                 .then(response => response.json() as Place[])
+                 .catch(this.handleError);
+
+  }
+
   getPlace(id: number): Promise<Place> {
     return this.http.get(this.url + '/' + id)
                .toPromise()
