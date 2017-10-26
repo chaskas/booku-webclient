@@ -1,0 +1,41 @@
+<div class="container">
+  <form [formGroup]="ptypeForm" (submit)="updatePType()">
+    <div fxLayout="row">
+      <ng-container *ngIf="ptype">
+        <md-card class="full-width">
+
+          <md-card-header>
+            <md-card-title>Editar</md-card-title>
+            <span class="fill-remaining-space"></span>
+            <button md-button [routerLink]="['/ptype/detail',ptype.id]">Volver</button>
+          </md-card-header>
+
+          <md-card-content class="inputs-wrapper">
+
+            <span></span>         
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+               <input mdInput placeholder="Nombre" formControlName="name" required>
+               </md-input-container>
+            </div> 
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+               <input mdInput placeholder="Plural" formControlName="plural" required>
+               </md-input-container>
+            </div>
+
+          </md-card-content>
+
+          <md-card-actions class="actions">
+            <button md-button type="button" (click)="openDialog()" confirm color="accent">Eliminar</button>
+            <button md-raised-button type="submit" [disabled]="!ptypeForm.valid">Aceptar</button>
+          </md-card-actions>
+
+        </md-card>
+
+      </ng-container>
+    </div>
+  </form>
+</div>

@@ -7,7 +7,7 @@
           <md-card-header>
             <md-card-title>Nuevo Cliente</md-card-title>
             <span class="fill-remaining-space"></span>
-            <button md-button routerLink="/">Volver</button>
+            <button md-button routerLink="/clients">Volver</button>
           </md-card-header>
 
           <md-card-content class="inputs-wrapper">
@@ -52,30 +52,31 @@
 
             <div class="input-wrapper">
               <md-input-container class="full-width">
-               <input type="number" mdInput placeholder="Teléfono" formControlName="phone"></md-input-container>
-            </div>
-
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Patente" formControlName="car_license" required>
+              <input type="number" mdInput placeholder="Teléfono" formControlName="phone" required>
               </md-input-container>
             </div>
 
             <div class="input-wrapper">
               <md-input-container class="full-width">
-              <input mdInput placeholder="Marca del auto" formControlName="car_brand" required>
+              <input mdInput placeholder="Patente" formControlName="car_license" >
               </md-input-container>
             </div>
 
             <div class="input-wrapper">
               <md-input-container class="full-width">
-              <input mdInput placeholder="Modelo del auto" formControlName="car_model" required>
+              <input mdInput placeholder="Marca del auto" formControlName="car_brand" >
               </md-input-container>
             </div>
 
             <div class="input-wrapper">
               <md-input-container class="full-width">
-              <input mdInput placeholder="Color del auto" formControlName="car_color" required>
+              <input mdInput placeholder="Modelo del auto" formControlName="car_model" >
+              </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+              <input mdInput placeholder="Color del auto" formControlName="car_color" >
               </md-input-container>
             </div>
 

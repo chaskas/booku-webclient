@@ -1,0 +1,40 @@
+<div class="container">
+  <form [formGroup]="ptypeForm" (submit)="createPType()">
+    <div fxLayout="row">
+
+        <md-card class="full-width">
+
+          <md-card-header>
+            <md-card-title>Nuevo</md-card-title>
+            <span class="fill-remaining-space"></span>
+            <button md-button routerLink="">Volver</button>
+          </md-card-header>
+
+          <md-card-content class="inputs-wrapper">
+
+            <span></span>
+
+            <div class="input-wrapper">
+               <md-input-container class="full-width">
+                 <input mdInput placeholder="Nombre" formControlName="name" required>
+               </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+               <input mdInput placeholder="Nombre en plural" formControlName="plural" required>
+               </md-input-container>
+            </div>
+
+        </md-card-content>
+
+        <md-card-actions class="actions">
+          <button md-raised-button type="submit" [disabled]="!ptypeForm.valid">Aceptar</button>
+
+        </md-card-actions>
+
+    </md-card>
+
+    </div>
+  </form>
+</div>

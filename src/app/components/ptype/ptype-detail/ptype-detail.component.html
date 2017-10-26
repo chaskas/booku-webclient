@@ -1,0 +1,39 @@
+<div class="container">
+  <div fxLayout="column">
+    <ng-container *ngIf="ptype">
+      <div fxLayout="row">
+        <md-card class="full-width">
+          <md-card-header>
+            <md-card-title>Detalle</md-card-title>
+            <span class="fill-remaining-space"></span>
+            <button md-button [routerLink]="['/ptype/list']">Volver</button>
+          </md-card-header>
+
+          <md-card-content class="inputs-wrapper">
+
+            <span></span>
+
+            <div class="input-wrapper">
+               <md-input-container class="full-width">
+                 <input mdInput placeholder="name" [value]="ptype.name" readonly="true">
+               </md-input-container>
+            </div>
+
+            <div class="input-wrapper">
+              <md-input-container class="full-width">
+               <input mdInput placeholder="plural" [value]="ptype.plural" readonly="true">
+               </md-input-container>
+            </div>
+
+
+        </md-card-content>
+
+        <md-card-actions class="actions">
+            <button [routerLink]="['/ptype/edit',ptype.id]" md-button type="button">Editar Tipos</button>
+        </md-card-actions>
+
+        </md-card>
+      </div>
+    </ng-container>
+  </div>
+</div>

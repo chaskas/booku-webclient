@@ -37,6 +37,7 @@ export class ClientService {
                           last_name: client.last_name,
                           email: client.email,
                           address: client.address,
+                          city: client.city,
                           phone: client.phone,
                           car_license: client.car_license,
             						  car_brand: client.car_brand,

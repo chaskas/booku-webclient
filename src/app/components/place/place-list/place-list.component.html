@@ -1,0 +1,62 @@
+<div class="container">
+
+	<div fxLayout="row" class="header">
+		<span class="title"> {{title}}</span>
+		<span class="fill-remaining-space"></span>
+		<a routerLink="/place/new" md-raised-button> <md-icon>add</md-icon> Nuevo</a>
+	</div>
+
+	<br>
+  
+    <div fxLayout="column">
+
+	    <div fxLayout="row">
+
+	      <md-table #table [dataSource]="dataSource" class="full-width">
+	        <ng-container cdkColumnDef="ptype">
+	          <md-header-cell *cdkHeaderCellDef> Tipo </md-header-cell>
+	          <md-cell *cdkCellDef="let row">{{ row.ptype.name}}</md-cell>
+	        </ng-container>  
+
+	        <ng-container cdkColumnDef="name">
+	          <md-header-cell *cdkHeaderCellDef> Nombre </md-header-cell>
+	          <md-cell *cdkCellDef="let row">{{ row.name }}</md-cell>
+	        </ng-container>    
+
+	        <ng-container cdkColumnDef="capacity">
+	          <md-header-cell *cdkHeaderCellDef> Capacidad </md-header-cell>
+	          <md-cell *cdkCellDef="let row">{{ row.capacity }}</md-cell>
+	        </ng-container>   
+
+	        <ng-container cdkColumnDef="price">
+	          <md-header-cell *cdkHeaderCellDef> Precio </md-header-cell>
+	          <md-cell *cdkCellDef="let row">{{ row.price }}</md-cell>
+	        </ng-container>       
+
+	        <ng-container cdkColumnDef="opening">
+	          <md-header-cell *cdkHeaderCellDef> Horario Apertura </md-header-cell>
+	          <md-cell *cdkCellDef="let row">{{ row.opening | date: 'HH:mm'}}</md-cell>
+	        </ng-container>   
+
+	        <ng-container cdkColumnDef="closing">
+	          <md-header-cell *cdkHeaderCellDef> Horario Cierre </md-header-cell>
+	          <md-cell *cdkCellDef="let row">{{ row.closing | date: 'HH:mm'}}</md-cell>
+	        </ng-container> 
+
+	        <ng-container cdkColumnDef="icons">
+	          <md-header-cell *cdkHeaderCellDef> Opciones </md-header-cell>
+	          <md-cell *cdkCellDef="let row">
+	          <button  md-icon-button [routerLink]="['/place/detail',row.id]"><md-icon>visibility</md-icon></button>
+	          </md-cell>
+	        </ng-container>  
+
+	        <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+	        <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+
+	      </md-table> 
+
+	  	</div>
+	<div>
+</div> 
+
+

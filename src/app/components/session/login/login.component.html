@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="center-container">
+    <div class="logo-wrapper">
+      <!--<img src="assets/logo-big.jpg" alt="RSD">-->
+    </div>
+    <div>
+
+      <form [formGroup]="loginForm" (submit)="doLogin()">
+        <md-card class="login-form-card">
+          <md-card-content>
+            <md-input-container class="full-width">
+              <input type="email" mdInput placeholder="Email" formControlName="email" required>
+            </md-input-container>
+            <md-input-container class="full-width">
+              <input type="password" mdInput placeholder="Password" formControlName="password" required>
+            </md-input-container>
+          </md-card-content>
+          <md-card-actions class="actions">
+             <button md-button type="submit" [disabled]="!loginForm.valid">Login</button>
+          </md-card-actions>
+        </md-card>
+      </form>
+    </div>
+  </div>
+
+</div>
