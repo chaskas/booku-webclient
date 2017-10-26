@@ -27,13 +27,33 @@ import { AppConfig } from './config/app-config';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
-  //Clients
+import { DialogComponent } from './utils/dialog/dialog.component';
+
+// Components - Clients
 import { ListComponent } from './components/clients/list/list.component';
 import { DetailComponent } from './components/clients/detail/detail.component';
 import { NewComponent } from './components/clients/new/new.component';
 import { EditComponent } from './components/clients/edit/edit.component';
+
+// Components - Agenda
 import { AgendaMonthlyComponent } from './components/agenda/agenda-monthly/agenda-monthly.component';
-import { DialogComponent } from './utils/dialog/dialog.component';
+
+// Components - Place
+import { PlaceNewComponent } from './components/place/place-new/place-new.component';
+import { PlaceEditComponent } from './components/place/place-edit/place-edit.component';
+import { PlaceDetailComponent } from './components/place/place-detail/place-detail.component';
+import { PlaceListComponent } from './components/place/place-list/place-list.component';
+
+// Components - PType
+import { PtypeNewComponent } from './components/ptype/ptype-new/ptype-new.component';
+import { PtypeEditComponent } from './components/ptype/ptype-edit/ptype-edit.component';
+import { PtypeDetailComponent } from './components/ptype/ptype-detail/ptype-detail.component';
+import { PtypeListComponent } from './components/ptype/ptype-list/ptype-list.component';
+
+// Components - Sessions
+import { LoginComponent } from './components/session/login/login.component';
+import { LogoutComponent } from './components/session/logout/logout.component';
+import { RegisterComponent } from './components/session/register/register.component';
 
 // Validators
 import { CustomValidators } from 'ng2-validation';
@@ -43,11 +63,6 @@ import { Ng2Rut, RutValidator } from './utils/rut/ng2-rut.module';
 import { ClientsDatabase } from './components/clients/list/clients-database';
 import { PTypesDatabase } from './components/ptype/ptype-list/ptypes-database';
 import { PlacesDatabase } from './components/place/place-list/places-database';
-
-import { LoginComponent } from './components/session/login/login.component';
-import { LogoutComponent } from './components/session/logout/logout.component';
-import { RegisterComponent } from './components/session/register/register.component';
-
 
 
 @NgModule({
@@ -59,8 +74,18 @@ import { RegisterComponent } from './components/session/register/register.compon
     NewComponent,
     EditComponent,
     DialogComponent,
-    AgendaMonthlyComponent
-
+    AgendaMonthlyComponent,
+    PtypeNewComponent,
+    PtypeEditComponent,
+    PtypeDetailComponent,
+    PtypeListComponent,
+    PlaceNewComponent,
+    PlaceEditComponent,
+    PlaceDetailComponent,
+    PlaceListComponent,
+    LoginComponent,
+    LogoutComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule

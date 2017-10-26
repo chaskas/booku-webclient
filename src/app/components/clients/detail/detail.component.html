@@ -2,89 +2,89 @@
   <div fxLayout="column">
     <ng-container *ngIf="client">
       <div fxLayout="row">
-        <md-card class="full-width">
-          <md-card-header>
-            <md-card-title>Detalle</md-card-title>
+        <mat-card class="full-width">
+          <mat-card-header>
+            <mat-card-title>Detalle</mat-card-title>
             <span class="fill-remaining-space"></span>
-            <button md-button [routerLink]="['/clients']">Volver</button>
-          </md-card-header>
+            <button mat-button [routerLink]="['/clients']">Volver</button>
+          </mat-card-header>
 
-          <md-card-content class="inputs-wrapper">
+          <mat-card-content class="inputs-wrapper">
 
             <span></span>
 
             <div class="input-wrapper">
-               <md-input-container class="full-width">
-                 <input mdInput placeholder="Rut" [value]="client.rut" readonly="true">
-               </md-input-container>
+               <mat-input-container class="full-width">
+                 <input matInput placeholder="Rut" [value]="client.rut" readonly="true">
+               </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput placeholder="Nombre" [value]="client.first_name" readonly="true">
-               </md-input-container>
+              <mat-input-container class="full-width">
+               <input matInput placeholder="Nombre" [value]="client.first_name" readonly="true">
+               </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Apellido" [value]="client.last_name" readonly="true">
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Apellido" [value]="client.last_name" readonly="true">
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input type="email" mdInput placeholder="Email" [value]="client.email" readonly="true">
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input type="email" matInput placeholder="Email" [value]="client.email" readonly="true">
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Direccion" [value]="client.address" readonly="true">
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Direccion" [value]="client.address" readonly="true">
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Ciudad" [value]="client.city" readonly="true">
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Ciudad" [value]="client.city" readonly="true">
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput placeholder="Teléfono" [value]="client.phone" readonly="true"></md-input-container>
+              <mat-input-container class="full-width">
+               <input matInput placeholder="Teléfono" [value]="client.phone" readonly="true"></mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Patente" [value]="client.car_license" readonly="true">
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Patente" [value]="client.car_license" readonly="true">
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Marca" [value]="client.car_brand" readonly="true">
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Marca" [value]="client.car_brand" readonly="true">
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Modelo" [value]="client.car_model" readonly="true">
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Modelo" [value]="client.car_model" readonly="true">
+              </mat-input-container>
             </div>            
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Color" [value]="client.car_color" readonly="true">
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Color" [value]="client.car_color" readonly="true">
+              </mat-input-container>
             </div>
 
-        </md-card-content>
+        </mat-card-content>
 
-        <md-card-actions class="actions">
-            <button [routerLink]="['/clients/edit',client.id]" md-button type="button">Editar Cliente</button>
-        </md-card-actions>
+        <mat-card-actions class="actions">
+            <button [routerLink]="['/clients/edit',client.id]" mat-button type="button">Editar Cliente</button>
+        </mat-card-actions>
 
-        </md-card>
+        </mat-card>
       </div>
     </ng-container>
   </div>

@@ -2,62 +2,62 @@
   <form [formGroup]="placeForm" (submit)="createPlace()">
     <div fxLayout="row">
 
-        <md-card class="full-width">
+        <mat-card class="full-width">
 
-          <md-card-header>
-            <md-card-title>Nuevo Espacio</md-card-title>
+          <mat-card-header>
+            <mat-card-title>Nuevo Espacio</mat-card-title>
             <span class="fill-remaining-space"></span>
-            <button md-button routerLink="place/list">Volver</button>
-          </md-card-header>
+            <button mat-button routerLink="place/list">Volver</button>
+          </mat-card-header>
 
-          <md-card-content class="inputs-wrapper">
+          <mat-card-content class="inputs-wrapper">
 
             <span></span>
 
             <div class="input-wrapper">
-              <md-select placeholder="Tipo Espacio" formControlName="ptype_id" required class="full-width select">
-                 <md-option *ngFor="let ptype of ptypes" [value]="ptype.id">{{ptype.name}}</md-option>
-              </md-select>
+              <mat-select placeholder="Tipo Espacio" formControlName="ptype_id" required class="full-width select">
+                 <mat-option *ngFor="let ptype of ptypes" [value]="ptype.id">{{ptype.name}}</mat-option>
+              </mat-select>
             </div>           
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput placeholder="Nombre" formControlName="name" required>
-               </md-input-container>
+              <mat-input-container class="full-width">
+               <input matInput placeholder="Nombre" formControlName="name" required>
+               </mat-input-container>
             </div> 
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput type="number" placeholder="Capacidad" formControlName="capacity" required>
-               </md-input-container>
+              <mat-input-container class="full-width">
+               <input matInput type="number" placeholder="Capacidad" formControlName="capacity" required>
+               </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput type="number" placeholder="Precio" formControlName="price" required>
-               </md-input-container>
+              <mat-input-container class="full-width">
+               <input matInput type="number" placeholder="Precio" formControlName="price" required>
+               </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput type="time" placeholder="Horario apertura" formControlName="opening" required>
-               </md-input-container>
+              <mat-input-container class="full-width">
+               <input matInput type="time" placeholder="Horario apertura" formControlName="opening" required>
+               </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput type="time" placeholder="Horario cierre" formControlName="closing" required>
-               </md-input-container>
+              <mat-input-container class="full-width">
+               <input matInput type="time" placeholder="Horario cierre" formControlName="closing" required>
+               </mat-input-container>
             </div>
 
-        </md-card-content>
+        </mat-card-content>
 
-        <md-card-actions class="actions">
-          <button md-raised-button type="submit" [disabled]="!placeForm.valid">Aceptar</button>
+        <mat-card-actions class="actions">
+          <button mat-raised-button type="submit" [disabled]="!placeForm.valid">Aceptar</button>
 
-        </md-card-actions>
+        </mat-card-actions>
 
-    </md-card>
+    </mat-card>
 
     </div>
   </form>

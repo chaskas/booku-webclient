@@ -6,19 +6,19 @@
     <div>
 
       <form [formGroup]="loginForm" (submit)="doLogin()">
-        <md-card class="login-form-card">
-          <md-card-content>
-            <md-input-container class="full-width">
-              <input type="email" mdInput placeholder="Email" formControlName="email" required>
-            </md-input-container>
-            <md-input-container class="full-width">
-              <input type="password" mdInput placeholder="Password" formControlName="password" required>
-            </md-input-container>
-          </md-card-content>
-          <md-card-actions class="actions">
-             <button md-button type="submit" [disabled]="!loginForm.valid">Login</button>
-          </md-card-actions>
-        </md-card>
+        <mat-card class="login-form-card">
+          <mat-card-content>
+            <mat-input-container class="full-width">
+              <input type="email" matInput placeholder="Email" formControlName="email" required>
+            </mat-input-container>
+            <mat-input-container class="full-width">
+              <input type="password" matInput placeholder="Password" formControlName="password" required>
+            </mat-input-container>
+          </mat-card-content>
+          <mat-card-actions class="actions">
+             <button mat-button type="submit" [disabled]="!loginForm.valid">Login</button>
+          </mat-card-actions>
+        </mat-card>
       </form>
     </div>
   </div>

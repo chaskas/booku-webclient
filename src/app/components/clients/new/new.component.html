@@ -2,92 +2,92 @@
   <form [formGroup]="clientForm" (submit)="createClient()">
     <div fxLayout="row">
 
-        <md-card class="full-width">
+        <mat-card class="full-width">
 
-          <md-card-header>
-            <md-card-title>Nuevo Cliente</md-card-title>
+          <mat-card-header>
+            <mat-card-title>Nuevo Cliente</mat-card-title>
             <span class="fill-remaining-space"></span>
-            <button md-button routerLink="/clients">Volver</button>
-          </md-card-header>
+            <button mat-button routerLink="/clients">Volver</button>
+          </mat-card-header>
 
-          <md-card-content class="inputs-wrapper">
+          <mat-card-content class="inputs-wrapper">
 
             <span></span>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput placeholder="Nombre" formControlName="first_name" required>
-               </md-input-container>
+              <mat-input-container class="full-width">
+               <input matInput placeholder="Nombre" formControlName="first_name" required>
+               </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Apellido" formControlName="last_name" required>
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Apellido" formControlName="last_name" required>
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-               <md-input-container class="full-width">
-                 <input mdInput placeholder="Rut" formControlName="rut" required>
-               </md-input-container>
+               <mat-input-container class="full-width">
+                 <input matInput placeholder="Rut" formControlName="rut" required>
+               </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input type="email" mdInput placeholder="Email" formControlName="email" required>
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input type="email" matInput placeholder="Email" formControlName="email" required>
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Dirección" formControlName="address" required>
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Dirección" formControlName="address" required>
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Ciudad" formControlName="city" required>
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Ciudad" formControlName="city" required>
+              </mat-input-container>
             </div>            
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input type="number" mdInput placeholder="Teléfono" formControlName="phone" required>
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input type="number" matInput placeholder="Teléfono" formControlName="phone" required>
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Patente" formControlName="car_license" >
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Patente" formControlName="car_license" >
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Marca del auto" formControlName="car_brand" >
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Marca del auto" formControlName="car_brand" >
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Modelo del auto" formControlName="car_model" >
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Modelo del auto" formControlName="car_model" >
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Color del auto" formControlName="car_color" >
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Color del auto" formControlName="car_color" >
+              </mat-input-container>
             </div>
 
-        </md-card-content>
+        </mat-card-content>
 
-        <md-card-actions class="actions">
-          <button md-raised-button type="submit" [disabled]="!clientForm.valid">Aceptar</button>
+        <mat-card-actions class="actions">
+          <button mat-raised-button type="submit" [disabled]="!clientForm.valid">Aceptar</button>
 
-        </md-card-actions>
+        </mat-card-actions>
 
-    </md-card>
+    </mat-card>
 
     </div>
   </form>

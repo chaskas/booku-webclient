@@ -2,54 +2,54 @@
   <div fxLayout="column">
     <ng-container *ngIf="place">
       <div fxLayout="row">
-        <md-card class="full-width">
-          <md-card-header>
-            <md-card-title>Detalle</md-card-title>
+        <mat-card class="full-width">
+          <mat-card-header>
+            <mat-card-title>Detalle</mat-card-title>
             <span class="fill-remaining-space"></span>
-            <button md-button [routerLink]="['/place/list']">Volver</button>
-          </md-card-header>
+            <button mat-button [routerLink]="['/place/list']">Volver</button>
+          </mat-card-header>
 
-          <md-card-content class="inputs-wrapper">
+          <mat-card-content class="inputs-wrapper">
 
             <span></span>
 
             <div class="input-wrapper">
-               <md-input-container class="full-width">
-                 <input mdInput placeholder="Nombre" [value]="place.name" readonly="true">
-               </md-input-container>
+               <mat-input-container class="full-width">
+                 <input matInput placeholder="Nombre" [value]="place.name" readonly="true">
+               </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput placeholder="Capacidad" [value]="place.capacity" readonly="true">
-               </md-input-container>
+              <mat-input-container class="full-width">
+               <input matInput placeholder="Capacidad" [value]="place.capacity" readonly="true">
+               </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Precio" [value]="place.price" readonly="true">
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Precio" [value]="place.price" readonly="true">
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input type="email" mdInput placeholder="Horario apertura" [value]="place.opening | date: 'HH:mm'" readonly="true">
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input type="email" matInput placeholder="Horario apertura" [value]="place.opening | date: 'HH:mm'" readonly="true">
+              </mat-input-container>
             </div>
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Horario cierre" [value]="place.closing | date: 'HH:mm'" readonly="true">
-              </md-input-container>
+              <mat-input-container class="full-width">
+              <input matInput placeholder="Horario cierre" [value]="place.closing | date: 'HH:mm'" readonly="true">
+              </mat-input-container>
             </div>
 
-        </md-card-content>
+        </mat-card-content>
 
-        <md-card-actions class="actions">
-            <button [routerLink]="['/place/edit',place.id]" md-button type="button">Editar Espacios</button>
-        </md-card-actions>
+        <mat-card-actions class="actions">
+            <button [routerLink]="['/place/edit',place.id]" mat-button type="button">Editar Espacios</button>
+        </mat-card-actions>
 
-        </md-card>
+        </mat-card>
       </div>
     </ng-container>
   </div>

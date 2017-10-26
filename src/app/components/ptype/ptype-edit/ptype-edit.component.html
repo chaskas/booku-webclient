@@ -2,38 +2,38 @@
   <form [formGroup]="ptypeForm" (submit)="updatePType()">
     <div fxLayout="row">
       <ng-container *ngIf="ptype">
-        <md-card class="full-width">
+        <mat-card class="full-width">
 
-          <md-card-header>
-            <md-card-title>Editar</md-card-title>
+          <mat-card-header>
+            <mat-card-title>Editar</mat-card-title>
             <span class="fill-remaining-space"></span>
-            <button md-button [routerLink]="['/ptype/detail',ptype.id]">Volver</button>
-          </md-card-header>
+            <button mat-button [routerLink]="['/ptype/detail',ptype.id]">Volver</button>
+          </mat-card-header>
 
-          <md-card-content class="inputs-wrapper">
+          <mat-card-content class="inputs-wrapper">
 
             <span></span>         
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput placeholder="Nombre" formControlName="name" required>
-               </md-input-container>
+              <mat-input-container class="full-width">
+               <input matInput placeholder="Nombre" formControlName="name" required>
+               </mat-input-container>
             </div> 
 
             <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput placeholder="Plural" formControlName="plural" required>
-               </md-input-container>
+              <mat-input-container class="full-width">
+               <input matInput placeholder="Plural" formControlName="plural" required>
+               </mat-input-container>
             </div>
 
-          </md-card-content>
+          </mat-card-content>
 
-          <md-card-actions class="actions">
-            <button md-button type="button" (click)="openDialog()" confirm color="accent">Eliminar</button>
-            <button md-raised-button type="submit" [disabled]="!ptypeForm.valid">Aceptar</button>
-          </md-card-actions>
+          <mat-card-actions class="actions">
+            <button mat-button type="button" (click)="openDialog()" confirm color="accent">Eliminar</button>
+            <button mat-raised-button type="submit" [disabled]="!ptypeForm.valid">Aceptar</button>
+          </mat-card-actions>
 
-        </md-card>
+        </mat-card>
 
       </ng-container>
     </div>
