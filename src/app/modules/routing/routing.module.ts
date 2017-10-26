@@ -10,6 +10,8 @@ import { NewComponent } from '../../components/clients/new/new.component';
 import { ListComponent } from '../../components/clients/list/list.component';
 import { DetailComponent } from '../../components/clients/detail/detail.component';
 import { EditComponent } from '../../components/clients/edit/edit.component';
+import { AgendaMonthlyComponent } from '../../components/agenda/agenda-monthly/agenda-monthly.component';
+
 //Ptypes
 import { PtypeNewComponent } from '../../components/ptype/ptype-new/ptype-new.component';
 import { PtypeListComponent } from '../../components/ptype/ptype-list/ptype-list.component';
@@ -26,7 +28,7 @@ import { RegisterComponent } from '../../components/session/register/register.co
 import { LogoutComponent } from '../../components/session/logout/logout.component';
  const routes: Routes = [
   {  path: '', component: LayoutComponent,
-       children:[
+      children:[
          //Clients
          { path: 'clients/new', component: NewComponent, canActivate: [Angular2TokenService] },
          { path: 'clients/detail/:id', component: DetailComponent, canActivate: [Angular2TokenService] },
@@ -41,8 +43,9 @@ import { LogoutComponent } from '../../components/session/logout/logout.componen
          { path: 'place/new', component: PlaceNewComponent, canActivate: [Angular2TokenService] },
          { path: 'place/edit/:id', component: PlaceEditComponent, canActivate: [Angular2TokenService] },
          { path: 'place/list', component: PlaceListComponent, canActivate: [Angular2TokenService] },
-         { path: 'place/detail/:id', component: PlaceDetailComponent, canActivate: [Angular2TokenService] }
-//
+         { path: 'place/detail/:id', component: PlaceDetailComponent, canActivate: [Angular2TokenService] },
+         // Agenda
+         { path: 'agenda/monthly/:ptype', component: AgendaMonthlyComponent }
        ]
   },
   { path: 'signin', component: LoginComponent },

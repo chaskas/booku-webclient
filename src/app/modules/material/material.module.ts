@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MdToolbarModule } from '@angular/material';
-import { MdCardModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
 import { MdButtonModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
 import { MdIconModule } from '@angular/material';
@@ -25,13 +25,17 @@ import { MdTableModule } from '@angular/material';
 import { MdSortModule } from '@angular/material';
 import { MdPaginatorModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
+import { MatListModule } from '@angular/material';
+
+import { NoConflictStyleCompatibilityMode } from '@angular/material';
+import { CompatibilityModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserAnimationsModule,
     MdToolbarModule,
-    MdCardModule,
+    MatCardModule,
     MdButtonModule,
     MdIconModule,
     MdGridListModule,
@@ -50,12 +54,15 @@ import { CdkTableModule } from '@angular/cdk/table';
     MdSortModule,
     MdPaginatorModule,
     CdkTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    NoConflictStyleCompatibilityMode,
+    CompatibilityModule
   ],
   exports: [
     BrowserAnimationsModule,
     MdToolbarModule,
-    MdCardModule,
+    MatCardModule,
     MdButtonModule,
     MdIconModule,
     MdGridListModule,
@@ -74,7 +81,10 @@ import { CdkTableModule } from '@angular/cdk/table';
     MdSortModule,
     MdPaginatorModule,
     CdkTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    NoConflictStyleCompatibilityMode,
+    CompatibilityModule
   ],
   declarations: []
 })
