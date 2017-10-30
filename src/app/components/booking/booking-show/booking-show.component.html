@@ -179,7 +179,7 @@
         </mat-form-field>
 
         <mat-form-field fxFlex="25">
-          <input matInput placeholder="Saldo Pendiente" [value]="booking.pending | currency: 'USD' : true : '3.0-0'" readonly>
+          <input matInput placeholder="Saldo Pendiente" [value]="booking.pending | currency: 'USD' : true : '1.0-0'" readonly>
         </mat-form-field>
       </div>
 
@@ -190,7 +190,7 @@
           Historial de Pagos
         </h3>
         <div>
-          <button mat-raised-button color="primary">Agregar Pago</button>
+          <button mat-raised-button color="primary" *ngIf="booking.pending > 0" (click)="openPaymentNewDialog()">Agregar Pago</button>
         </div>
       </div>
 
@@ -209,7 +209,7 @@
 
           <ng-container cdkColumnDef="method">
             <mat-header-cell *cdkHeaderCellDef> Método de Pago </mat-header-cell>
-            <mat-cell *cdkCellDef="let row">{{ row.method }}</mat-cell>
+            <mat-cell *cdkCellDef="let row">{{ methods[row.method] }}</mat-cell>
           </ng-container>
 
           <ng-container cdkColumnDef="amount">

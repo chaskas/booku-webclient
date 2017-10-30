@@ -28,7 +28,6 @@ import { AppConfig } from './config/app-config';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { DialogComponent } from './utils/dialog/dialog.component';
 
 // Components - Clients
 import { ListComponent } from './components/clients/list/list.component';
@@ -56,16 +55,23 @@ import { LoginComponent } from './components/session/login/login.component';
 import { LogoutComponent } from './components/session/logout/logout.component';
 import { RegisterComponent } from './components/session/register/register.component';
 
+// Components - Booking
+
+import { BookingShowComponent } from './components/booking/booking-show/booking-show.component';
+
+// Components - Dialogs
+import { DialogComponent } from './utils/dialog/dialog.component';
+import { PaymentNewComponent } from './components/payment/payment-new/payment-new.component';
+
 // Validators
 import { CustomValidators } from 'ng2-validation';
 import { Ng2Rut, RutValidator } from './utils/rut/ng2-rut.module';
 
-
+// Databases
 import { ClientsDatabase } from './components/clients/list/clients-database';
 import { PTypesDatabase } from './components/ptype/ptype-list/ptypes-database';
 import { PlacesDatabase } from './components/place/place-list/places-database';
 import { PaymentsDatabase } from './components/booking/booking-show/payments-database';
-import { BookingShowComponent } from './components/booking/booking-show/booking-show.component';
 
 
 @NgModule({
@@ -89,12 +95,13 @@ import { BookingShowComponent } from './components/booking/booking-show/booking-
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
-    BookingShowComponent
+    BookingShowComponent,
+    PaymentNewComponent
   ],
   imports: [
     BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule
   ],
-  entryComponents: [DialogComponent],
+  entryComponents: [DialogComponent, PaymentNewComponent],
   providers: [
       AppConfig,
       ClientService,
