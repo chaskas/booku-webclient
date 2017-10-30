@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, Params }   from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import 'rxjs/add/operator/switchMap';
 
-import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 import { Place } from '../../../model/place';
 
@@ -22,7 +22,7 @@ export class PlaceDetailComponent implements OnInit {
   constructor(
   	private placeService: PlaceService,
   	private route: ActivatedRoute,
-    public snackBar: MdSnackBar,
+    public snackBar: MatSnackBar,
     private _router: Router,
     private _tokenService: Angular2TokenService    
 
@@ -45,7 +45,7 @@ export class PlaceDetailComponent implements OnInit {
 	}
 
   private _handleTokenError(error: any) {
-    var config: MdSnackBarConfig = new MdSnackBarConfig();
+    var config: MatSnackBarConfig = new MatSnackBarConfig();
     config.duration = 1000;
     this.snackBar.open("Su sesión ha expirado.", undefined, config);
     this._router.navigate(['/signin']);

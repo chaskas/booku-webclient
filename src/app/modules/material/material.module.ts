@@ -24,6 +24,8 @@ import { MatSortModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatListModule } from '@angular/material';
+import { MatRadioModule } from '@angular/material';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 import { NoConflictStyleCompatibilityMode } from '@angular/material';
 import { CompatibilityModule } from '@angular/material';
@@ -54,6 +56,8 @@ import { CompatibilityModule } from '@angular/material';
     CdkTableModule,
     MatButtonModule,
     MatListModule,
+    MatRadioModule,
+    MatMomentDateModule,
     NoConflictStyleCompatibilityMode,
     CompatibilityModule
   ],
@@ -81,6 +85,8 @@ import { CompatibilityModule } from '@angular/material';
     CdkTableModule,
     MatButtonModule,
     MatListModule,
+    MatRadioModule,
+    MatMomentDateModule,
     NoConflictStyleCompatibilityMode,
     CompatibilityModule
   ],

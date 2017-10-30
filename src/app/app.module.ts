@@ -18,6 +18,7 @@ import { BookingService } from './services/booking.service';
 import { PlaceService } from './services/place.service';
 import { PTypeService } from './services/ptype.service';
 import { SessionService } from './services/session.service';
+import { PaymentService } from './services/payment.service';
 import { DialogsServiceService } from './services/dialogs-service.service';
 
 // Classes
@@ -63,6 +64,8 @@ import { Ng2Rut, RutValidator } from './utils/rut/ng2-rut.module';
 import { ClientsDatabase } from './components/clients/list/clients-database';
 import { PTypesDatabase } from './components/ptype/ptype-list/ptypes-database';
 import { PlacesDatabase } from './components/place/place-list/places-database';
+import { PaymentsDatabase } from './components/booking/booking-show/payments-database';
+import { BookingShowComponent } from './components/booking/booking-show/booking-show.component';
 
 
 @NgModule({
@@ -85,7 +88,8 @@ import { PlacesDatabase } from './components/place/place-list/places-database';
     PlaceListComponent,
     LoginComponent,
     LogoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    BookingShowComponent
   ],
   imports: [
     BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule
@@ -98,9 +102,11 @@ import { PlacesDatabase } from './components/place/place-list/places-database';
       PTypeService,
       PlaceService,
       RutValidator,
+      PaymentService,
       ClientsDatabase,
       PTypesDatabase,
       PlacesDatabase,
+      PaymentsDatabase,
       DialogsServiceService,
       Angular2TokenService,
       SessionService,

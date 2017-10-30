@@ -6,7 +6,7 @@ import { PType } from '../../../model/ptype';
 import { Place } from '../../../model/place';
 
 
-import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { CustomValidators } from 'ng2-validation';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -29,7 +29,7 @@ export class PlaceNewComponent implements OnInit {
   	private placeService: PlaceService,
     private ptypeService: PTypeService,
   	private formBuilder: FormBuilder,
-    public snackBar: MdSnackBar,
+    public snackBar: MatSnackBar,
     private _router: Router,
     private _tokenService: Angular2TokenService
   	) {
@@ -83,7 +83,7 @@ export class PlaceNewComponent implements OnInit {
   }
   
   private _handleTokenError(error: any) {
-    var config: MdSnackBarConfig = new MdSnackBarConfig();
+    var config: MatSnackBarConfig = new MatSnackBarConfig();
     config.duration = 1000;
     this.snackBar.open("Su sesión ha expirado.", undefined, config);
     this._router.navigate(['/signin']);

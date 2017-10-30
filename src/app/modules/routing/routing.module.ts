@@ -26,6 +26,11 @@ import { PlaceDetailComponent } from '../../components/place/place-detail/place-
 import { LoginComponent } from '../../components/session/login/login.component';
 import { RegisterComponent } from '../../components/session/register/register.component';
 import { LogoutComponent } from '../../components/session/logout/logout.component';
+
+// Booking
+import { BookingShowComponent } from '../../components/booking/booking-show/booking-show.component';
+
+
  const routes: Routes = [
   {  path: '', component: LayoutComponent,
       children:[
@@ -45,7 +50,9 @@ import { LogoutComponent } from '../../components/session/logout/logout.componen
          { path: 'place/list', component: PlaceListComponent, canActivate: [Angular2TokenService] },
          { path: 'place/detail/:id', component: PlaceDetailComponent, canActivate: [Angular2TokenService] },
          // Agenda
-         { path: 'agenda/monthly/:ptype', component: AgendaMonthlyComponent }
+         { path: 'agenda/monthly/:ptype', component: AgendaMonthlyComponent },
+         // Booking
+         { path: 'booking/:id', component: BookingShowComponent }
        ]
   },
   { path: 'signin', component: LoginComponent },

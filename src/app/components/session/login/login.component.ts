@@ -1,6 +1,6 @@
 import { Angular2TokenService } from 'angular2-token';
 import { Component, Input, OnInit } from '@angular/core';
-import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _tokenService: Angular2TokenService,
     private sessionService: SessionService,
-    public snackBar: MdSnackBar
+    public snackBar: MatSnackBar
   	) { }
 
   ngOnInit() {
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
 
   private _handleError(error: any) {
       this.errors = error.json().errors;
-      var config: MdSnackBarConfig = new MdSnackBarConfig();
+      var config: MatSnackBarConfig = new MatSnackBarConfig();
       config.duration = 1000;
       this.snackBar.open("Usuario y/o Contraseña Incorrecto", undefined, config);
   }  

@@ -17,7 +17,7 @@
 
     <div fxLayout="row">
 
-      <mat-table #table [dataSource]="dataSource" mdSort class="full-width">
+      <mat-table #table [dataSource]="dataSource" MatSort class="full-width">
         <ng-container cdkColumnDef="rut">
           <mat-header-cell *cdkHeaderCellDef mat-sort-header class="title-center"> Rut </mat-header-cell>
           <mat-cell *cdkCellDef="let row" class="text-center"> {{ formatRut(row.rut) }} </mat-cell>

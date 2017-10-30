@@ -3,8 +3,8 @@
   <div fxLayout="row" fxShow="false" fxShow.gt-xs>
     <button mat-button *ngFor="let ptype of ptypes" [routerLink]="['/agenda/monthly',ptype.id]"> {{ ptype.plural }}
       <ng-container *ngIf="ptype.places.length > 0">
-        <mat-icon [mdMenuTriggerFor]="menu">keyboard_arrow_down</mat-icon>
-        <mat-menu #menu="mdMenu">
+        <mat-icon [matMenuTriggerFor]="menu">keyboard_arrow_down</mat-icon>
+        <mat-menu #menu="matMenu">
           <button *ngFor="let place of ptype.places" mat-menu-item routerLink="/">{{ place.name }}</button>
         </mat-menu>
       </ng-container>

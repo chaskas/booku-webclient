@@ -6,7 +6,8 @@ export class Booking {
 	id: number;
 	arrival: string;
 	departure: string;
-	price: number;
+	subtotal: number;
+	total: number;
 	discount: number;
 	status: number;
 	adults: number;
@@ -17,5 +18,5 @@ export class Booking {
 	updated_at: string;
 	client: Client;
 	place: Place;
-	
+
 }

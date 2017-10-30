@@ -4,7 +4,7 @@ import { ClientService } from '../../../services/client.service';
 import { Client } from '../../../model/client';
 import { Angular2TokenService } from 'angular2-token';
 
-import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { CustomValidators } from 'ng2-validation';
 import { RutValidator } from '../../../utils/rut/ng2-rut.module';
 
@@ -25,7 +25,7 @@ export class NewComponent implements OnInit {
 
   constructor(
   	private rv: RutValidator,
-    public snackBar: MdSnackBar,
+    public snackBar: MatSnackBar,
   	private clientService: ClientService,
     private _router: Router,
   	private formBuilder: FormBuilder,
@@ -85,7 +85,7 @@ export class NewComponent implements OnInit {
   }
   
   private _handleTokenError(error: any) {
-    var config: MdSnackBarConfig = new MdSnackBarConfig();
+    var config: MatSnackBarConfig = new MatSnackBarConfig();
     config.duration = 1000;
     this.snackBar.open("Su sesión ha expirado.", undefined, config);
     this._router.navigate(['/signin']);

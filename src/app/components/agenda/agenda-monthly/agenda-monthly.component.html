@@ -19,7 +19,7 @@
 
           <div fxLayout="row" fxLayoutGap="5px" *ngFor="let day of matrix">
             <div class="item" fxFlex="1 0 200px" *ngFor="let place of day" [ngClass]="{'bs0': place.booking.status == 0, 'bs1': place.booking.status == 1, 'bs2': place.booking.status == 2, 'bs3': place.booking.status == 3, 'bs4': place.booking.status == 4, 'bs5': place.booking.status == 5, 'bs6': place.booking.status == 6, 'bs7': place.booking.status == 7, 'bs8': place.booking.status == 8, 'bs9': place.booking.status == 9, 'bs10': place.booking.status == 10  }">
-              <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100%" *ngIf="place.booking != 0">
+              <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100%" *ngIf="place.booking != 0" [routerLink]="['/booking',place.booking.id]">
                 <div fxLayout="column" fxFlex="80" fxFlexAlign="center"><span class="booking-client-name">{{ place.client.first_name }} {{ place.client.last_name }}</span></div>
                 <div fxLayout="column" fxFlex="20" fxFlexAlign="center"><span class="booking-client-count">{{ place.booking.adults + place.booking.childrens }}</span></div>
               </div>

@@ -5,7 +5,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import 'rxjs/add/operator/switchMap';
 
-import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 import { PType } from '../../../model/ptype';
 
@@ -23,7 +23,7 @@ export class PtypeDetailComponent implements OnInit {
   constructor(
 	  private PTypeService: PTypeService,
   	private route: ActivatedRoute,
-    public snackBar: MdSnackBar,
+    public snackBar: MatSnackBar,
     private _router: Router,
     private _tokenService: Angular2TokenService
   	) { 
@@ -47,7 +47,7 @@ export class PtypeDetailComponent implements OnInit {
   }
 
   private _handleTokenError(error: any) {
-    var config: MdSnackBarConfig = new MdSnackBarConfig();
+    var config: MatSnackBarConfig = new MatSnackBarConfig();
     config.duration = 1000;
     this.snackBar.open("Su sesión ha expirado.", undefined, config);
     this._router.navigate(['/signin']);

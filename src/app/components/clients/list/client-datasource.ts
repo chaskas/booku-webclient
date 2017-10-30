@@ -5,14 +5,14 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
 
-import { MdSort } from '@angular/material';
-import { MdPaginator } from '@angular/material';
+import { MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material';
 
 import { ClientsDatabase } from './clients-database';
 import { Client } from '../../../model/client';
 
 export class ClientDataSource extends DataSource<any> {
-  constructor(public _clientsDatabase: ClientsDatabase, private _sort: MdSort, private _paginator: MdPaginator) {
+  constructor(public _clientsDatabase: ClientsDatabase, private _sort: MatSort, private _paginator: MatPaginator) {
     super();
   }
 

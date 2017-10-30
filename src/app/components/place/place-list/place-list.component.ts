@@ -23,7 +23,7 @@ import { PlaceDataSource } from './place-datasource';
 
 import { DialogsServiceService } from '../../../services/dialogs-service.service';
 import { Angular2TokenService } from 'angular2-token';
-import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 @Component({
   selector: 'app-place-list',
@@ -46,7 +46,7 @@ export class PlaceListComponent implements OnInit {
   	public _placesDatabase: PlacesDatabase,
     private ptypeService: PTypeService,
     private dialogsService: DialogsServiceService,
-    public snackBar: MdSnackBar,
+    public snackBar: MatSnackBar,
     private _router: Router,
     private route: ActivatedRoute,
     private _tokenService: Angular2TokenService
@@ -90,7 +90,7 @@ export class PlaceListComponent implements OnInit {
   }
 
   private _handleTokenError(error: any) {
-    var config: MdSnackBarConfig = new MdSnackBarConfig();
+    var config: MatSnackBarConfig = new MatSnackBarConfig();
     config.duration = 1000;
     this.snackBar.open("Su sesión ha expirado.", undefined, config);
     this._router.navigate(['/signin']);
