@@ -61,9 +61,8 @@ export class BookingShowComponent implements OnInit {
   private handleGetBookingSuccess(booking: Booking){
 
     this.booking = booking;
-    this.nights = moment(booking.departure).startOf('day').diff(moment(booking.arrival).startOf('day'), 'days');
-    this.days = moment(booking.departure).startOf('day').diff(moment(booking.arrival).startOf('day'), 'days') + 1;
-    
+    this.calculateDates();
+
   }
 
   openPaymentNewDialog(): void {
@@ -74,6 +73,11 @@ export class BookingShowComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
     });
+  }
+
+  calculateDates(){
+    this.nights = moment(this.booking.departure).startOf('day').diff(moment(this.booking.arrival).startOf('day'), 'days');
+    this.days = moment(this.booking.departure).startOf('day').diff(moment(this.booking.arrival).startOf('day'), 'days') + 1;
   }
 
 }
