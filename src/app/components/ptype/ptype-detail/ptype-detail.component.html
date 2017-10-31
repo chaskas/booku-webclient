@@ -2,37 +2,33 @@
   <div fxLayout="column">
     <ng-container *ngIf="ptype">
       <div fxLayout="row">
-        <md-card class="full-width">
-          <md-card-header>
-            <md-card-title>Detalle</md-card-title>
+        <mat-card class="full-width">
+          <mat-card-header>
+            <mat-card-title>Detalle</mat-card-title>
             <span class="fill-remaining-space"></span>
-            <button md-button [routerLink]="['/ptype/list']">Volver</button>
-          </md-card-header>
+            <button mat-button [routerLink]="['/ptype/list']">Volver</button>
+          </mat-card-header>
 
-          <md-card-content class="inputs-wrapper">
+        <mat-card-content fxLayout='column'>
 
-            <span></span>
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+             <mat-input-container fxFlex="50">
+                 <input matInput placeholder="name" [value]="ptype.name" readonly="true">
+               </mat-input-container>
 
-            <div class="input-wrapper">
-               <md-input-container class="full-width">
-                 <input mdInput placeholder="name" [value]="ptype.name" readonly="true">
-               </md-input-container>
-            </div>
-
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput placeholder="plural" [value]="ptype.plural" readonly="true">
-               </md-input-container>
+              <mat-input-container fxFlex="50">
+               <input matInput placeholder="plural" [value]="ptype.plural" readonly="true">
+               </mat-input-container>
             </div>
 
 
-        </md-card-content>
+        </mat-card-content>
 
-        <md-card-actions class="actions">
-            <button [routerLink]="['/ptype/edit',ptype.id]" md-button type="button">Editar Tipos</button>
-        </md-card-actions>
+        <mat-card-actions class="actions">
+            <button [routerLink]="['/ptype/edit',ptype.id]" mat-button type="button">Editar Tipos</button>
+        </mat-card-actions>
 
-        </md-card>
+        </mat-card>
       </div>
     </ng-container>
   </div>

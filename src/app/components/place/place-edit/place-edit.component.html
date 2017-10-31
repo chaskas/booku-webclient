@@ -2,62 +2,54 @@
   <form [formGroup]="placeForm" (submit)="updatePlace()">
     <div fxLayout="row">
       <ng-container *ngIf="place">
-        <md-card class="full-width">
+        <mat-card class="full-width">
 
-          <md-card-header>
-            <md-card-title>Editar</md-card-title>
+          <mat-card-header>
+            <mat-card-title>Editar</mat-card-title>
             <span class="fill-remaining-space"></span>
-            <button md-button [routerLink]="['/place/detail',place.id]">Volver</button>
-          </md-card-header>
+            <button mat-button [routerLink]="['/place/detail',place.id]">Volver</button>
+          </mat-card-header>
 
-          <md-card-content class="inputs-wrapper">
+        <mat-card-content fxLayout='column'>
 
-            <span></span>
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
 
-			      <div class="input-wrapper">
-              <md-select placeholder="Tipo Espacio" formControlName="ptype_id" required class="full-width select">
-                 <md-option *ngFor="let ptype of ptypes" [value]="ptype.id">{{ptype.name}}</md-option>
-              </md-select>
-            </div>           
+          <mat-select flFlex="34" placeholder="Tipo Espacio" formControlName="ptype_id" required>
+            <mat-option *ngFor="let ptype of ptypes" [value]="ptype.id">{{ptype.name}}</mat-option>
+          </mat-select>  
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput placeholder="Nombre" formControlName="name" required>
-               </md-input-container>
-            </div> 
+            <mat-input-container flFlex="33">
+              <input matInput type="time" placeholder="Horario apertura" formControlName="opening" required>
+            </mat-input-container>
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput type="number" placeholder="Capacidad" formControlName="capacity" required>
-               </md-input-container>
-            </div>
+            <mat-input-container flFlex="33">
+              <input matInput type="time" placeholder="Horario cierre" formControlName="closing" required>
+            </mat-input-container>
+          </div>
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput type="number" placeholder="Precio" formControlName="price" required>
-               </md-input-container>
-            </div>
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput type="time" placeholder="Horario apertura" formControlName="opening" required>
-               </md-input-container>
-            </div>
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">          
+            <mat-input-container fxFlex="34">
+             <input matInput placeholder="Nombre" formControlName="name" required>
+             </mat-input-container>
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput type="time" placeholder="Horario cierre" formControlName="closing" required>
-               </md-input-container>
-            </div>
+            <mat-input-container fxFlex="33">
+             <input matInput type="number" placeholder="Capacidad" formControlName="capacity" required>
+             </mat-input-container>
 
-          </md-card-content>
+            <mat-input-container fxFlex="33">
+             <input matInput type="number" placeholder="Precio" formControlName="price" required>
+             </mat-input-container>
+          </div>
 
-          <md-card-actions class="actions">
-            <button md-button type="button" (click)="openDialog()" confirm color="accent">Eliminar</button>
-            <button md-raised-button type="submit" [disabled]="!placeForm.valid">Aceptar</button>
-          </md-card-actions>
+        </mat-card-content>
 
-        </md-card>
+          <mat-card-actions class="actions">
+            <button mat-button type="button" (click)="openDialog()" confirm color="accent">Eliminar</button>
+            <button mat-raised-button type="submit" [disabled]="!placeForm.valid">Aceptar</button>
+          </mat-card-actions>
+
+        </mat-card>
 
       </ng-container>
     </div>

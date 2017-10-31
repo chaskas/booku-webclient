@@ -7,9 +7,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 
-import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
-import { MdSort } from '@angular/material';
-import { MdPaginator } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material';
 
 import { PTypeService } from '../../../services/ptype.service';
 import { PType } from '../../../model/ptype';
@@ -36,7 +36,7 @@ export class PtypeListComponent implements OnInit {
 
   constructor(
   	private ptypeService: PTypeService,
-    public snackBar: MdSnackBar,
+    public snackBar: MatSnackBar,
     private _router: Router,
     private route: ActivatedRoute,
     public _ptypesDatabase: PTypesDatabase,
@@ -79,7 +79,7 @@ export class PtypeListComponent implements OnInit {
   }
 
   private _handleTokenError(error: any) {
-    var config: MdSnackBarConfig = new MdSnackBarConfig();
+    var config: MatSnackBarConfig = new MatSnackBarConfig();
     config.duration = 1000;
     this.snackBar.open("Su sesión ha expirado.", undefined, config);
     this._router.navigate(['/signin']);

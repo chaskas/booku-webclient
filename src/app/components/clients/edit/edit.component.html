@@ -2,91 +2,79 @@
   <form [formGroup]="clientForm" (submit)="updateClient()">
     <div fxLayout="row">
       <ng-container *ngIf="client">
-        <md-card class="full-width">
+        <mat-card class="full-width">
 
-          <md-card-header>
-            <md-card-title>Editar</md-card-title>
+          <mat-card-header>
+            <mat-card-title>Editar</mat-card-title>
             <span class="fill-remaining-space"></span>
-            <button md-button [routerLink]="['/clients/detail',client.id]">Volver</button>
-          </md-card-header>
+            <button mat-button [routerLink]="['/clients/detail',client.id]">Volver</button>
+          </mat-card-header>
 
-          <md-card-content class="inputs-wrapper">
+          <mat-card-content fxLayout='column'>
 
-            <span></span>
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+             <mat-form-field fxFlex="34">
+               <input matInput placeholder="Rut" formControlName="rut" required>
+             </mat-form-field>
+           
+             <mat-form-field fxFlex="33">
+               <input matInput placeholder="Nombre" formControlName="first_name" required>
+             </mat-form-field>
+            
+            <mat-form-field fxFlex="33">
+               <input matInput placeholder="Apellido" formControlName="last_name" required>
+            </mat-form-field>
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input mdInput placeholder="Nombre" formControlName="first_name" required>
-               </md-input-container>
-            </div>
+          </div>
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Apellido" formControlName="last_name" required>
-              </md-input-container>
-            </div>
 
-            <div class="input-wrapper">
-               <md-input-container class="full-width">
-                 <input mdInput placeholder="Rut" formControlName="rut" required>
-               </md-input-container>
-            </div>
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">       
+            <mat-form-field fxFlex="25">
+              <input type="email" matInput placeholder="Email" formControlName="email" required>
+            </mat-form-field>
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input type="email" mdInput placeholder="Email" formControlName="email" required>
-              </md-input-container>
-            </div>
+            <mat-form-field fxFlex="25">
+              <input type="number" matInput placeholder="Teléfono" formControlName="phone" required>
+            </mat-form-field>
+                      
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Dirección" formControlName="address" required>
+            </mat-form-field>
+                   
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Ciudad" formControlName="city" required>
+            </mat-form-field>
+                      
+          </div>
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Dirección" formControlName="address" required>
-              </md-input-container>
-            </div>
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Patente" formControlName="car_license" >
+            </mat-form-field>
+            
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Ciudad" formControlName="city" required>
-              </md-input-container>
-            </div>            
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Marca del auto" formControlName="car_brand" >
+            </mat-form-field>
+            
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Modelo del auto" formControlName="car_model" >
+            </mat-form-field>
+            
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Color del auto" formControlName="car_color" >
+            </mat-form-field>
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-               <input type="number" mdInput placeholder="Teléfono" formControlName="phone"></md-input-container>
-            </div>
+          </div>
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Patente" formControlName="car_license" required>
-              </md-input-container>
-            </div>
+          </mat-card-content>
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Marca del auto" formControlName="car_brand" required>
-              </md-input-container>
-            </div>
+          <mat-card-actions class="actions">
+            <button mat-button type="button" (click)="openDialog()" confirm color="accent">Eliminar</button>
+            <button mat-raised-button type="submit" [disabled]="!clientForm.valid">Aceptar</button>
+          </mat-card-actions>
 
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Modelo del auto" formControlName="car_model" required>
-              </md-input-container>
-            </div>
-
-            <div class="input-wrapper">
-              <md-input-container class="full-width">
-              <input mdInput placeholder="Color del auto" formControlName="car_color" required>
-              </md-input-container>
-            </div>
-
-          </md-card-content>
-
-          <md-card-actions class="actions">
-            <button md-button type="button" (click)="openDialog()" confirm color="accent">Eliminar</button>
-            <button md-raised-button type="submit" [disabled]="!clientForm.valid">Aceptar</button>
-          </md-card-actions>
-
-        </md-card>
+        </mat-card>
 
       </ng-container>
     </div>

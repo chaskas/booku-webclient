@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PType } from '../../model/ptype';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 
-import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { PTypeService } from '../../services/ptype.service';
 import { Angular2TokenService } from 'angular2-token';
 @Component({
@@ -21,7 +21,7 @@ export class LayoutComponent implements OnInit {
     private _router: Router,
     private route: ActivatedRoute,
     private _tokenService: Angular2TokenService,
-    private snackBar: MdSnackBar
+    private snackBar: MatSnackBar
 
     ) {
     this._tokenService.validateToken().subscribe(
@@ -38,7 +38,7 @@ export class LayoutComponent implements OnInit {
     this.ptypes = ptypes;
   }
   private _handleTokenError(error: any) {
-    var config: MdSnackBarConfig = new MdSnackBarConfig();
+    var config: MatSnackBarConfig = new MatSnackBarConfig();
     config.duration = 1000;
     this.snackBar.open("Su sesión ha expirado.", undefined, config);
     this._router.navigate(['/signin']);

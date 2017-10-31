@@ -51,6 +51,7 @@ import { PlacesDatabase } from './components/place/place-list/places-database';
 import { LoginComponent } from './components/session/login/login.component';
 import { LogoutComponent } from './components/session/logout/logout.component';
 import { RegisterComponent } from './components/session/register/register.component';
+import { BookingNewComponent } from './components/booking/booking-new/booking-new.component';
 
 
 
@@ -73,7 +74,8 @@ import { RegisterComponent } from './components/session/register/register.compon
     PtypeDetailComponent,
     LoginComponent,
     LogoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    BookingNewComponent
 
   ],
   imports: [

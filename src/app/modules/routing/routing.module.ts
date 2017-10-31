@@ -24,6 +24,7 @@ import { PlaceDetailComponent } from '../../components/place/place-detail/place-
 import { LoginComponent } from '../../components/session/login/login.component';
 import { RegisterComponent } from '../../components/session/register/register.component';
 import { LogoutComponent } from '../../components/session/logout/logout.component';
+import { BookingNewComponent } from '../../components/booking/booking-new/booking-new.component';
  const routes: Routes = [
   {  path: '', component: LayoutComponent,
        children:[
@@ -41,7 +42,8 @@ import { LogoutComponent } from '../../components/session/logout/logout.componen
          { path: 'place/new', component: PlaceNewComponent, canActivate: [Angular2TokenService] },
          { path: 'place/edit/:id', component: PlaceEditComponent, canActivate: [Angular2TokenService] },
          { path: 'place/list', component: PlaceListComponent, canActivate: [Angular2TokenService] },
-         { path: 'place/detail/:id', component: PlaceDetailComponent, canActivate: [Angular2TokenService] }
+         { path: 'place/detail/:id', component: PlaceDetailComponent, canActivate: [Angular2TokenService] },
+         { path: 'booking/new', component: BookingNewComponent, canActivate: [Angular2TokenService] }
 //
        ]
   },

@@ -3,66 +3,66 @@
   <div fxLayout="row" class="header">
     <span class="title"> {{title}}</span>
     <span class="fill-remaining-space"></span>
-    <a routerLink="/clients/new" md-raised-button> <md-icon>add</md-icon> Nuevo</a>
+    <a routerLink="/clients/new" mat-raised-button> <mat-icon>add</mat-icon> Nuevo</a>
   </div>
   <br>
 
   <div fxLayout="column">
 
     <div fxLayout="row">
-      <md-input-container floatPlaceholder="never" class="full-width">
-        <input mdInput #filter placeholder="Buscar: ">
-      </md-input-container>
+      <mat-input-container floatPlaceholder="never" class="full-width">
+        <input matInput #filter placeholder="Buscar: ">
+      </mat-input-container>
     </div>
 
     <div fxLayout="row">
 
-      <md-table #table [dataSource]="dataSource" mdSort class="full-width">
+      <mat-table #table [dataSource]="dataSource" matSort class="full-width">
         <ng-container cdkColumnDef="rut">
-          <md-header-cell *cdkHeaderCellDef md-sort-header class="title-center"> Rut </md-header-cell>
-          <md-cell *cdkCellDef="let row" class="text-center"> {{ formatRut(row.rut) }} </md-cell>
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header class="title-center"> Rut </mat-header-cell>
+          <mat-cell *cdkCellDef="let row" class="text-center"> {{ formatRut(row.rut) }} </mat-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="full_name">
-          <md-header-cell *cdkHeaderCellDef md-sort-header> Nombre Completo </md-header-cell>
-          <md-cell *cdkCellDef="let row">{{ row.first_name }} {{ row.last_name }} </md-cell>
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Nombre Completo </mat-header-cell>
+          <mat-cell *cdkCellDef="let row">{{ row.first_name }} {{ row.last_name }} </mat-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="email">
-          <md-header-cell *cdkHeaderCellDef md-sort-header> Email </md-header-cell>
-          <md-cell *cdkCellDef="let row">{{ row.email }}</md-cell>
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Email </mat-header-cell>
+          <mat-cell *cdkCellDef="let row">{{ row.email }}</mat-cell>
         </ng-container>        
 
         <ng-container cdkColumnDef="phone">
-          <md-header-cell *cdkHeaderCellDef md-sort-header> Telefono </md-header-cell>
-          <md-cell *cdkCellDef="let row" >{{ row.phone }}</md-cell>
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Telefono </mat-header-cell>
+          <mat-cell *cdkCellDef="let row" >{{ row.phone }}</mat-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="car_license">
-          <md-header-cell *cdkHeaderCellDef md-sort-header> Patente </md-header-cell>
-          <md-cell *cdkCellDef="let row">{{ row.car_license }}</md-cell>
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Patente </mat-header-cell>
+          <mat-cell *cdkCellDef="let row">{{ row.car_license }}</mat-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="icons">
-          <md-header-cell *cdkHeaderCellDef md-sort-header> Opciones </md-header-cell>
-          <md-cell *cdkCellDef="let row">
-          <button  md-icon-button [routerLink]="['/clients/detail',row.id]"><md-icon>visibility</md-icon></button>
-          <button  md-icon-button (click)="openDialog(row.id)"><md-icon>delete</md-icon></button>
-          </md-cell>
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Opciones </mat-header-cell>
+          <mat-cell *cdkCellDef="let row">
+          <button  mat-icon-button [routerLink]="['/clients/detail',row.id]"><mat-icon>visibility</mat-icon></button>
+          <button  mat-icon-button (click)="openDialog(row.id)"><mat-icon>delete</mat-icon></button>
+          </mat-cell>
         </ng-container>
 
-        <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
-        <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
-      </md-table>
+        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
 
     </div>
     <div fxLayout="row" >
-      <md-paginator #paginator
+      <mat-paginator #paginator
                   [length]= "30"
                   [pageIndex]="0"
                   [pageSize]="25"
                   [pageSizeOptions]="[10, 25, 50]">
-      </md-paginator>
+      </mat-paginator>
     </div>
 
   </div>

@@ -12,9 +12,9 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/toPromise';
 
-import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
-import { MdSort } from '@angular/material';
-import { MdPaginator } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material';
 import { Angular2TokenService } from 'angular2-token';
 
 import { ClientService } from '../../../services/client.service';
@@ -40,13 +40,13 @@ export class ListComponent implements OnInit {
 
   dataSource: ClientDataSource | null;
 
-  @ViewChild(MdSort) sort: MdSort;
-  @ViewChild(MdPaginator) paginator: MdPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('filter') filter: ElementRef;
 
   constructor(
   	private clientService: ClientService,
-    public snackBar: MdSnackBar,
+    public snackBar: MatSnackBar,
     private _router: Router,
     private route: ActivatedRoute,
     public _clientsDatabase: ClientsDatabase,
@@ -107,7 +107,7 @@ export class ListComponent implements OnInit {
   }
 
   private _handleTokenError(error: any) {
-    var config: MdSnackBarConfig = new MdSnackBarConfig();
+    var config: MatSnackBarConfig = new MatSnackBarConfig();
     config.duration = 1000;
     this.snackBar.open("Su sesión ha expirado.", undefined, config);
     this._router.navigate(['/signin']);

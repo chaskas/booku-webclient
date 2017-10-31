@@ -3,7 +3,7 @@
 	<div fxLayout="row" class="header">
 		<span class="title"> {{title}}</span>
 		<span class="fill-remaining-space"></span>
-		<a routerLink="/place/new" md-raised-button> <md-icon>add</md-icon> Nuevo</a>
+		<a routerLink="/place/new" mat-raised-button> <mat-icon>add</mat-icon> Nuevo</a>
 	</div>
 
 	<br>
@@ -12,48 +12,48 @@
 
 	    <div fxLayout="row">
 
-	      <md-table #table [dataSource]="dataSource" class="full-width">
+	      <mat-table #table [dataSource]="dataSource" class="full-width">
 	        <ng-container cdkColumnDef="ptype">
-	          <md-header-cell *cdkHeaderCellDef> Tipo </md-header-cell>
-	          <md-cell *cdkCellDef="let row">{{ row.ptype.name}}</md-cell>
+	          <mat-header-cell *cdkHeaderCellDef> Tipo </mat-header-cell>
+	          <mat-cell *cdkCellDef="let row">{{ row.ptype.name}}</mat-cell>
 	        </ng-container>  
 
 	        <ng-container cdkColumnDef="name">
-	          <md-header-cell *cdkHeaderCellDef> Nombre </md-header-cell>
-	          <md-cell *cdkCellDef="let row">{{ row.name }}</md-cell>
+	          <mat-header-cell *cdkHeaderCellDef> Nombre </mat-header-cell>
+	          <mat-cell *cdkCellDef="let row">{{ row.name }}</mat-cell>
 	        </ng-container>    
 
 	        <ng-container cdkColumnDef="capacity">
-	          <md-header-cell *cdkHeaderCellDef> Capacidad </md-header-cell>
-	          <md-cell *cdkCellDef="let row">{{ row.capacity }}</md-cell>
+	          <mat-header-cell *cdkHeaderCellDef> Capacidad </mat-header-cell>
+	          <mat-cell *cdkCellDef="let row">{{ row.capacity }}</mat-cell>
 	        </ng-container>   
 
 	        <ng-container cdkColumnDef="price">
-	          <md-header-cell *cdkHeaderCellDef> Precio </md-header-cell>
-	          <md-cell *cdkCellDef="let row">{{ row.price }}</md-cell>
+	          <mat-header-cell *cdkHeaderCellDef> Precio </mat-header-cell>
+	          <mat-cell *cdkCellDef="let row">{{ row.price }}</mat-cell>
 	        </ng-container>       
 
 	        <ng-container cdkColumnDef="opening">
-	          <md-header-cell *cdkHeaderCellDef> Horario Apertura </md-header-cell>
-	          <md-cell *cdkCellDef="let row">{{ row.opening | date: 'HH:mm'}}</md-cell>
+	          <mat-header-cell *cdkHeaderCellDef> Horario Apertura </mat-header-cell>
+	          <mat-cell *cdkCellDef="let row">{{ row.opening | date: 'HH:mm'}}</mat-cell>
 	        </ng-container>   
 
 	        <ng-container cdkColumnDef="closing">
-	          <md-header-cell *cdkHeaderCellDef> Horario Cierre </md-header-cell>
-	          <md-cell *cdkCellDef="let row">{{ row.closing | date: 'HH:mm'}}</md-cell>
+	          <mat-header-cell *cdkHeaderCellDef> Horario Cierre </mat-header-cell>
+	          <mat-cell *cdkCellDef="let row">{{ row.closing | date: 'HH:mm'}}</mat-cell>
 	        </ng-container> 
 
 	        <ng-container cdkColumnDef="icons">
-	          <md-header-cell *cdkHeaderCellDef> Opciones </md-header-cell>
-	          <md-cell *cdkCellDef="let row">
-	          <button  md-icon-button [routerLink]="['/place/detail',row.id]"><md-icon>visibility</md-icon></button>
-	          </md-cell>
+	          <mat-header-cell *cdkHeaderCellDef> Opciones </mat-header-cell>
+	          <mat-cell *cdkCellDef="let row">
+	          <button  mat-icon-button [routerLink]="['/place/detail',row.id]"><mat-icon>visibility</mat-icon></button>
+	          </mat-cell>
 	        </ng-container>  
 
-	        <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
-	        <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+	        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+	        <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
 
-	      </md-table> 
+	      </mat-table> 
 
 	  	</div>
 	<div>

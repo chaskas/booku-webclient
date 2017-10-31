@@ -3,78 +3,89 @@ import { CommonModule } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MdToolbarModule } from '@angular/material';
-import { MdCardModule } from '@angular/material';
-import { MdButtonModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
-import { MdIconModule } from '@angular/material';
-import { MdGridListModule } from '@angular/material';
-import { MdInputModule } from '@angular/material';
-import { MdSelectModule } from '@angular/material';
-import { MdDialogModule } from '@angular/material';
-import { MdProgressBarModule } from '@angular/material';
-import { MdDatepickerModule } from '@angular/material';
-import { MdNativeDateModule } from '@angular/material';
-import { MdTabsModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
+import { MatGridListModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+
+import { MatSelectModule } from '@angular/material';
+import { MatRadioModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
+import { MatProgressBarModule } from '@angular/material';
+import { MatDatepickerModule } from '@angular/material';
+import { MatNativeDateModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MdSnackBarModule } from '@angular/material';
-import { MdSliderModule } from '@angular/material';
-import { MdMenuModule } from '@angular/material';
+import { MatSnackBarModule } from '@angular/material';
+import { MatSliderModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
-import { MdTableModule } from '@angular/material';
-import { MdSortModule } from '@angular/material';
-import { MdPaginatorModule } from '@angular/material';
+import { MatTableModule } from '@angular/material';
+import { MatSortModule } from '@angular/material';
+import { MatPaginatorModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
+import { MatStepperModule } from '@angular/material';
+import { CompatibilityModule } from '@angular/material';
+import { NoConflictStyleCompatibilityMode } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    MdToolbarModule,
-    MdCardModule,
-    MdButtonModule,
-    MdIconModule,
-    MdGridListModule,
-    MdDialogModule,
-    MdInputModule,
-    MdSelectModule,
-    MdProgressBarModule,
-    MdDatepickerModule,
-    MdNativeDateModule,
-    MdTabsModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatGridListModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    MatProgressBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTabsModule,
     FlexLayoutModule,
-    MdSnackBarModule,
-    MdSliderModule,
-    MdMenuModule,
-    MdTableModule,
-    MdSortModule,
-    MdPaginatorModule,
+    MatSnackBarModule,
+    MatSliderModule,
+    MatMenuModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
     CdkTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatStepperModule,
+    CompatibilityModule,
+    MatRadioModule,
+    NoConflictStyleCompatibilityMode
   ],
   exports: [
     BrowserAnimationsModule,
-    MdToolbarModule,
-    MdCardModule,
-    MdButtonModule,
-    MdIconModule,
-    MdGridListModule,
-    MdDialogModule,
-    MdInputModule,
-    MdSelectModule,
-    MdProgressBarModule,
-    MdDatepickerModule,
-    MdNativeDateModule,
-    MdTabsModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatGridListModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    MatProgressBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTabsModule,
     FlexLayoutModule,
-    MdSnackBarModule,
-    MdSliderModule,
-    MdMenuModule,
-    MdTableModule,
-    MdSortModule,
-    MdPaginatorModule,
+    MatSnackBarModule,
+    MatSliderModule,
+    MatMenuModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
     CdkTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatStepperModule,
+    CompatibilityModule,
+    MatRadioModule,
+    NoConflictStyleCompatibilityMode
   ],
   declarations: []
 })
