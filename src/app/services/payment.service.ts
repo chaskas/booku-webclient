@@ -5,13 +5,12 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { AppConfig } from '../config/app-config';
-import { Place } from '../model/place';
-import { PType } from '../model/ptype';
+import { Payment } from '../model/payment';
 
 @Injectable()
-export class PlaceService {
+export class PaymentService {
 
-  private url = this.config.get('host') + '/places';
+  private url = this.config.get('host') + '/payments';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(
@@ -19,66 +18,61 @@ export class PlaceService {
     private config: AppConfig
   ) { }
 
-  createPlace(place: Place) : Promise<Place>
+  createPayment(payment: Payment) : Promise<Payment>
 	{
-    let url = this.config.get('host') + '/places';
 
     let body = JSON.stringify({
-                      ptype_id: place.ptype_id,
-                      name: place.name,
-                      capacity: place.capacity,
-                      price: place.price,
-                      opening: place.opening,
-                      closing: place.closing
-                    });
+                          amount: payment.amount,
+                          method: payment.method,
+                          bill: payment.bill,
+                          booking_id: payment.booking_id
+                        });
 
     let headers      = new Headers({ 'Content-Type': 'application/json' });
     let options      = new RequestOptions({ headers: headers });
 
     return this.http.post(this.url, body, options)
               .toPromise()
-              .then(response => response.json() as Place)
+              .then(response => response.json() as Payment)
               .catch(this.handleError);
   }
 
-  getPlaces(): Promise<Place[]> {
+  getPayments(): Promise<Payment[]> {
 
     return this.http.get(this.url)
                  .toPromise()
-                 .then(response => response.json() as Place[])
+                 .then(response => response.json() as Payment[])
                  .catch(this.handleError);
 
   }
 
-  getPlacesByPType(ptype_id: number): Promise<Place[]> {
+  getPaymentsByBookingId(id: number): Promise<Payment[]> {
 
-    return this.http.get(this.url + '/ptype/' + ptype_id)
+    return this.http.get(this.url+'/b/'+id)
                  .toPromise()
-                 .then(response => response.json() as Place[])
+                 .then(response => response.json() as Payment[])
                  .catch(this.handleError);
 
   }
 
-  getPlace(id: number): Promise<Place> {
+  getPayment(id: number): Promise<Payment> {
     return this.http.get(this.url + '/' + id)
                .toPromise()
-               .then(response => response.json() as Place)
+               .then(response => response.json() as Payment)
                .catch(this.handleError);
   }
 
-  updatePlace(id: number, place: Place): Promise<Place>
+  updatePayment(id: number, payment: Payment): Promise<Payment>
   {
-    place.id = id;
-    const url = `${this.url}/${place.id}`;
+    payment.id = id;
+    const url = `${this.url}/${payment.id}`;
 
     let body = JSON.stringify({
-                          id: place.id,
-                          ptype_id: place.ptype_id,
-                          name: place.name,
-                          capacity: place.capacity,
-                          price: place.price,
-                          opening: place.opening,
-                          closing: place.closing
+                          id: payment.id,
+                          amount: payment.amount,
+                          method: payment.method,
+                          bill: payment.bill,
+                          booking_id: payment.booking_id
                         });
 
     let headers      = new Headers({ 'Content-Type': 'application/json' });
@@ -86,11 +80,11 @@ export class PlaceService {
 
     return this.http.put(url,body, options)
              .toPromise()
-             .then(response => response.json() as Place)
+             .then(response => response.json() as Payment)
              .catch(this.handleError);
   }
 
-  deletePlace(id: number): Promise<any>
+  deletePayment(id: number): Promise<any>
   {
     const url = `${this.url}/${id}`;
     return this.http.delete(url)

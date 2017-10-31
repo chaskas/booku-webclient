@@ -29,6 +29,11 @@ import { MatStepperModule } from '@angular/material';
 import { CompatibilityModule } from '@angular/material';
 import { NoConflictStyleCompatibilityMode } from '@angular/material';
 
+import { MatListModule } from '@angular/material';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -56,7 +61,9 @@ import { NoConflictStyleCompatibilityMode } from '@angular/material';
     MatButtonModule,
     MatStepperModule,
     CompatibilityModule,
+    MatListModule,
     MatRadioModule,
+    MatMomentDateModule,
     NoConflictStyleCompatibilityMode
   ],
   exports: [
@@ -82,10 +89,11 @@ import { NoConflictStyleCompatibilityMode } from '@angular/material';
     MatPaginatorModule,
     CdkTableModule,
     MatButtonModule,
-    MatStepperModule,
-    CompatibilityModule,
+    MatListModule,
     MatRadioModule,
-    NoConflictStyleCompatibilityMode
+    MatMomentDateModule,
+    NoConflictStyleCompatibilityMode,
+    CompatibilityModule
   ],
   declarations: []
 })

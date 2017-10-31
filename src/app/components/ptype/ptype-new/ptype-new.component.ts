@@ -29,7 +29,7 @@ export class PtypeNewComponent implements OnInit {
     private _router: Router,
     private _tokenService: Angular2TokenService
 
-  	) { 
+  	) {
     this._tokenService.validateToken().subscribe(
       res =>      console.log("Token Valid!"),
       error =>    this._handleTokenError(error)

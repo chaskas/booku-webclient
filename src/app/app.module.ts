@@ -13,46 +13,66 @@ import { MaterialModule } from './modules/material/material.module';
 
 //Services
 import { ClientService } from './services/client.service';
+import { BookingService } from './services/booking.service';
+
 import { PlaceService } from './services/place.service';
 import { PTypeService } from './services/ptype.service';
 import { SessionService } from './services/session.service';
+import { PaymentService } from './services/payment.service';
 import { DialogsServiceService } from './services/dialogs-service.service';
+
 // Classes
 import { AppConfig } from './config/app-config';
 
-// Components 
-import { DialogComponent } from './utils/dialog/dialog.component';
+// Components
+
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
-  //Clients
+
+// Components - Clients
 import { ListComponent } from './components/clients/list/list.component';
 import { DetailComponent } from './components/clients/detail/detail.component';
 import { NewComponent } from './components/clients/new/new.component';
 import { EditComponent } from './components/clients/edit/edit.component';
-  //Places
+
+// Components - Agenda
+import { AgendaMonthlyComponent } from './components/agenda/agenda-monthly/agenda-monthly.component';
+
+// Components - Place
 import { PlaceNewComponent } from './components/place/place-new/place-new.component';
 import { PlaceEditComponent } from './components/place/place-edit/place-edit.component';
-import { PlaceListComponent } from './components/place/place-list/place-list.component';
 import { PlaceDetailComponent } from './components/place/place-detail/place-detail.component';
-  //PTypes
-import { PtypeListComponent } from './components/ptype/ptype-list/ptype-list.component';
+import { PlaceListComponent } from './components/place/place-list/place-list.component';
+
+// Components - PType
 import { PtypeNewComponent } from './components/ptype/ptype-new/ptype-new.component';
 import { PtypeEditComponent } from './components/ptype/ptype-edit/ptype-edit.component';
 import { PtypeDetailComponent } from './components/ptype/ptype-detail/ptype-detail.component';
+import { PtypeListComponent } from './components/ptype/ptype-list/ptype-list.component';
 
+// Components - Sessions
+import { LoginComponent } from './components/session/login/login.component';
+import { LogoutComponent } from './components/session/logout/logout.component';
+import { RegisterComponent } from './components/session/register/register.component';
+
+// Components - Booking
+import { BookingNewComponent } from './components/booking/booking-new/booking-new.component';
+import { BookingShowComponent } from './components/booking/booking-show/booking-show.component';
+
+// Components - Dialogs
+import { DialogComponent } from './utils/dialog/dialog.component';
+import { PaymentNewComponent } from './components/payment/payment-new/payment-new.component';
+
+// Validators
 import { CustomValidators } from 'ng2-validation';
 import { Ng2Rut, RutValidator } from './utils/rut/ng2-rut.module';
 
-
+// Databases
 import { ClientsDatabase } from './components/clients/list/clients-database';
 import { PTypesDatabase } from './components/ptype/ptype-list/ptypes-database';
 import { PlacesDatabase } from './components/place/place-list/places-database';
 
-import { LoginComponent } from './components/session/login/login.component';
-import { LogoutComponent } from './components/session/logout/logout.component';
-import { RegisterComponent } from './components/session/register/register.component';
-import { BookingNewComponent } from './components/booking/booking-new/booking-new.component';
-
+import { PaymentsDatabase } from './components/booking/booking-show/payments-database';
 
 
 @NgModule({
@@ -64,33 +84,38 @@ import { BookingNewComponent } from './components/booking/booking-new/booking-ne
     NewComponent,
     EditComponent,
     DialogComponent,
-    PlaceNewComponent,
-    PlaceEditComponent,
-    PlaceListComponent,
-    PlaceDetailComponent,
-    PtypeListComponent,
+    AgendaMonthlyComponent,
     PtypeNewComponent,
     PtypeEditComponent,
     PtypeDetailComponent,
+    PtypeListComponent,
+    PlaceNewComponent,
+    PlaceEditComponent,
+    PlaceDetailComponent,
+    PlaceListComponent,
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
-    BookingNewComponent
-
+    BookingNewComponent,
+    BookingShowComponent,
+    PaymentNewComponent
   ],
   imports: [
     BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule
   ],
-  entryComponents: [DialogComponent],
+  entryComponents: [DialogComponent, PaymentNewComponent],
   providers: [
       AppConfig,
       ClientService,
+      BookingService,
       PTypeService,
       PlaceService,
       RutValidator,
+      PaymentService,
       ClientsDatabase,
       PTypesDatabase,
       PlacesDatabase,
+      PaymentsDatabase,
       DialogsServiceService,
       Angular2TokenService,
       SessionService,

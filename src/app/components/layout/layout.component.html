@@ -1,7 +1,11 @@
 <mat-toolbar>
 
   <div fxLayout="row" fxShow="false" fxShow.gt-xs>
+<<<<<<< HEAD
     <button mat-button *ngFor="let ptype of ptypes" routerLink="/"> {{ ptype.plural }}
+=======
+    <button mat-button *ngFor="let ptype of ptypes" [routerLink]="['/agenda/monthly',ptype.id]"> {{ ptype.plural }}
+>>>>>>> 0639a4f6cd647ddb806e55e502399c0b81d0ea4b
       <ng-container *ngIf="ptype.places.length > 0">
         <mat-icon [matMenuTriggerFor]="menu">keyboard_arrow_down</mat-icon>
         <mat-menu #menu="matMenu">
@@ -15,8 +19,14 @@
   <span class="fill-remaining-space"></span>
 
   <span><a routerLink="/signout" fxShow="false" fxShow.gt-xs><mat-icon>exit_to_app</mat-icon> </a></span>
+<<<<<<< HEAD
+
+</mat-toolbar>
+=======
+>>>>>>> 0639a4f6cd647ddb806e55e502399c0b81d0ea4b
 
 </mat-toolbar>
 
-
+<div class="container">
 <router-outlet></router-outlet>
+</div>

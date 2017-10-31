@@ -13,8 +13,6 @@ export class DialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DialogComponent>) { }
 
-  
-
   ngOnInit() {
   }
 
