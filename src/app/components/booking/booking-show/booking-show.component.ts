@@ -26,6 +26,9 @@ export class BookingShowComponent implements OnInit {
 
   booking: Booking;
 
+  minDate: string;
+  maxDate: string;
+
   days: number;
   nights: number;
 
@@ -76,8 +79,13 @@ export class BookingShowComponent implements OnInit {
   }
 
   calculateDates(){
+
     this.nights = moment(this.booking.departure).startOf('day').diff(moment(this.booking.arrival).startOf('day'), 'days');
     this.days = moment(this.booking.departure).startOf('day').diff(moment(this.booking.arrival).startOf('day'), 'days') + 1;
+
+    this.minDate = moment(this.booking.arrival).startOf('day').format();
+    this.maxDate = moment(this.booking.departure).startOf('day').format();
+
   }
 
 }

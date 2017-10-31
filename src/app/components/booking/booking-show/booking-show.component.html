@@ -21,13 +21,13 @@
         </mat-form-field>
 
         <mat-form-field fxFlex="25">
-          <input matInput placeholder="Llegada" [matDatepicker]="arrival" [(ngModel)]="booking.arrival" (ngModelChange)="calculateDates()">
+          <input matInput placeholder="Llegada" [matDatepicker]="arrival" [(ngModel)]="booking.arrival" (ngModelChange)="calculateDates()" [max]="maxDate">
           <mat-datepicker-toggle matSuffix [for]="arrival"></mat-datepicker-toggle>
           <mat-datepicker #arrival></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field fxFlex="25">
-          <input matInput placeholder="Ida" [matDatepicker]="departure" [(ngModel)]="booking.departure" (ngModelChange)="calculateDates()">
+          <input matInput placeholder="Ida" [matDatepicker]="departure" [(ngModel)]="booking.departure" (ngModelChange)="calculateDates()" [min]="minDate">
           <mat-datepicker-toggle matSuffix [for]="departure"></mat-datepicker-toggle>
           <mat-datepicker #departure></mat-datepicker>
         </mat-form-field>
