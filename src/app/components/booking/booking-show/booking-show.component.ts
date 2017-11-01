@@ -67,6 +67,8 @@ export class BookingShowComponent implements OnInit {
     this.arrival = moment(this.booking.arrival).format('dddd DD/MM/YY HH:mm');
     this.departure = moment(this.booking.departure).format('dddd DD/MM/YY HH:mm');
 
+    this.calculateDates();
+
   }
 
   openBookingEditDialog(): void {
@@ -87,6 +89,13 @@ export class BookingShowComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
     });
+  }
+
+  private calculateDates(){
+
+    this.nights = moment(this.booking.departure).startOf('day').diff(moment(this.booking.arrival).startOf('day'), 'days');
+    this.days = moment(this.booking.departure).startOf('day').diff(moment(this.booking.arrival).startOf('day'), 'days') + 1;
+
   }
 
 }

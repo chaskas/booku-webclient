@@ -8,18 +8,18 @@
   flex-grow: 1;
 }
 .row {
-  height: 60px;
+  height: 70px;
 }
 .th {
   background: #f5f5f5;
   font-weight: bold;
   flex: 1 0 200px;
-  height: 62px;
+  height: 72px;
 }
 .date {
   flex-grow: 0;
   flex-shrink: 0;
-  flex-basis: 42px;
+  flex-basis: 52px;
   /*background-color: lightpink;*/
   width: 150px;
   display: flex;
@@ -28,11 +28,11 @@
   padding: 10px;
 }
 .item {
-  height: 62px;
+  height: 72px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  /*padding: 10px;*/
   border: 1px solid #f5f5f5;
 }
 .item:hover {
@@ -53,6 +53,12 @@ hr {
 .booking-client-count {
   text-align: center;
   font-weight: bold;
+}
+
+.status {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
 }
 
 .bs0 { background-color: lightyellow; }
