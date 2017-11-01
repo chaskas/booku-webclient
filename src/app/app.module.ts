@@ -19,6 +19,7 @@ import { PlaceService } from './services/place.service';
 import { PTypeService } from './services/ptype.service';
 import { SessionService } from './services/session.service';
 import { PaymentService } from './services/payment.service';
+import { StatusService } from './services/status.service';
 import { DialogsServiceService } from './services/dialogs-service.service';
 
 // Classes
@@ -58,6 +59,7 @@ import { RegisterComponent } from './components/session/register/register.compon
 // Components - Booking
 
 import { BookingShowComponent } from './components/booking/booking-show/booking-show.component';
+import { BookingEditComponent } from './components/booking/booking-edit/booking-edit.component';
 
 // Components - Dialogs
 import { DialogComponent } from './utils/dialog/dialog.component';
@@ -96,12 +98,13 @@ import { PaymentsDatabase } from './components/booking/booking-show/payments-dat
     LogoutComponent,
     RegisterComponent,
     BookingShowComponent,
-    PaymentNewComponent
+    PaymentNewComponent,
+    BookingEditComponent
   ],
   imports: [
     BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule
   ],
-  entryComponents: [DialogComponent, PaymentNewComponent],
+  entryComponents: [DialogComponent, PaymentNewComponent, BookingEditComponent],
   providers: [
       AppConfig,
       ClientService,
@@ -113,6 +116,7 @@ import { PaymentsDatabase } from './components/booking/booking-show/payments-dat
       ClientsDatabase,
       PTypesDatabase,
       PlacesDatabase,
+      StatusService,
       PaymentsDatabase,
       DialogsServiceService,
       Angular2TokenService,

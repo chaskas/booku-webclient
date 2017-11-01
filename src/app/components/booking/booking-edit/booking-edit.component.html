@@ -1,0 +1,84 @@
+<form [formGroup]="bookingForm" (submit)="updateBooking()">
+
+  <h2 mat-dialog-title>Reserva</h2>
+
+  <mat-dialog-content fxLayout='column'>
+
+    <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+
+      <mat-form-field fxFlex="50">
+        <mat-select placeholder="Lugar" formControlName="place_id" [(ngModel)]="data.booking.place_id" (ngModelChange)="changePlace()">
+          <mat-option *ngFor="let place of places" [value]="place.id">{{ place.capacity + 'P ' + place.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="50">
+        <mat-select placeholder="Estado" multiple formControlName="statuses" [(ngModel)]="data.booking.status_ids" (ngModelChange)="calculateSubtotal()">
+          <mat-option *ngFor="let status of statuses" [value]="status.id" >{{ status.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxFlex="100%" fxLayoutGap="10px" fxLayoutAlign="start end">
+      <mat-form-field fxFlex="25">
+        <input matInput placeholder="Fecha Llegada" [matDatepicker]="arrival" formControlName="arrival" [(ngModel)]="data.booking.arrival" (ngModelChange)="calculateDates()" [max]="maxDate">
+        <mat-datepicker-toggle matSuffix [for]="arrival"></mat-datepicker-toggle>
+        <mat-datepicker #arrival></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field fxFlex="25">
+        <input matInput placeholder="Hora Llegada" type="time" [(ngModel)]="arrival_time" (ngModelChange)="updateTimes()"  [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="25">
+        <input matInput placeholder="Fecha Ida" [matDatepicker]="departure" formControlName="departure" [(ngModel)]="data.booking.departure" (ngModelChange)="calculateDates()" [min]="minDate">
+        <mat-datepicker-toggle matSuffix [for]="departure"></mat-datepicker-toggle>
+        <mat-datepicker #departure></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field fxFlex="25">
+        <input matInput placeholder="Hora Ida" type="time" [(ngModel)]="departure_time" (ngModelChange)="updateTimes()"  [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+      <mat-form-field fxFlex="50">
+        <input matInput placeholder="Adultos" formControlName="adults" [(ngModel)]="data.booking.adults" (ngModelChange)="calculateSubtotal()">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="50">
+        <input matInput placeholder="Niños" formControlName="childrens" [(ngModel)]="data.booking.childrens" (ngModelChange)="calculateSubtotal()">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+      <mat-form-field fxFlex="50">
+        <input matInput placeholder="Días" [(ngModel)]="days" [ngModelOptions]="{standalone: true}" readonly>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="50">
+        <input matInput placeholder="Noches" [(ngModel)]="nights" [ngModelOptions]="{standalone: true}" readonly>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row">
+      <h3>Valor</h3>
+    </div>
+
+    <div fxLayout="row">
+      <mat-form-field fxFlex="33">
+        <input matInput placeholder="Subtotal" formControlName="subtotal" [(ngModel)]="data.booking.subtotal">
+      </mat-form-field>
+      <mat-form-field fxFlex="33">
+        <input matInput placeholder="Descuento" formControlName="discount" [(ngModel)]="data.booking.discount" (ngModelChange)="calculateTotal()">
+      </mat-form-field>
+      <mat-form-field fxFlex="34">
+        <input matInput placeholder="Total" formControlName="total" [(ngModel)]="data.booking.total">
+      </mat-form-field>
+    </div>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions fxLayoutAlign="end center">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!bookingForm.valid">Aceptar</button>
+  </mat-dialog-actions>
+</form>

@@ -20,6 +20,7 @@ import { MatSnackBarModule } from '@angular/material';
 import { MatSliderModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
 import { MatTableModule } from '@angular/material';
+import { MatTooltipModule } from '@angular/material';
 import { MatSortModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -58,6 +59,7 @@ import { CompatibilityModule } from '@angular/material';
     MatListModule,
     MatRadioModule,
     MatMomentDateModule,
+    MatTooltipModule,
     NoConflictStyleCompatibilityMode,
     CompatibilityModule
   ],
@@ -87,6 +89,7 @@ import { CompatibilityModule } from '@angular/material';
     MatListModule,
     MatRadioModule,
     MatMomentDateModule,
+    MatTooltipModule,
     NoConflictStyleCompatibilityMode,
     CompatibilityModule
   ],

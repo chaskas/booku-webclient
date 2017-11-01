@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params }   from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { DateAdapter, NativeDateAdapter } from '@angular/material';
-
 import { BookingService } from '../../../services/booking.service';
 import { PaymentService } from '../../../services/payment.service';
 
+import { BookingEditComponent } from '../../booking/booking-edit/booking-edit.component';
 import { PaymentNewComponent } from '../../payment/payment-new/payment-new.component';
 
 import { Booking } from '../../../model/booking';
@@ -15,7 +14,6 @@ import { PaymentsDatabase } from './payments-database';
 import { PaymentDataSource } from './payment-datasource';
 
 import * as moment from 'moment';
-
 
 @Component({
   selector: 'app-booking-show',
@@ -32,6 +30,9 @@ export class BookingShowComponent implements OnInit {
   days: number;
   nights: number;
 
+  arrival: string;
+  departure: string;
+
   displayedColumns = ['date','bill','method', 'amount'];
   paymentDataSource: PaymentDataSource | null;
 
@@ -42,11 +43,9 @@ export class BookingShowComponent implements OnInit {
     private paymentService: PaymentService,
     private route: ActivatedRoute,
     private router: Router,
-    dateAdapter: DateAdapter<NativeDateAdapter>,
     public paymentDatabase: PaymentsDatabase,
     public dialog: MatDialog
   ) {
-    dateAdapter.setLocale('es-CL');
     moment.locale('es');
   }
 
@@ -64,8 +63,20 @@ export class BookingShowComponent implements OnInit {
   private handleGetBookingSuccess(booking: Booking){
 
     this.booking = booking;
-    this.calculateDates();
 
+    this.arrival = moment(this.booking.arrival).format('dddd DD/MM/YY HH:mm');
+    this.departure = moment(this.booking.departure).format('dddd DD/MM/YY HH:mm');
+
+  }
+
+  openBookingEditDialog(): void {
+    let dialogRef = this.dialog.open(BookingEditComponent, {
+      data: { booking: this.booking }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
   }
 
   openPaymentNewDialog(): void {
@@ -76,16 +87,6 @@ export class BookingShowComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
     });
-  }
-
-  calculateDates(){
-
-    this.nights = moment(this.booking.departure).startOf('day').diff(moment(this.booking.arrival).startOf('day'), 'days');
-    this.days = moment(this.booking.departure).startOf('day').diff(moment(this.booking.arrival).startOf('day'), 'days') + 1;
-
-    this.minDate = moment(this.booking.arrival).startOf('day').format();
-    this.maxDate = moment(this.booking.departure).startOf('day').format();
-
   }
 
 }

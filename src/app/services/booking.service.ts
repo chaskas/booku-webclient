@@ -28,7 +28,7 @@ export class BookingService {
                           subtotal: booking.subtotal,
                           total: booking.total,
                           discount: booking.discount,
-                          status: booking.status,
+                          status_ids: booking.statuses,
                           adults: booking.adults,
                           childrens: booking.childrens,
                           client_id: booking.client_id,
@@ -84,13 +84,12 @@ export class BookingService {
     const url = `${this.url}/${booking.id}`;
 
     let body = JSON.stringify({
-                          id: booking.id,
                           arrival: booking.arrival,
                           departure: booking.departure,
                           subtotal: booking.subtotal,
                           total: booking.total,
                           discount: booking.discount,
-                          status: booking.status,
+                          status_ids: booking.statuses,
                           adults: booking.adults,
                           childrens: booking.childrens,
                           client_id: booking.client_id,
