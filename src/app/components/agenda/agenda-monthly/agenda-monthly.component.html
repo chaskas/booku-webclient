@@ -17,32 +17,26 @@
             <div class="th" fxLayoutAlign="center center" *ngFor="let place of places">{{ place.name }}</div>
           </div>
 
-          <div fxLayout="row" fxLayoutGap="5px" *ngFor="let day of matrix; let i = index">
-            <div class="item" fxFlex="1 0 200px" *ngFor="let place of day; let j = index" [ngClass]="{'bs0': place.booking.status == 0, 'bs1': place.booking.status == 1, 'bs2': place.booking.status == 2, 'bs3': place.booking.status == 3, 'bs4': place.booking.status == 4, 'bs5': place.booking.status == 5, 'bs6': place.booking.status == 6, 'bs7': place.booking.status == 7, 'bs8': place.booking.status == 8, 'bs9': place.booking.status == 9, 'bs10': place.booking.status == 10  }">
-
-            <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100%">
-              
-              <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100%" *ngIf="place.booking != 0" [routerLink]="['/booking',place.booking.id]">
-                <div fxLayout="column" fxFlex="80" fxFlexAlign="center"><span class="booking-client-name">{{ place.client.first_name }} {{ place.client.last_name }}</span></div>
-                <div fxLayout="column" fxFlex="20" fxFlexAlign="center"><span class="booking-client-count">{{ place.booking.adults + place.booking.childrens }}</span></div>
+          <div fxLayout="row" fxLayoutGap="5px" *ngFor="let day of matrix">
+            <div class="item" fxFlex="1 0 200px" *ngFor="let place of day" fxLayout="row" fxLayoutAlign="space-between stretch">
+              <div *ngIf="place.booking != 0" [routerLink]="['/booking',place.booking.id]" fxLayout="column" fxFlex="100" fxLayoutAlign="space-between stretch">
+                <div fxLayout="row" fxLayoutAlign="center end" fxFlex="50">
+                  <div fxLayout="column" fxFlex="80"><span class="booking-client-name">{{ place.client.first_name }} {{ place.client.last_name }}</span></div>
+                  <div fxLayout="column" fxFlex="20"><span class="booking-client-count">{{ place.booking.adults + place.booking.childrens }}</span></div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxFlex="50" fxLayoutGap="2px">
+                  <div class="status" matTooltip="{{status.name}}" *ngFor="let status of place.statuses" [ngClass]="{'bs0': status.id == 0, 'bs1': status.id == 1, 'bs2': status.id == 2, 'bs3': status.id == 3, 'bs4': status.id == 4, 'bs5': status.id == 5, 'bs6': status.id == 6, 'bs7': status.id == 7, 'bs8': status.id == 8, 'bs9': status.id == 9, 'bs10': status.id == 10  }"></div>
+                </div>
               </div>
 
               <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100%" *ngIf="place.booking == 0" [routerLink]="['/booking/new']">
-                {{ days[i] +","+ places[j].id }}
+                
               </div>
-
-            </div>
-
-
-
             </div>
           </div>
-
         </div>
-
       </div>
-      <hr>
     </div>
-
+    <hr>
   </mat-card-content>
 </mat-card>

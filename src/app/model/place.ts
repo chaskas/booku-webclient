@@ -12,4 +12,7 @@ export class Place {
 	created_at: string;
 	updated_at: string;
 	ptype: PType;
+	extra_night: number;
+	extra_passenger: number;
+	dsep: number;
 }

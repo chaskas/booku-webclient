@@ -1,5 +1,6 @@
 import { Client } from './client';
 import { Place } from './place';
+import { Status } from './status';
 
 export class Booking {
 
@@ -9,7 +10,8 @@ export class Booking {
 	subtotal: number;
 	total: number;
 	discount: number;
-	status: number;
+	statuses: Array<Status>;
+	status_ids: Array<number>;
 	adults: number;
 	childrens: number;
 	client_id: number;
