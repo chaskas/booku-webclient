@@ -91,6 +91,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatButtonModule,
     MatListModule,
     MatRadioModule,
+    MatStepperModule,
     MatMomentDateModule,
     NoConflictStyleCompatibilityMode,
     CompatibilityModule

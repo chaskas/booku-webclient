@@ -50,11 +50,12 @@ import { BookingShowComponent } from '../../components/booking/booking-show/book
          { path: 'place/edit/:id', component: PlaceEditComponent, canActivate: [Angular2TokenService] },
          { path: 'place/list', component: PlaceListComponent, canActivate: [Angular2TokenService] },
          { path: 'place/detail/:id', component: PlaceDetailComponent, canActivate: [Angular2TokenService] },
-         { path: 'booking/new', component: BookingNewComponent, canActivate: [Angular2TokenService] },
+         
          // Agenda
-         { path: 'agenda/monthly/:ptype', component: AgendaMonthlyComponent },
+         { path: 'agenda/monthly/:ptype', component: AgendaMonthlyComponent, canActivate: [Angular2TokenService] },
          // Booking
-         { path: 'booking/:id', component: BookingShowComponent }
+         { path: 'booking/new', component: BookingNewComponent, canActivate: [Angular2TokenService] },
+         { path: 'booking/:id', component: BookingShowComponent, canActivate: [Angular2TokenService] }
        ]
   },
   { path: 'signin', component: LoginComponent },

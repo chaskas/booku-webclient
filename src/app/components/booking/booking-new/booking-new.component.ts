@@ -19,7 +19,7 @@ import { Angular2TokenService } from 'angular2-token';
 })
 export class BookingNewComponent implements OnInit {
   isLinear = false;
-  firstFormGroup: FormGroup;
+  bookingForm: FormGroup;
  	secondFormGroup: FormGroup;
   newClient = 1;
   clients: Client[];
@@ -47,9 +47,17 @@ export class BookingNewComponent implements OnInit {
 
   ngOnInit() {
     this.clientService.getClients().then(clients => this.clients = clients);
-  	this.firstFormGroup = this.formBuilder.group({
-      firstCtrl: ['', Validators.required]
+    
+  	this.bookingForm = this.formBuilder.group({
+      place: ['', [Validators.required]],
+      arrival: ['', [Validators.required]],
+      departure: ['', [Validators.required]],
+      adults: ['', [Validators.required]],
+      childrens: ['', [Validators.required]],
+      days: ['', [Validators.required]],
+      nights: ['', [Validators.required]]
     });
+
     this.clientForm = this.formBuilder.group({
           rut: ['', [Validators.required, this.rv]],
           first_name: ['', [Validators.required]],
@@ -64,6 +72,21 @@ export class BookingNewComponent implements OnInit {
           car_color: ['', ]
     });
   }
+
+  private createBooking(){
+    this.bookingForm = this.formBuilder.group({
+      place: ['', [Validators.required]],
+      arrival: ['', [Validators.required]],
+      departure: ['', [Validators.required]],
+      adults: ['', [Validators.required]],
+      childrens: ['', [Validators.required]],
+      days: ['', [Validators.required]],
+      nights: ['', [Validators.required]]
+    });
+
+  }
+
+
   createClient()
   {
     this.clientService.createClient(this.clientForm.value).then(
