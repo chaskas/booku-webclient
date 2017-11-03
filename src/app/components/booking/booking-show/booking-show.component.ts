@@ -13,6 +13,8 @@ import { Booking } from '../../../model/booking';
 import { PaymentsDatabase } from './payments-database';
 import { PaymentDataSource } from './payment-datasource';
 
+import { AppConfig } from '../../../config/app-config';
+
 import * as moment from 'moment';
 
 @Component({
@@ -38,13 +40,16 @@ export class BookingShowComponent implements OnInit {
 
   methods: Array<String> = [ "Transferencia", "Efectivo", "WebPay", "Cheque" ];
 
+  download_url: string;
+
   constructor(
     private bookingService: BookingService,
     private paymentService: PaymentService,
     private route: ActivatedRoute,
     private router: Router,
     public paymentDatabase: PaymentsDatabase,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private config: AppConfig
   ) {
     moment.locale('es');
   }
@@ -63,6 +68,8 @@ export class BookingShowComponent implements OnInit {
   private handleGetBookingSuccess(booking: Booking){
 
     this.booking = booking;
+
+    this.download_url = this.config.get('host') + "/bookings/" + this.booking.id + ".pdf";
 
     this.arrival = moment(this.booking.arrival).format('dddd DD/MM/YY HH:mm');
     this.departure = moment(this.booking.departure).format('dddd DD/MM/YY HH:mm');
