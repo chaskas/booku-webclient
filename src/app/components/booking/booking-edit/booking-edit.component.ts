@@ -77,7 +77,7 @@ export class BookingEditComponent implements OnInit {
       subtotal: [this.data.booking.subtotal, [Validators.required]],
       total: [this.data.booking.total, [Validators.required]],
       discount: [this.data.booking.discount, [Validators.required]],
-      statuses: [this.data.booking.status_ids, [Validators.required]],
+      status_ids: [this.data.booking.status_ids],
       adults: [this.data.booking.adults, [Validators.required]],
       childrens: [this.data.booking.childrens, [Validators.required]],
       client_id: [this.data.booking.client_id, [Validators.required]],
