@@ -54,8 +54,6 @@ export class BookingEditComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     moment.locale('es');
-    console.log(this.data.booking.arrival);
-    console.log(moment(this.data.booking.arrival).isValid());
 
     this.data.booking.arrival = moment(this.data.booking.arrival);
     this.data.booking.departure = moment(this.data.booking.departure);
