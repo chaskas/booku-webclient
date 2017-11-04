@@ -56,7 +56,7 @@ export class BookingShowComponent implements OnInit {
     private _router: Router,
     private config: AppConfig
   ) {
-    moment.locale('es');
+    moment.locale('es-CL');
   }
 
   ngOnInit() {

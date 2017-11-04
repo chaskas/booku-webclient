@@ -31,9 +31,8 @@ import { CompatibilityModule } from '@angular/material';
 import { NoConflictStyleCompatibilityMode } from '@angular/material';
 
 import { MatListModule } from '@angular/material';
+
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-
-
 
 @NgModule({
   imports: [
@@ -64,8 +63,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     CompatibilityModule,
     MatListModule,
     MatRadioModule,
-    MatMomentDateModule,
     MatTooltipModule,
+    MatMomentDateModule,
     NoConflictStyleCompatibilityMode,
     CompatibilityModule
   ],
@@ -95,8 +94,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatListModule,
     MatRadioModule,
     MatStepperModule,
-    MatMomentDateModule,
     MatTooltipModule,
+    MatMomentDateModule,
     NoConflictStyleCompatibilityMode,
     CompatibilityModule
   ],

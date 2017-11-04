@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject, Input, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -12,6 +12,8 @@ import { Booking } from '../../../model/booking';
 import { Place } from '../../../model/place';
 import { Status } from '../../../model/status';
 
+import { MatDatepicker } from '@angular/material';
+import { Moment } from 'moment';
 import * as moment from 'moment';
 
 @Component({
@@ -20,6 +22,9 @@ import * as moment from 'moment';
   styleUrls: ['./booking-edit.component.css']
 })
 export class BookingEditComponent implements OnInit {
+
+  @ViewChild(MatDatepicker) arrival: MatDatepicker<Moment>;
+  @ViewChild(MatDatepicker) departure: MatDatepicker<Moment>;
 
   booking: Booking;
   bookingForm: FormGroup;
@@ -49,6 +54,12 @@ export class BookingEditComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     moment.locale('es');
+    console.log(this.data.booking.arrival);
+    console.log(moment(this.data.booking.arrival).isValid());
+
+    this.data.booking.arrival = moment(this.data.booking.arrival);
+    this.data.booking.departure = moment(this.data.booking.departure);
+
     this.createForm();
     this.arrival_time   = moment(this.data.booking.arrival).format('HH:mm');
     this.departure_time = moment(this.data.booking.departure).format('HH:mm');
@@ -63,8 +74,8 @@ export class BookingEditComponent implements OnInit {
   private createForm()
   {
     this.bookingForm = this.formBuilder.group({
-      arrival: [moment(this.data.booking.arrival), [Validators.required]],
-      departure: [moment(this.data.booking.departure), [Validators.required]],
+      arrival: [this.data.booking.arrival, [Validators.required]],
+      departure: [this.data.booking.arrival, [Validators.required]],
       subtotal: [this.data.booking.subtotal, [Validators.required]],
       total: [this.data.booking.total, [Validators.required]],
       discount: [this.data.booking.discount, [Validators.required]],

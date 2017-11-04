@@ -146,7 +146,7 @@
 
       <div fxLayout="row" fxLayoutGap="10px">
         <mat-form-field fxFlex="25">
-          <input matInput placeholder="Sub Total" [value]="booking.subtotal | currency: 'USD' : true : '3.0-0'" readonly>
+          <input matInput placeholder="Sub Total" [value]="booking.subtotal | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL'" readonly>
         </mat-form-field>
 
         <mat-form-field fxFlex="25">
@@ -154,11 +154,11 @@
         </mat-form-field>
 
         <mat-form-field fxFlex="25">
-          <input matInput placeholder="Total" [value]="booking.total | currency: 'USD' : true : '3.0-0'" readonly>
+          <input matInput placeholder="Total" [value]="booking.total | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL'" readonly>
         </mat-form-field>
 
         <mat-form-field fxFlex="25">
-          <input matInput placeholder="Saldo Pendiente" [value]="booking.pending | currency: 'USD' : true : '1.0-0'" readonly>
+          <input matInput placeholder="Saldo Pendiente" [value]="booking.pending | currency: 'CLP' : 'symbol-narrow' : '1.0-0': 'es-CL'" readonly>
         </mat-form-field>
       </div>
 
@@ -193,7 +193,7 @@
 
           <ng-container cdkColumnDef="amount">
             <mat-header-cell *cdkHeaderCellDef> Monto </mat-header-cell>
-            <mat-cell *cdkCellDef="let row">{{ row.amount | currency: 'USD' : true : '3.0-0' }}</mat-cell>
+            <mat-cell *cdkCellDef="let row">{{ row.amount | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL' }}</mat-cell>
           </ng-container>
 
           <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>

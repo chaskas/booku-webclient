@@ -7,6 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Angular2TokenService } from 'angular2-token';
 
+
+import { registerLocaleData } from '@angular/common';
+import localeESCL from '@angular/common/locales/es-CL';
+
+registerLocaleData(localeESCL);
+
 // Modules
 import { RoutingModule } from './modules/routing/routing.module';
 import { MaterialModule } from './modules/material/material.module';
