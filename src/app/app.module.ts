@@ -79,8 +79,13 @@ import { Ng2Rut, RutValidator } from './utils/rut/ng2-rut.module';
 import { ClientsDatabase } from './components/clients/list/clients-database';
 import { PTypesDatabase } from './components/ptype/ptype-list/ptypes-database';
 import { PlacesDatabase } from './components/place/place-list/places-database';
+import { StatusesDatabase } from './components/status/status-list/statuses-database';
 
 import { PaymentsDatabase } from './components/booking/booking-show/payments-database';
+import { StatusNewComponent } from './components/status/status-new/status-new.component';
+import { StatusEditComponent } from './components/status/status-edit/status-edit.component';
+import { StatusListComponent } from './components/status/status-list/status-list.component';
+import { StatusDetailComponent } from './components/status/status-detail/status-detail.component';
 
 
 @NgModule({
@@ -107,7 +112,11 @@ import { PaymentsDatabase } from './components/booking/booking-show/payments-dat
     BookingNewComponent,
     BookingShowComponent,
     PaymentNewComponent,
-    BookingEditComponent
+    BookingEditComponent,
+    StatusNewComponent,
+    StatusEditComponent,
+    StatusListComponent,
+    StatusDetailComponent
   ],
   imports: [
     BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule
@@ -124,6 +133,7 @@ import { PaymentsDatabase } from './components/booking/booking-show/payments-dat
       ClientsDatabase,
       PTypesDatabase,
       PlacesDatabase,
+      StatusesDatabase,
       StatusService,
       PaymentsDatabase,
       DialogsServiceService,
