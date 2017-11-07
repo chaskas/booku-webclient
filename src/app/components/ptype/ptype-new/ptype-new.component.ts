@@ -57,14 +57,15 @@ export class PtypeNewComponent implements OnInit {
     });
    }
 
-	private _handleUpdateSuccess(data: any) {
+	private _handleUpdateSuccess(data: any)
+  {
 	   this.errors = null;
-	   this.snackBar.open("Registrado correctamente", "OK", {
+	   this.snackBar.open("Creado correctamente", "OK", {
 	     duration: 2000,
 	   });
-     //this._router.navigate(['/ptype/'+this.ptypeForm.value]);
+     this._router.navigate(['/ptypes']);
 
-    }
+  }
 
 
   private _handleError(error: any) {

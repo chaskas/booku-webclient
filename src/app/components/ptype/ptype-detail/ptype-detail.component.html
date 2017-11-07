@@ -6,26 +6,26 @@
           <mat-card-header>
             <mat-card-title>Detalle</mat-card-title>
             <span class="fill-remaining-space"></span>
-            <button mat-button [routerLink]="['/ptype/list']">Volver</button>
+            <button mat-button [routerLink]="['/ptypes']">Volver</button>
           </mat-card-header>
 
         <mat-card-content fxLayout='column'>
 
           <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
              <mat-input-container fxFlex="50">
-                 <input matInput placeholder="name" [value]="ptype.name" readonly="true">
+                 <input matInput placeholder="Nombre" [value]="ptype.name" readonly="true">
                </mat-input-container>
 
               <mat-input-container fxFlex="50">
-               <input matInput placeholder="plural" [value]="ptype.plural" readonly="true">
+               <input matInput placeholder="Plural" [value]="ptype.plural" readonly="true">
                </mat-input-container>
             </div>
 
 
         </mat-card-content>
 
-        <mat-card-actions class="actions">
-            <button [routerLink]="['/ptype/edit',ptype.id]" mat-button type="button">Editar Tipos</button>
+        <mat-card-actions fxLayoutAlign="end center">
+            <button [routerLink]="['/ptypes/edit',ptype.id]" mat-button type="button">Editar</button>
         </mat-card-actions>
 
         </mat-card>

@@ -1,56 +1,60 @@
 <div class="container">
-  <form [formGroup]="placeForm" (submit)="createPlace()">
-    <div fxLayout="row">
 
-        <mat-card class="full-width">
+  <mat-card>
 
-          <mat-card-header>
-            <mat-card-title>Nuevo Espacio</mat-card-title>
-            <span class="fill-remaining-space"></span>
-            <button mat-button routerLink="place/list">Volver</button>
-          </mat-card-header>
-          
-        <mat-card-content fxLayout='column'>
+    <form [formGroup]="placeForm" (submit)="createPlace()">
 
-          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+      <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-card-title>Nuevo Espacio</mat-card-title>
+        <button mat-button routerLink="/places">Volver</button>
+      </mat-card-header>
 
-          <mat-select flFlex="34" placeholder="Tipo Espacio" formControlName="ptype_id" required>
-            <mat-option *ngFor="let ptype of ptypes" [value]="ptype.id">{{ptype.name}}</mat-option>
-          </mat-select>  
+      <mat-card-content fxLayout="column">
 
-            <mat-input-container flFlex="33">
-              <input matInput type="time" placeholder="Horario apertura" formControlName="opening" required>
-            </mat-input-container>
+      <div fxLayout='row' fxLayoutGap="10px" fxLayoutAlign="space-between end">
 
-            <mat-input-container flFlex="33">
-              <input matInput type="time" placeholder="Horario cierre" formControlName="closing" required>
-            </mat-input-container>
-          </div>
+        <mat-input-container fxFlex="34">
+        <mat-select placeholder="Tipo Espacio" formControlName="ptype_id" required>
+        <mat-option *ngFor="let ptype of ptypes" [value]="ptype.id">{{ptype.name}}</mat-option>
+        </mat-select>
+        </mat-input-container>
+
+        <mat-input-container fxFlex="33">
+        <input matInput type="time" placeholder="Horario apertura" formControlName="opening" required>
+        </mat-input-container>
+
+        <mat-input-container fxFlex="33">
+        <input matInput type="time" placeholder="Horario cierre" formControlName="closing" required>
+        </mat-input-container>
+
+      </div>
 
 
-          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">          
-            <mat-input-container fxFlex="34">
-             <input matInput placeholder="Nombre" formControlName="name" required>
-             </mat-input-container>
+      <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+      <mat-input-container fxFlex="34">
+      <input matInput placeholder="Nombre" formControlName="name" required>
+      </mat-input-container>
 
-            <mat-input-container fxFlex="33">
-             <input matInput type="number" placeholder="Capacidad" formControlName="capacity" required>
-             </mat-input-container>
+      <mat-input-container fxFlex="33">
+      <input matInput type="number" placeholder="Capacidad" formControlName="capacity" required>
+      </mat-input-container>
 
-            <mat-input-container fxFlex="33">
-             <input matInput type="number" placeholder="Precio" formControlName="price" required>
-             </mat-input-container>
-          </div>
+      <mat-input-container fxFlex="33">
+      <input matInput type="number" placeholder="Precio" formControlName="price" required>
+      </mat-input-container>
+      </div>
 
-        </mat-card-content>
+      </mat-card-content>
 
-        <mat-card-actions class="actions">
-          <button mat-raised-button type="submit" [disabled]="!placeForm.valid">Aceptar</button>
+      <mat-card-actions class="actions">
+      <button mat-raised-button type="submit" [disabled]="!placeForm.valid">Aceptar</button>
 
-        </mat-card-actions>
+      </mat-card-actions>
 
-    </mat-card>
+    </form>
 
-    </div>
-  </form>
+  </mat-card>
+
+
+
 </div>

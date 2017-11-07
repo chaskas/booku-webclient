@@ -1,36 +1,33 @@
 <div class="container">
-  <form [formGroup]="ptypeForm" (submit)="createPType()">
-    <div fxLayout="row">
 
-        <mat-card class="full-width">
+    <form [formGroup]="ptypeForm" (submit)="createPType()">
+      <mat-card>
 
-          <mat-card-header>
-            <mat-card-title>Nuevo</mat-card-title>
-            <span class="fill-remaining-space"></span>
-            <button mat-button routerLink="">Volver</button>
-          </mat-card-header>
+        <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+          <mat-card-title>Nuevo</mat-card-title>
+          <button mat-button routerLink="/ptypes">Volver</button>
+        </mat-card-header>
 
 
         <mat-card-content fxLayout='column'>
 
           <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
-             <mat-input-container fxFlex="50">
-               <input matInput placeholder="Nombre" formControlName="name" required>
-             </mat-input-container>
+            <mat-input-container fxFlex="50">
+              <input matInput placeholder="Nombre" formControlName="name" required>
+            </mat-input-container>
 
             <mat-input-container fxFlex="50">
-             <input matInput placeholder="Nombre en plural" formControlName="plural" required>
-             </mat-input-container>
+              <input matInput placeholder="Plural" formControlName="plural" required>
+            </mat-input-container>
           </div>
 
         </mat-card-content>
 
-        <mat-card-actions class="actions">         
+        <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
           <button mat-raised-button type="submit" [disabled]="!ptypeForm.valid">Aceptar</button>
         </mat-card-actions>
 
-    </mat-card>
-
-    </div>
+      </mat-card>
   </form>
+
 </div>

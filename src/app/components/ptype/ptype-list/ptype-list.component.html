@@ -1,39 +1,34 @@
 <div class="container">
 
-  <div fxLayout="row" class="header">
-    <span class="title"> {{title}}</span>
-    <span class="fill-remaining-space"></span>
-    <a routerLink="/clients/new" mat-raised-button> <mat-icon>add</mat-icon> Nuevo</a>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h2>Tipos de Espacios</h2>
+    <a routerLink="/ptypes/new" mat-raised-button> <mat-icon>add</mat-icon> Nuevo</a>
   </div>
-  <br>
-    <div fxLayout="column">
 
-    <div fxLayout="row">
+  <div fxLayout="row">
 
-      <mat-table #table [dataSource]="dataSource" class="full-width">
-        <ng-container cdkColumnDef="name">
-          <mat-header-cell *cdkHeaderCellDef> Nombre </mat-header-cell>
-          <mat-cell *cdkCellDef="let row">{{ row.name }}</mat-cell>
-        </ng-container>        
+    <mat-table #table [dataSource]="dataSource" fxFlex="100">
+      <ng-container cdkColumnDef="name">
+        <mat-header-cell *cdkHeaderCellDef> Nombre </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.name }}</mat-cell>
+      </ng-container>
 
-        <ng-container cdkColumnDef="plural">
-          <mat-header-cell *cdkHeaderCellDef> Nombre en plural </mat-header-cell>
-          <mat-cell *cdkCellDef="let row">{{ row.plural }}</mat-cell>
-        </ng-container>    
+      <ng-container cdkColumnDef="plural">
+        <mat-header-cell *cdkHeaderCellDef> Plural </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.plural }}</mat-cell>
+      </ng-container>
 
-        <ng-container cdkColumnDef="icons">
-          <mat-header-cell *cdkHeaderCellDef> Opciones </mat-header-cell>
-          <mat-cell *cdkCellDef="let row">
-          <button  mat-icon-button [routerLink]="['/ptype/detail',row.id]"><mat-icon>visibility</mat-icon></button>
-          </mat-cell>
-        </ng-container>  
+      <ng-container cdkColumnDef="icons">
+        <mat-header-cell *cdkHeaderCellDef> Opciones </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">
+        <button  mat-icon-button [routerLink]="['/ptypes/detail',row.id]"><mat-icon>visibility</mat-icon></button>
+        </mat-cell>
+      </ng-container>
 
-        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table> 
+      <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
 
   </div>
-  <div>
-</div> 
 
-
+</div>

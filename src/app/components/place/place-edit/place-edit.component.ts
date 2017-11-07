@@ -103,22 +103,22 @@ export class PlaceEditComponent implements OnInit {
   {
     if(res) {
       this.placeService.deletePlace(this.place.id).then((data) => {
-        this._router.navigate(['place/list']);
+        this._router.navigate(['places']);
       });
     }
   }
 
    private _handleUpdateSuccess(data: any) {
     this.errors = null;
-    this.snackBar.open("Espacio actualizado correctamente", undefined, {
+    this.snackBar.open("Actualizado correctamente", undefined, {
       duration: 2000,
     });
-    this._router.navigate(['/place/list']);
+    this._router.navigate(['/places']);
   }
 
   private _handleError(error: any) {
       this.errors = error.json().errors.full_messages;
-  } 
+  }
 
 
   private _handleTokenError(error: any) {

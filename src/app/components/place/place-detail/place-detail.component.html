@@ -1,49 +1,54 @@
 <div class="container">
+
   <div fxLayout="column">
+
     <ng-container *ngIf="place">
-      <div fxLayout="row">
-        <mat-card class="full-width">
-          <mat-card-header>
-            <mat-card-title>Detalle</mat-card-title>
-            <span class="fill-remaining-space"></span>
-            <button mat-button [routerLink]="['/place/list']">Volver</button>
-          </mat-card-header>
 
-      <mat-card-content fxLayout='column'>
+    <div fxLayout="row">
 
-        <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+      <mat-card fxFlex="100">
 
-          <mat-input-container fxFlex="34">
-            <input matInput placeholder="Nombre" [value]="place.name" readonly="true">
-          </mat-input-container>
+        <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+          <mat-card-title>Detalle</mat-card-title>
+          <button mat-button [routerLink]="['/places']">Volver</button>
+        </mat-card-header>
 
-          <mat-input-container fxFlex="33">
-            <input type="email" matInput placeholder="Horario apertura" [value]="place.opening | date: 'HH:mm'" readonly="true">
-          </mat-input-container>
+        <mat-card-content fxLayout='column'>
 
-          <mat-input-container fxFlex="33">
-            <input matInput placeholder="Horario cierre" [value]="place.closing | date: 'HH:mm'" readonly="true">
+          <div fxLayout='row' fxFlex="100" fxLayoutGap="10px">
+            <mat-input-container fxFlex="34">
+              <input matInput placeholder="Nombre" [value]="place.name" readonly="true">
+            </mat-input-container>
+
+            <mat-input-container fxFlex="33">
+              <input type="email" matInput placeholder="Horario apertura" [value]="place.opening | date: 'HH:mm'" readonly="true">
+            </mat-input-container>
+
+            <mat-input-container fxFlex="33">
+              <input matInput placeholder="Horario cierre" [value]="place.closing | date: 'HH:mm'" readonly="true">
             </mat-input-container>
           </div>
 
-          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+          <div fxLayout='row' fxFlex="100" fxLayoutGap="10px">
             <mat-input-container fxFlex="50">
-             <input matInput placeholder="Capacidad" [value]="place.capacity" readonly="true">
-             </mat-input-container>
+              <input matInput placeholder="Capacidad" [value]="place.capacity" readonly="true">
+            </mat-input-container>
 
             <mat-input-container fxFlex="50">
-            <input matInput placeholder="Precio" [value]="place.price" readonly="true">
+              <input matInput placeholder="Precio" [value]="place.price" readonly="true">
             </mat-input-container>
           </div>
 
-      </mat-card-content>
+        </mat-card-content>
 
-        <mat-card-actions class="actions">
-            <button [routerLink]="['/place/edit',place.id]" mat-button type="button">Editar Espacios</button>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
+          <button [routerLink]="['/places/edit',place.id]" mat-button type="button">Editar</button>
         </mat-card-actions>
 
-        </mat-card>
-      </div>
+      </mat-card>
+
+    </div>
     </ng-container>
+
   </div>
 </div>

@@ -41,16 +41,16 @@ import { BookingShowComponent } from '../../components/booking/booking-show/book
          { path: 'clients/edit/:id', component: EditComponent, canActivate: [Angular2TokenService] },
          { path: 'clients', component: ListComponent, canActivate: [Angular2TokenService] },
          //PType
-         { path: 'ptype/new', component: PtypeNewComponent, canActivate: [Angular2TokenService] },
-         { path: 'ptype/list', component: PtypeListComponent, canActivate: [Angular2TokenService] },
-         { path: 'ptype/edit/:id', component: PtypeEditComponent, canActivate: [Angular2TokenService] },
-         { path: 'ptype/detail/:id', component: PtypeDetailComponent, canActivate: [Angular2TokenService] },
+         { path: 'ptypes/new', component: PtypeNewComponent, canActivate: [Angular2TokenService] },
+         { path: 'ptypes', component: PtypeListComponent, canActivate: [Angular2TokenService] },
+         { path: 'ptypes/edit/:id', component: PtypeEditComponent, canActivate: [Angular2TokenService] },
+         { path: 'ptypes/detail/:id', component: PtypeDetailComponent, canActivate: [Angular2TokenService] },
          //Place
-         { path: 'place/new', component: PlaceNewComponent, canActivate: [Angular2TokenService] },
-         { path: 'place/edit/:id', component: PlaceEditComponent, canActivate: [Angular2TokenService] },
-         { path: 'place/list', component: PlaceListComponent, canActivate: [Angular2TokenService] },
-         { path: 'place/detail/:id', component: PlaceDetailComponent, canActivate: [Angular2TokenService] },
-         
+         { path: 'places/new', component: PlaceNewComponent, canActivate: [Angular2TokenService] },
+         { path: 'places/edit/:id', component: PlaceEditComponent, canActivate: [Angular2TokenService] },
+         { path: 'places', component: PlaceListComponent, canActivate: [Angular2TokenService] },
+         { path: 'places/detail/:id', component: PlaceDetailComponent, canActivate: [Angular2TokenService] },
+
          // Agenda
          { path: 'agenda/monthly/:ptype', component: AgendaMonthlyComponent, canActivate: [Angular2TokenService] },
          // Booking

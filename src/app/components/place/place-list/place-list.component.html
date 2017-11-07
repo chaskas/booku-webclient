@@ -1,62 +1,56 @@
 <div class="container">
 
-	<div fxLayout="row" class="header">
-		<span class="title"> {{title}}</span>
-		<span class="fill-remaining-space"></span>
-		<a routerLink="/place/new" mat-raised-button> <mat-icon>add</mat-icon> Nuevo</a>
+	<div fxLayout="row" fxLayoutAlign="space-between center">
+		<h2>Espacios</h2>
+		<a routerLink="/places/new" mat-raised-button> <mat-icon>add</mat-icon> Nuevo</a>
 	</div>
 
-	<br>
-  
-    <div fxLayout="column">
 
-	    <div fxLayout="row">
+  <div fxLayout="row">
 
-	      <mat-table #table [dataSource]="dataSource" class="full-width">
-	        <ng-container cdkColumnDef="ptype">
-	          <mat-header-cell *cdkHeaderCellDef> Tipo </mat-header-cell>
-	          <mat-cell *cdkCellDef="let row">{{ row.ptype.name}}</mat-cell>
-	        </ng-container>  
+    <mat-table #table [dataSource]="dataSource" fxFlex="100">
+      <ng-container cdkColumnDef="ptype">
+        <mat-header-cell *cdkHeaderCellDef> Tipo </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.ptype.name}}</mat-cell>
+      </ng-container>
 
-	        <ng-container cdkColumnDef="name">
-	          <mat-header-cell *cdkHeaderCellDef> Nombre </mat-header-cell>
-	          <mat-cell *cdkCellDef="let row">{{ row.name }}</mat-cell>
-	        </ng-container>    
+      <ng-container cdkColumnDef="name">
+        <mat-header-cell *cdkHeaderCellDef> Nombre </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.name }}</mat-cell>
+      </ng-container>
 
-	        <ng-container cdkColumnDef="capacity">
-	          <mat-header-cell *cdkHeaderCellDef> Capacidad </mat-header-cell>
-	          <mat-cell *cdkCellDef="let row">{{ row.capacity }}</mat-cell>
-	        </ng-container>   
+      <ng-container cdkColumnDef="capacity">
+        <mat-header-cell *cdkHeaderCellDef> Capacidad </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.capacity }}</mat-cell>
+      </ng-container>
 
-	        <ng-container cdkColumnDef="price">
-	          <mat-header-cell *cdkHeaderCellDef> Precio </mat-header-cell>
-	          <mat-cell *cdkCellDef="let row">{{ row.price }}</mat-cell>
-	        </ng-container>       
+      <ng-container cdkColumnDef="price">
+        <mat-header-cell *cdkHeaderCellDef> Precio </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.price | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL' }}</mat-cell>
+      </ng-container>
 
-	        <ng-container cdkColumnDef="opening">
-	          <mat-header-cell *cdkHeaderCellDef> Horario Apertura </mat-header-cell>
-	          <mat-cell *cdkCellDef="let row">{{ row.opening | date: 'HH:mm'}}</mat-cell>
-	        </ng-container>   
+      <ng-container cdkColumnDef="opening">
+        <mat-header-cell *cdkHeaderCellDef> Horario Apertura </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.opening | date: 'HH:mm'}}</mat-cell>
+      </ng-container>
 
-	        <ng-container cdkColumnDef="closing">
-	          <mat-header-cell *cdkHeaderCellDef> Horario Cierre </mat-header-cell>
-	          <mat-cell *cdkCellDef="let row">{{ row.closing | date: 'HH:mm'}}</mat-cell>
-	        </ng-container> 
+      <ng-container cdkColumnDef="closing">
+        <mat-header-cell *cdkHeaderCellDef> Horario Cierre </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.closing | date: 'HH:mm'}}</mat-cell>
+      </ng-container>
 
-	        <ng-container cdkColumnDef="icons">
-	          <mat-header-cell *cdkHeaderCellDef> Opciones </mat-header-cell>
-	          <mat-cell *cdkCellDef="let row">
-	          <button  mat-icon-button [routerLink]="['/place/detail',row.id]"><mat-icon>visibility</mat-icon></button>
-	          </mat-cell>
-	        </ng-container>  
+      <ng-container cdkColumnDef="icons">
+        <mat-header-cell *cdkHeaderCellDef> Opciones </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">
+        <button  mat-icon-button [routerLink]="['/places/detail',row.id]"><mat-icon>visibility</mat-icon></button>
+        </mat-cell>
+      </ng-container>
 
-	        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
-	        <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
 
-	      </mat-table> 
+    </mat-table>
 
-	  	</div>
-	<div>
-</div> 
+	</div>
 
-
+</div>

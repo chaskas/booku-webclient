@@ -7,7 +7,7 @@
           <mat-card-header>
             <mat-card-title>Editar</mat-card-title>
             <span class="fill-remaining-space"></span>
-            <button mat-button [routerLink]="['/place/detail',place.id]">Volver</button>
+            <button mat-button [routerLink]="['/places/detail',place.id]">Volver</button>
           </mat-card-header>
 
 
@@ -15,21 +15,23 @@
 
           <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
 
-          <mat-select flFlex="34" placeholder="Tipo Espacio" formControlName="ptype_id" required>
-            <mat-option *ngFor="let ptype of ptypes" [value]="ptype.id">{{ptype.name}}</mat-option>
-          </mat-select>  
+            <mat-input-container fxFlex="34">
+              <mat-select placeholder="Tipo Espacio" formControlName="ptype_id" required>
+                <mat-option *ngFor="let ptype of ptypes" [value]="ptype.id">{{ptype.name}}</mat-option>
+              </mat-select>
+            </mat-input-container>
 
-            <mat-input-container flFlex="33">
+            <mat-input-container fxFlex="33">
               <input matInput type="time" placeholder="Horario apertura" formControlName="opening" required>
             </mat-input-container>
 
-            <mat-input-container flFlex="33">
+            <mat-input-container fxFlex="33">
               <input matInput type="time" placeholder="Horario cierre" formControlName="closing" required>
             </mat-input-container>
           </div>
 
 
-          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">          
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
             <mat-input-container fxFlex="34">
              <input matInput placeholder="Nombre" formControlName="name" required>
              </mat-input-container>

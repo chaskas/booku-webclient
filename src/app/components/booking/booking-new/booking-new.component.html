@@ -1,88 +1,127 @@
 
   <div class="container">
   <mat-card>
-    <mat-vertical-stepper linear>
+    <mat-vertical-stepper [linear]="isLinear">
       <mat-step [stepControl]="bookingForm">
         <form [formGroup]="bookingForm">
           <ng-template matStepLabel>Fecha</ng-template>
-          
-         <mat-card-title>
-           Reserva
-         </mat-card-title>
 
-         <mat-card-content fxLayout='column'>
+          <h2>Reserva</h2>
 
-           <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
-             <mat-form-field fxFlex="34">
-               <input matInput placeholder="Lugar">
-             </mat-form-field>
+          <div fxLayout='column'>
 
-            <mat-form-field class="example-full-width" fxFlex="33">
-              <input matInput [matDatepicker]="picker1" placeholder="Llegada">
-              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-              <mat-datepicker touchUi="true" #picker1></mat-datepicker>
-            </mat-form-field>
+            <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+              <mat-form-field fxFlex="50" *ngIf="place">
+                <mat-select placeholder="Lugar" formControlName="place_id" [(ngModel)]="place_id" (ngModelChange)="changePlace()">
+                  <mat-option *ngFor="let place of places" [value]="place.id">{{ place.capacity + 'P ' + place.name }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field fxFlex="50">
+                <mat-select placeholder="Estado" multiple formControlName="status_ids" [(ngModel)]="status_ids" (ngModelChange)="calculateSubtotal()">
+                  <mat-option *ngFor="let status of statuses" [value]="status.id" >{{ status.name }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
 
-            <mat-form-field class="example-full-width" fxFlex="33">
-              <input matInput [matDatepicker]="picker" placeholder="Salida">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker touchUi="true" #picker></mat-datepicker>
-            </mat-form-field>
-           </div>
+            <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px" fxLayoutAlign="start end">
 
-           <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
-             <mat-form-field fxFlex=“50”>
-               <input matInput placeholder="Adultos">
-             </mat-form-field>
+              <mat-form-field fxFlex="25">
+                <input matInput [matDatepicker]="arrival" formControlName="arrival" placeholder="Fecha Llegada" [(ngModel)]="arrival_str" (ngModelChange)="calculateDates()"  [max]="maxDate">
+                <mat-datepicker-toggle matSuffix [for]="arrival"></mat-datepicker-toggle>
+                <mat-datepicker #arrival></mat-datepicker>
+              </mat-form-field>
 
-             <mat-form-field fxFlex="50">
-               <input matInput placeholder="Niños">
-             </mat-form-field>
-           </div>
-           <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
-             <mat-form-field fxFlex=“50”>
-               <input matInput placeholder="Días">
-             </mat-form-field>
+              <mat-form-field fxFlex="25">
+                <input matInput placeholder="Hora Llegada" type="time" [(ngModel)]="arrival_time" (ngModelChange)="updateTimes()"  [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
 
-             <mat-form-field fxFlex="50">
-               <input matInput placeholder="Noches">
-             </mat-form-field>
-           </div>
+              <mat-form-field fxFlex="33">
+                <input matInput [matDatepicker]="departure" formControlName="departure" placeholder="Fecha Salida" [(ngModel)]="departure_str" (ngModelChange)="calculateDates()"  [min]="minDate">
+                <mat-datepicker-toggle matSuffix [for]="departure"></mat-datepicker-toggle>
+                <mat-datepicker #departure></mat-datepicker>
+              </mat-form-field>
 
-         </mat-card-content>
-          <div>
-          <mat-card-actions class="actions">
-            <button mat-raised-button matStepperNext [disabled]="!bookingForm.valid">Siguiente</button>
-          </mat-card-actions>
+              <mat-form-field fxFlex="25">
+                <input matInput placeholder="Hora Ida" type="time" [(ngModel)]="departure_time" (ngModelChange)="updateTimes()"  [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+
+            </div>
+
+            <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+              <mat-form-field fxFlex=“50”>
+                <input matInput placeholder="Adultos" formControlName="adults" [(ngModel)]="adults" (ngModelChange)="calculateSubtotal()">
+              </mat-form-field>
+
+              <mat-form-field fxFlex="50">
+                <input matInput placeholder="Niños" formControlName="childrens" [(ngModel)]="childrens" (ngModelChange)="calculateSubtotal()">
+              </mat-form-field>
+            </div>
+
+            <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+              <mat-form-field fxFlex=“50”>
+                <input matInput placeholder="Días" [(ngModel)]="days" [ngModelOptions]="{standalone: true}" readonly>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="50">
+                <input matInput placeholder="Noches" [(ngModel)]="nights" [ngModelOptions]="{standalone: true}" readonly>
+              </mat-form-field>
+            </div>
+
+            <h3>Valores:</h3>
+
+            <div fxLayout="row">
+              <mat-form-field fxFlex="33">
+                <input matInput placeholder="Subtotal" formControlName="subtotal" [(ngModel)]="subtotal">
+              </mat-form-field>
+              <mat-form-field fxFlex="33">
+                <input matInput placeholder="Descuento (%)" formControlName="discount" [(ngModel)]="discount" (ngModelChange)="calculateTotal()">
+              </mat-form-field>
+              <mat-form-field fxFlex="34">
+                <input matInput placeholder="Total" formControlName="total" [(ngModel)]="total" readonly>
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxFlex="100%" fxLayoutAlign="end center">
+              <button mat-raised-button matStepperNext>Siguiente</button>
+            </div>
+
           </div>
+
         </form>
       </mat-step>
 
 
 
-   
+
       <mat-step [stepControl]="clientForm" fxLayout="column">
 
         <ng-template matStepLabel>Cliente</ng-template>
 
+        <br>
+
         <div fxLayout="row">
-          <div fxLayout="column" fxFlex="10" fxLayoutAlign="center center">
+
+          <div fxLayout="column" fxFlex="15" fxLayoutAlign="center center">
             Cliente:
           </div>
 
-          <div fxLayout="column" fxLayoutAlign="space-between center">
+          <div fxLayout="column">
             <mat-radio-group [(ngModel)]="newClient" fxLayout="column">
-              <mat-radio-button value="1" fxFlex="60px">           
-                <mat-select *ngIf="clients && newClient" [(ngModel)]="client_id">
-                  <mat-option *ngFor="let client of clients" [value]="client.id"  >
-                    {{ client.first_name }} {{client.last_name}}
-                  </mat-option>
-                </mat-select>
+              <mat-radio-button value="1" fxFlex="70px" fxLayout="row">
+                <mat-form-field [floatPlaceholder]="'never'">
+                  <mat-select [(ngModel)]="client_id">
+                    <mat-option *ngFor="let client of clients" [value]="client.id">{{ client.first_name }} {{client.last_name}}</mat-option>
+                  </mat-select>
+                  <mat-placeholder>Seleccione...</mat-placeholder>
+                </mat-form-field>
               </mat-radio-button>
-              <mat-radio-button value="2" fxFlex="60px">Cliente nuevo</mat-radio-button>
+              <mat-radio-button value="2" fxFlex="70px" fxLayout="row">
+                Cliente Nuevo
+              </mat-radio-button>
             </mat-radio-group>
           </div>
         </div>
+
         <div *ngIf="newClient==2" fxLayout="row">
           <form [formGroup]="clientForm" (submit)="createClient()" fxLayout="column" fxFlex="100%">
 
@@ -94,7 +133,7 @@
               <mat-form-field fxFlex="33">
                 <input matInput placeholder="Nombre" formControlName="first_name" required>
               </mat-form-field>
-              
+
               <mat-form-field fxFlex="33">
                 <input matInput placeholder="Apellido" formControlName="last_name" required>
               </mat-form-field>
@@ -102,7 +141,7 @@
             </div>
 
 
-            <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">       
+            <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
               <mat-form-field fxFlex="25">
                 <input type="email" matInput placeholder="Email" formControlName="email" required>
               </mat-form-field>
@@ -110,31 +149,30 @@
               <mat-form-field fxFlex="25">
                 <input type="number" matInput placeholder="Teléfono" formControlName="phone" required>
               </mat-form-field>
-                        
+
               <mat-form-field fxFlex="25">
                 <input matInput placeholder="Dirección" formControlName="address" required>
               </mat-form-field>
-                     
+
               <mat-form-field fxFlex="25">
                 <input matInput placeholder="Ciudad" formControlName="city" required>
               </mat-form-field>
-                        
+
             </div>
 
             <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
               <mat-form-field fxFlex="25">
                 <input matInput placeholder="Patente" formControlName="car_license" >
               </mat-form-field>
-              
 
               <mat-form-field fxFlex="25">
                 <input matInput placeholder="Marca del auto" formControlName="car_brand" >
               </mat-form-field>
-              
+
               <mat-form-field fxFlex="25">
                 <input matInput placeholder="Modelo del auto" formControlName="car_model" >
               </mat-form-field>
-              
+
               <mat-form-field fxFlex="25">
                 <input matInput placeholder="Color del auto" formControlName="car_color" >
               </mat-form-field>
@@ -149,60 +187,129 @@
 
         <div fxLayout="row" fxFlex="100%" fxLayoutAlign="end center">
           <button mat-raised-button matStepperPrevious>Volver</button>
-          <button mat-raised-button matStepperNext (click)="getClient(client_id)">Siguiente</button>
+          <button mat-raised-button matStepperNext (click)="getClient(client_id)" [disabled]="!client_id">Siguiente</button>
         </div>
 
       </mat-step>
-     
+
       <mat-step>
-      <ng-template matStepLabel>Confirmar Reserva</ng-template>
-      <ng-container *ngIf="client">
+        <ng-template matStepLabel>Resumen</ng-template>
 
-        <mat-card-title>
-            Cliente
-        </mat-card-title>
+        <h2>Reserva</h2>
 
-        <mat-card-content fxLayout='column'>
+        <div fxLayout='column'>
+
           <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+            <mat-form-field fxFlex="50" *ngIf="place">
+              <input matInput placeholder="Fecha Llegada" [(ngModel)]="place.name">
+            </mat-form-field>
+            <div class="status" matTooltip="{{status.name}}" *ngFor="let status of status_ids" [ngClass]="{'bs0': status == 0, 'bs1': status == 1, 'bs2': status == 2, 'bs3': status == 3, 'bs4': status == 4, 'bs5': status == 5, 'bs6': status == 6, 'bs7': status == 7, 'bs8': status == 8, 'bs9': status == 9, 'bs10': status == 10  }"></div>
+          </div>
 
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px" fxLayoutAlign="start end">
+
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Fecha Llegada" [value]="arrival_str | date: 'dd/MM/yyyy'">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Hora Llegada" type="time" [(ngModel)]="arrival_time">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="33">
+              <input matInput placeholder="Fecha Salida" [value]="departure_str | date: 'dd/MM/yyyy'">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Hora Ida" type="time" [(ngModel)]="departure_time">
+            </mat-form-field>
+
+          </div>
+
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+            <mat-form-field fxFlex=“50”>
+              <input matInput placeholder="Adultos" [(ngModel)]="adults">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="50">
+              <input matInput placeholder="Niños" [(ngModel)]="childrens">
+            </mat-form-field>
+          </div>
+
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+            <mat-form-field fxFlex=“50”>
+              <input matInput placeholder="Días" [(ngModel)]="days" readonly>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="50">
+              <input matInput placeholder="Noches" [(ngModel)]="nights" readonly>
+            </mat-form-field>
+          </div>
+
+          <h3>Cliente:</h3>
+
+          <div fxLayout="column" *ngIf="client">
+
+
+            <div fxLayout='row' fxFlex="100" fxLayoutGap="10px">
+
+              <mat-form-field fxFlex="34">
+                <input matInput placeholder="Rut" [value]='client.rut' readonly>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="33">
+                <input matInput placeholder="Nombre Completo" [value]='client.first_name + " " + client.last_name' readonly>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="33">
+                <input matInput placeholder="Email" [value]='client.email' readonly>
+              </mat-form-field>
+
+            </div>
+
+            <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+              <mat-form-field fxFlex="33">
+                <input matInput placeholder="Teléfono" [value]='client.phone' readonly>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="33">
+                <input matInput placeholder="Dirección" [value]='client.address' readonly>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="33">
+                <input matInput placeholder="Ciudad" [value]='client.city' readonly>
+              </mat-form-field>
+            </div>
+
+          </div>
+
+          <h3>Valores:</h3>
+
+          <div fxLayout="row">
+            <mat-form-field fxFlex="33">
+              <input matInput placeholder="Subtotal" [(ngModel)]="subtotal">
+            </mat-form-field>
+            <mat-form-field fxFlex="33">
+              <input matInput placeholder="Descuento (%)" [(ngModel)]="discount">
+            </mat-form-field>
             <mat-form-field fxFlex="34">
-              <input matInput placeholder="Rut" [value]='client.rut' readonly>
-            </mat-form-field>
-
-            <mat-form-field fxFlex="33">
-              <input matInput placeholder="Nombre Completo" [value]='client.first_name + " " + client.last_name' readonly>
-            </mat-form-field>
-
-            <mat-form-field fxFlex="33">
-              <input matInput placeholder="Email" [value]='client.email' readonly>
-            </mat-form-field>
-
-          </div>
-
-          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
-            <mat-form-field fxFlex="33">
-              <input matInput placeholder="Teléfono" [value]='client.phone' readonly>
-            </mat-form-field>
-
-            <mat-form-field fxFlex="33">
-              <input matInput placeholder="Dirección" [value]='client.address' readonly>
-            </mat-form-field>
-
-            <mat-form-field fxFlex="33">
-              <input matInput placeholder="Ciudad" [value]='client.city' readonly>
+              <input matInput placeholder="Total" [(ngModel)]="total" readonly>
             </mat-form-field>
           </div>
-          </mat-card-content>
 
-      </ng-container>
-
-        <div>
-        <mat-card-actions class="actions">
-          <button mat-raised-button matStepperPrevious>Volver</button>
-          <button mat-raised-button type="submit">Reservar</button>
-        </mat-card-actions>
         </div>
-          
+
+        <br>
+        <br>
+        <br>
+
+
+
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <button mat-raised-button matStepperPrevious>Volver</button>
+          <button mat-raised-button (click)="createBooking()">Confirmar Reserva</button>
+        </div>
+
       </mat-step>
     </mat-vertical-stepper>
   </mat-card>

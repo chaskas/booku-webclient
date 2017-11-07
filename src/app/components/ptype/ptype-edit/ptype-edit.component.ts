@@ -37,18 +37,19 @@ export class PtypeEditComponent implements OnInit {
       error =>    this._handleTokenError(error)
     );
 
-     }
+  }
 
-ngOnInit() {
-	this.createForm();
+  ngOnInit() {
+  	this.createForm();
 
-    this.route.params
-      .switchMap((params: Params) => this.ptypeService.getPType(+params['id']))
-      .subscribe(ptype => this._handleGetPlaceSuccess(ptype));
+      this.route.params
+        .switchMap((params: Params) => this.ptypeService.getPType(+params['id']))
+        .subscribe(ptype => this._handleGetPlaceSuccess(ptype));
   }
 
 
-  public openDialog() {
+  public openDialog()
+  {
     this.dialogsService
       .confirm('Confirmar', '¿Seguro que quiere eliminar?')
       .subscribe(res => this.deletePType(res));
@@ -86,24 +87,27 @@ ngOnInit() {
   {
     if(res) {
       this.ptypeService.deletePType(this.ptype.id).then((data) => {
-        this._router.navigate(['ptype/edit']);
+        this._router.navigate(['ptypes']);
       });
     }
   }
 
-   private _handleUpdateSuccess(data: any) {
+   private _handleUpdateSuccess(data: any)
+   {
     this.errors = null;
-    this.snackBar.open("Tipo Espacio actualizado correctamente", undefined, {
+    this.snackBar.open("Actualizado correctamente", undefined, {
       duration: 2000,
     });
-    this._router.navigate(['/ptype/list']);
+    this._router.navigate(['/ptypes']);
   }
 
-  private _handleError(error: any) {
+  private _handleError(error: any)
+  {
       this.errors = error.json().errors.full_messages;
-  } 
+  }
 
-  private _handleTokenError(error: any) {
+  private _handleTokenError(error: any)
+  {
     var config: MatSnackBarConfig = new MatSnackBarConfig();
     config.duration = 1000;
     this.snackBar.open("Su sesión ha expirado.", undefined, config);

@@ -70,9 +70,10 @@ export class PlaceNewComponent implements OnInit {
 
   private _handleUpdateSuccess(data: any) {
      this.errors = null;
-     this.snackBar.open("Espacio Registrado correctamente", "OK", {
+     this.snackBar.open("Creado correctamente", "OK", {
        duration: 2000,
      });
+     this._router.navigate(['/places']);
     }
 
 
@@ -81,7 +82,7 @@ export class PlaceNewComponent implements OnInit {
         duration: 2000,
       });
   }
-  
+
   private _handleTokenError(error: any) {
     var config: MatSnackBarConfig = new MatSnackBarConfig();
     config.duration = 1000;

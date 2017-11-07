@@ -73,7 +73,7 @@ export class BookingEditComponent implements OnInit {
   {
     this.bookingForm = this.formBuilder.group({
       arrival: [this.data.booking.arrival, [Validators.required]],
-      departure: [this.data.booking.arrival, [Validators.required]],
+      departure: [this.data.booking.departure, [Validators.required]],
       subtotal: [this.data.booking.subtotal, [Validators.required]],
       total: [this.data.booking.total, [Validators.required]],
       discount: [this.data.booking.discount, [Validators.required]],
@@ -116,7 +116,7 @@ export class BookingEditComponent implements OnInit {
   private calculateDates(){
 
     this.nights = moment(this.data.booking.departure).startOf('day').diff(moment(this.data.booking.arrival).startOf('day'), 'days');
-    this.days = moment(this.data.booking.departure).startOf('day').diff(moment(this.data.booking.arrival).startOf('day'), 'days') + 1;
+    this.days = this.nights + 1;
 
     this.minDate = moment(this.data.booking.arrival).startOf('day').format();
     this.maxDate = moment(this.data.booking.departure).endOf('day').format();
