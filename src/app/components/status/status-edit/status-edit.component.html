@@ -1,0 +1,33 @@
+<div class="container">
+  <form [formGroup]="statusForm" (submit)="updateStatus()">
+    <div fxLayout="row">
+      <ng-container *ngIf="status">
+        <mat-card class="full-width">
+
+          <mat-card-header>
+            <mat-card-title>Editar</mat-card-title>
+            <span class="fill-remaining-space"></span>
+            <button mat-button [routerLink]="['/statuses/list']">Volver</button>
+          </mat-card-header>
+
+        <mat-card-content fxLayout='column'>
+
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+            <mat-input-container fxFlex="100">
+              <input matInput placeholder="Nombre" formControlName="name" required>
+            </mat-input-container>
+          </div>
+
+          </mat-card-content>
+
+          <mat-card-actions class="actions">
+            <button mat-button type="button" (click)="openDialog()" confirm color="accent">Eliminar</button>
+            <button mat-raised-button type="submit" [disabled]="!statusForm.valid">Aceptar</button>
+          </mat-card-actions>
+
+        </mat-card>
+
+      </ng-container>
+    </div>
+  </form>
+</div>

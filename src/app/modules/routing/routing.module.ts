@@ -27,10 +27,15 @@ import { LoginComponent } from '../../components/session/login/login.component';
 import { RegisterComponent } from '../../components/session/register/register.component';
 import { LogoutComponent } from '../../components/session/logout/logout.component';
 
-
 // Booking
 import { BookingNewComponent } from '../../components/booking/booking-new/booking-new.component';
 import { BookingShowComponent } from '../../components/booking/booking-show/booking-show.component';
+
+//Status
+import { StatusNewComponent } from '../../components/status/status-new/status-new.component';
+import { StatusEditComponent } from '../../components/status/status-edit/status-edit.component';
+import { StatusListComponent } from '../../components/status/status-list/status-list.component';
+import { StatusDetailComponent } from '../../components/status/status-detail/status-detail.component';
 
  const routes: Routes = [
   {  path: '', component: LayoutComponent,
@@ -55,7 +60,13 @@ import { BookingShowComponent } from '../../components/booking/booking-show/book
          { path: 'agenda/monthly/:ptype', component: AgendaMonthlyComponent, canActivate: [Angular2TokenService] },
          // Booking
          { path: 'booking/new', component: BookingNewComponent, canActivate: [Angular2TokenService] },
-         { path: 'booking/:id', component: BookingShowComponent, canActivate: [Angular2TokenService] }
+         { path: 'booking/:id', component: BookingShowComponent, canActivate: [Angular2TokenService] },
+
+         //Status
+         { path: 'statuses/new', component: StatusNewComponent, canActivate: [Angular2TokenService] },
+         { path: 'statuses/list', component: StatusListComponent, canActivate: [Angular2TokenService] },
+         { path: 'statuses/edit/:id', component: StatusEditComponent, canActivate: [Angular2TokenService] },
+         { path: 'statuses/detail/:id', component: StatusDetailComponent, canActivate: [Angular2TokenService] }
        ]
   },
   { path: 'signin', component: LoginComponent },
