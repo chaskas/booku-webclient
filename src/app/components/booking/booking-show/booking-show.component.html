@@ -1,208 +1,230 @@
 <ng-container *ngIf="booking">
 
-  <mat-card>
+  <div fxLayout="column">
 
-    <mat-card-title fxLayout="row" fxLayoutAlign="space-between center">
-      <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center">
-        <span>Reserva</span>
-        <button mat-mini-fab *ngFor="let status of booking.statuses" matTooltip="{{status.name}}" [ngClass]="{'bs1': status.id == 1, 'bs2': status.id == 2, 'bs3': status.id == 3, 'bs4': status.id == 4, 'bs5': status.id == 5, 'bs6': status.id == 6, 'bs7': status.id == 7, 'bs8': status.id == 8, 'bs9': status.id == 9, 'bs10': status.id == 10  }"></button>
-      </div>
-      <div>
-        <a mat-raised-button href="{{ download_url }}" target="_blank"><mat-icon>file_download</mat-icon> Descargar Ficha</a>
-        <button mat-raised-button color="primary" (click)="openBookingEditDialog()">Editar</button>
-      </div>
-    </mat-card-title>
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <span class="by">Creada el {{ booking.created_at | date: 'dd/MM/yyyy HH:mm' }} por {{ booking.user.name }}</span>
+    </div>
 
-    <mat-card-content fxLayout='column'>
+    <br>
 
-      <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+    <div fxLayout="row">
 
-        <mat-form-field fxFlex="34">
-          <input matInput placeholder="Lugar" [value]="booking.place.capacity + 'P ' + booking.place.name" readonly>
-        </mat-form-field>
+    <mat-card fxLayout="column" fxFlex="100">
 
-        <mat-form-field fxFlex="33">
-          <input matInput placeholder="Llegada" [value]="arrival" readonly>
-        </mat-form-field>
-
-        <mat-form-field fxFlex="33">
-          <input matInput placeholder="Ida" [value]="departure" readonly>
-        </mat-form-field>
-
-      </div>
-
-      <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
-        <mat-form-field fxFlex="50">
-          <input matInput placeholder="Adultos" [value]="booking.adults" readonly>
-        </mat-form-field>
-
-        <mat-form-field fxFlex="50">
-          <input matInput placeholder="Niños" [value]="booking.childrens" readonly>
-        </mat-form-field>
-      </div>
-
-      <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
-        <mat-form-field fxFlex="50">
-          <input matInput placeholder="Días" [(ngModel)]="days" readonly>
-        </mat-form-field>
-
-        <mat-form-field fxFlex="50">
-          <input matInput placeholder="Noches" [(ngModel)]="nights" readonly>
-        </mat-form-field>
-      </div>
-
-    </mat-card-content>
-
-  </mat-card>
-
-  <br>
-
-  <mat-card>
-
-    <mat-card-title fxLayout="row" fxLayoutAlign="space-between center">
-      <div>
-        Cliente
-      </div>
-      <div>
-        <button mat-raised-button color="primary" [routerLink]="['/clients/edit',booking.client.id]">Editar</button>
-      </div>
-    </mat-card-title>
-
-    <mat-card-content fxLayout="column">
-
-      <div fxLayout="row" fxLayoutGap="10px">
-        <mat-form-field fxFlex="30">
-          <input matInput placeholder="Rut" [value]='booking.client.rut' readonly>
-        </mat-form-field>
-
-        <mat-form-field fxFlex="40">
-          <input matInput placeholder="Nombre Completo" [value]='booking.client.first_name + " " + booking.client.last_name' readonly>
-        </mat-form-field>
-
-        <mat-form-field fxFlex="30">
-          <input matInput placeholder="Teléfono" [value]='booking.client.phone' readonly>
-        </mat-form-field>
-      </div>
-
-      <div fxLayout="row" fxLayoutGap="10px">
-        <mat-form-field fxFlex="30">
-          <input matInput placeholder="Email" [value]='booking.client.email' readonly>
-        </mat-form-field>
-
-        <mat-form-field fxFlex="40">
-          <input matInput placeholder="Dirección" [value]='booking.client.address' readonly>
-        </mat-form-field>
-
-        <mat-form-field fxFlex="30">
-          <input matInput placeholder="Ciudad" [value]='booking.client.city' readonly>
-        </mat-form-field>
-      </div>
-
-      <div fxLayout="column" *ngIf="booking.client.car_license">
-
-        <h3>Vehículo</h3>
-
-        <div fxLayout="column">
-
-          <div fxLayout="row" fxLayoutGap="10px">
-            <mat-form-field fxFlex="50">
-              <input matInput placeholder="Patente" [value]='booking.client.car_license' readonly>
-            </mat-form-field>
-
-            <mat-form-field fxFlex="50">
-              <input matInput placeholder="Marca" [value]='booking.client.car_brand' readonly>
-            </mat-form-field>
-          </div>
-
-          <div fxLayout="row" fxLayoutGap="10px">
-            <mat-form-field fxFlex="50">
-              <input matInput placeholder="Modelo" [value]='booking.client.car_model' readonly>
-            </mat-form-field>
-
-            <mat-form-field fxFlex="50">
-              <input matInput placeholder="Color" [value]='booking.client.car_color' readonly>
-            </mat-form-field>
-          </div>
-
+      <mat-card-title fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center">
+          <span>Reserva</span>
+          <button mat-mini-fab *ngFor="let status of booking.statuses" matTooltip="{{status.name}}" [ngClass]="{'bs1': status.id == 1, 'bs2': status.id == 2, 'bs3': status.id == 3, 'bs4': status.id == 4, 'bs5': status.id == 5, 'bs6': status.id == 6, 'bs7': status.id == 7, 'bs8': status.id == 8, 'bs9': status.id == 9, 'bs10': status.id == 10  }"></button>
         </div>
-
-      </div>
-
-    </mat-card-content>
-
-  </mat-card>
-
-  <br>
-
-  <mat-card>
-
-    <mat-card-title fxLayout="row" fxLayoutAlign="start center">
-      <div>
-        Información Financiera
-      </div>
-    </mat-card-title>
-
-    <mat-card-content fxLayout="column">
-
-      <div fxLayout="row" fxLayoutGap="10px">
-        <mat-form-field fxFlex="25">
-          <input matInput placeholder="Sub Total" [value]="booking.subtotal | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL'" readonly>
-        </mat-form-field>
-
-        <mat-form-field fxFlex="25">
-          <input matInput placeholder="% Descuento" [value]='booking.discount' type="number" readonly>
-        </mat-form-field>
-
-        <mat-form-field fxFlex="25">
-          <input matInput placeholder="Total" [value]="booking.total | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL'" readonly>
-        </mat-form-field>
-
-        <mat-form-field fxFlex="25">
-          <input matInput placeholder="Saldo Pendiente" [value]="booking.pending | currency: 'CLP' : 'symbol-narrow' : '1.0-0': 'es-CL'" readonly>
-        </mat-form-field>
-      </div>
-
-      <br>
-
-      <div fxLayout="row" fxLayoutAlign="space-between center">
-        <h3>
-          Historial de Pagos
-        </h3>
         <div>
-          <button mat-raised-button color="primary" *ngIf="booking.pending > 0" (click)="openPaymentNewDialog()">Agregar Pago</button>
+          <a mat-raised-button href="{{ download_url }}" target="_blank"><mat-icon>file_download</mat-icon> Descargar Ficha</a>
+          <button mat-raised-button color="primary" (click)="openBookingEditDialog()">Editar</button>
         </div>
-      </div>
+      </mat-card-title>
 
-      <div fxLayout="row">
+      <mat-card-content fxLayout='column'>
 
-        <mat-table #table [dataSource]="paymentDataSource" fxFlex="100">
-          <ng-container cdkColumnDef="date">
-            <mat-header-cell *cdkHeaderCellDef> Fecha </mat-header-cell>
-            <mat-cell *cdkCellDef="let row">{{ row.created_at | date: 'dd/MM/yy HH:mm' }}</mat-cell>
-          </ng-container>
+        <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
 
-          <ng-container cdkColumnDef="bill">
-            <mat-header-cell *cdkHeaderCellDef> Boleta / Factura </mat-header-cell>
-            <mat-cell *cdkCellDef="let row">{{ row.bill }}</mat-cell>
-          </ng-container>
+          <mat-form-field fxFlex="34">
+            <input matInput placeholder="Lugar" [value]="booking.place.capacity + 'P ' + booking.place.name" readonly>
+          </mat-form-field>
 
-          <ng-container cdkColumnDef="method">
-            <mat-header-cell *cdkHeaderCellDef> Método de Pago </mat-header-cell>
-            <mat-cell *cdkCellDef="let row">{{ methods[row.method] }}</mat-cell>
-          </ng-container>
+          <mat-form-field fxFlex="33">
+            <input matInput placeholder="Llegada" [value]="arrival" readonly>
+          </mat-form-field>
 
-          <ng-container cdkColumnDef="amount">
-            <mat-header-cell *cdkHeaderCellDef> Monto </mat-header-cell>
-            <mat-cell *cdkCellDef="let row">{{ row.amount | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL' }}</mat-cell>
-          </ng-container>
+          <mat-form-field fxFlex="33">
+            <input matInput placeholder="Ida" [value]="departure" readonly>
+          </mat-form-field>
 
-          <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-      </div>
+        </div>
 
-    </mat-card-content>
+        <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="Adultos" [value]="booking.adults" readonly>
+          </mat-form-field>
 
-  </mat-card>
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="Niños" [value]="booking.childrens" readonly>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="Días" [(ngModel)]="days" readonly>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="Noches" [(ngModel)]="nights" readonly>
+          </mat-form-field>
+        </div>
+
+      </mat-card-content>
+
+    </mat-card>
+
+    </div>
+
+    <br>
+
+    <div fxLayout="row">
+
+    <mat-card fxFlex="100">
+
+      <mat-card-title fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+          Cliente
+        </div>
+        <div>
+          <button mat-raised-button color="primary" [routerLink]="['/clients/edit',booking.client.id]">Editar</button>
+        </div>
+      </mat-card-title>
+
+      <mat-card-content fxLayout="column">
+
+        <div fxLayout="row" fxLayoutGap="10px">
+          <mat-form-field fxFlex="30">
+            <input matInput placeholder="Rut" [value]='booking.client.rut' readonly>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="40">
+            <input matInput placeholder="Nombre Completo" [value]='booking.client.first_name + " " + booking.client.last_name' readonly>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="30">
+            <input matInput placeholder="Teléfono" [value]='booking.client.phone' readonly>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="10px">
+          <mat-form-field fxFlex="30">
+            <input matInput placeholder="Email" [value]='booking.client.email' readonly>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="40">
+            <input matInput placeholder="Dirección" [value]='booking.client.address' readonly>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="30">
+            <input matInput placeholder="Ciudad" [value]='booking.client.city' readonly>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="column" *ngIf="booking.client.car_license">
+
+          <h3>Vehículo</h3>
+
+          <div fxLayout="column">
+
+            <div fxLayout="row" fxLayoutGap="10px">
+              <mat-form-field fxFlex="50">
+                <input matInput placeholder="Patente" [value]='booking.client.car_license' readonly>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="50">
+                <input matInput placeholder="Marca" [value]='booking.client.car_brand' readonly>
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="10px">
+              <mat-form-field fxFlex="50">
+                <input matInput placeholder="Modelo" [value]='booking.client.car_model' readonly>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="50">
+                <input matInput placeholder="Color" [value]='booking.client.car_color' readonly>
+              </mat-form-field>
+            </div>
+
+          </div>
+
+        </div>
+
+      </mat-card-content>
+
+    </mat-card>
+
+    </div>
+
+    <br>
+
+    <div fxLayout="row">
+
+    <mat-card fxFlex="100">
+
+      <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+        <div>
+          Información Financiera
+        </div>
+      </mat-card-title>
+
+      <mat-card-content fxLayout="column">
+
+        <div fxLayout="row" fxLayoutGap="10px">
+          <mat-form-field fxFlex="25">
+            <input matInput placeholder="Sub Total" [value]="booking.subtotal | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL'" readonly>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="25">
+            <input matInput placeholder="% Descuento" [value]='booking.discount' type="number" readonly>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="25">
+            <input matInput placeholder="Total" [value]="booking.total | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL'" readonly>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="25">
+            <input matInput placeholder="Saldo Pendiente" [value]="booking.pending | currency: 'CLP' : 'symbol-narrow' : '1.0-0': 'es-CL'" readonly>
+          </mat-form-field>
+        </div>
+
+        <br>
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <h3>
+            Historial de Pagos
+          </h3>
+          <div>
+            <button mat-raised-button color="primary" *ngIf="booking.pending > 0" (click)="openPaymentNewDialog()">Agregar Pago</button>
+          </div>
+        </div>
+
+        <div fxLayout="row">
+
+          <mat-table #table [dataSource]="paymentDataSource" fxFlex="100">
+            <ng-container cdkColumnDef="date">
+              <mat-header-cell *cdkHeaderCellDef> Fecha </mat-header-cell>
+              <mat-cell *cdkCellDef="let row">{{ row.created_at | date: 'dd/MM/yy HH:mm' }}</mat-cell>
+            </ng-container>
+
+            <ng-container cdkColumnDef="bill">
+              <mat-header-cell *cdkHeaderCellDef> Boleta / Factura </mat-header-cell>
+              <mat-cell *cdkCellDef="let row">{{ row.bill }}</mat-cell>
+            </ng-container>
+
+            <ng-container cdkColumnDef="method">
+              <mat-header-cell *cdkHeaderCellDef> Método de Pago </mat-header-cell>
+              <mat-cell *cdkCellDef="let row">{{ methods[row.method] }}</mat-cell>
+            </ng-container>
+
+            <ng-container cdkColumnDef="amount">
+              <mat-header-cell *cdkHeaderCellDef> Monto </mat-header-cell>
+              <mat-cell *cdkCellDef="let row">{{ row.amount | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL' }}</mat-cell>
+            </ng-container>
+
+            <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </div>
+
+      </mat-card-content>
+
+    </mat-card>
+
+    </div>
+
+  </div>
 
 </ng-container>

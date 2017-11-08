@@ -1,6 +1,7 @@
 import { Client } from './client';
 import { Place } from './place';
 import { Status } from './status';
+import { User } from './user';
 
 export class Booking {
 
@@ -20,5 +21,5 @@ export class Booking {
 	updated_at: string;
 	client: Client;
 	place: Place;
-
+	user: User;
 }

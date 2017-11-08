@@ -70,7 +70,7 @@ export class NewComponent implements OnInit {
 
 	private _handleUpdateSuccess(data: any) {
 	   this.errors = null;
-	   this.snackBar.open("Miembro Registrado correctamente", "OK", {
+	   this.snackBar.open("Cliente creado correctamente", "OK", {
 	     duration: 2000,
 	   });
      this._router.navigate(['/clients/']);
@@ -83,7 +83,7 @@ export class NewComponent implements OnInit {
         duration: 2000,
       });
   }
-  
+
   private _handleTokenError(error: any) {
     var config: MatSnackBarConfig = new MatSnackBarConfig();
     config.duration = 1000;
