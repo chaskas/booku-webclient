@@ -82,7 +82,8 @@ export class ListComponent implements OnInit {
   {
     if(res) {
       this.clientService.deleteClient(id).then((data) => {
-        this._router.navigate(['/clients/']);
+        this._clientsDatabase = new ClientsDatabase(this.route, this.clientService);
+        this.dataSource = new ClientDataSource(this._clientsDatabase, this.sort, this.paginator);
       });
     }
   }  

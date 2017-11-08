@@ -71,13 +71,13 @@
 
             <div fxLayout="row">
               <mat-form-field fxFlex="33">
-                <input matInput placeholder="Subtotal" formControlName="subtotal" [(ngModel)]="subtotal">
+                <input matInput placeholder="Subtotal" formControlName="subtotal" [(ngModel)]="subtotal" [value]="subtotal | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL'" >
               </mat-form-field>
               <mat-form-field fxFlex="33">
                 <input matInput placeholder="Descuento (%)" formControlName="discount" [(ngModel)]="discount" (ngModelChange)="calculateTotal()">
               </mat-form-field>
               <mat-form-field fxFlex="34">
-                <input matInput placeholder="Total" formControlName="total" [(ngModel)]="total" readonly>
+                <input matInput placeholder="Total" formControlName="total" [(ngModel)]="total" [value]="total | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL'" readonly>
               </mat-form-field>
             </div>
 
@@ -287,13 +287,13 @@
 
           <div fxLayout="row">
             <mat-form-field fxFlex="33">
-              <input matInput placeholder="Subtotal" [(ngModel)]="subtotal">
+              <input matInput placeholder="Subtotal" [ngModel]="subtotal | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL'"  readonly>
             </mat-form-field>
             <mat-form-field fxFlex="33">
               <input matInput placeholder="Descuento (%)" [(ngModel)]="discount">
             </mat-form-field>
             <mat-form-field fxFlex="34">
-              <input matInput placeholder="Total" [(ngModel)]="total" readonly>
+              <input matInput placeholder="Total" [ngModel]="total | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL'" readonly>
             </mat-form-field>
           </div>
 

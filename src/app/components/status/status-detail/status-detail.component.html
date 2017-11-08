@@ -1,9 +1,7 @@
 <div class="container">
-  <div fxLayout="column">
     <ng-container *ngIf="status">
-      <div fxLayout="row">
-        <mat-card class="full-width" >
-          <mat-card-header>
+        <mat-card>
+          <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
             <mat-card-title>Detalle</mat-card-title>
             <span class="fill-remaining-space"></span>
             <button mat-button [routerLink]="['/statuses/list']">Volver</button>
@@ -18,12 +16,10 @@
           </div>
         </mat-card-content>
 
-        <mat-card-actions class="actions">
+        <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
             <button [routerLink]="['/statuses/edit',status.id]" mat-button type="button">Editar Estado</button>
         </mat-card-actions>
 
         </mat-card>
-      </div>
     </ng-container>
-  </div>
 </div>

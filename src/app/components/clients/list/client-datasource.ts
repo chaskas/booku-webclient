@@ -32,7 +32,7 @@ export class ClientDataSource extends DataSource<any> {
       var data = this.getSortedData();
 
       data = data.slice().filter((item: Client) => {
-        let searchStr = (item.first_name + " " + item.last_name).toLowerCase();
+        let searchStr = (item.first_name + item.last_name + item.rut + item.phone).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) != -1;
       });
 

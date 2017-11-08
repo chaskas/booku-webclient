@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
-
+import { MatAutocompleteModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
 import { MatRadioModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
@@ -66,7 +66,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatTooltipModule,
     MatMomentDateModule,
     NoConflictStyleCompatibilityMode,
-    CompatibilityModule
+    CompatibilityModule,
+    MatAutocompleteModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -97,7 +98,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatTooltipModule,
     MatMomentDateModule,
     NoConflictStyleCompatibilityMode,
-    CompatibilityModule
+    CompatibilityModule,
+    MatAutocompleteModule
   ],
   declarations: []
 })
