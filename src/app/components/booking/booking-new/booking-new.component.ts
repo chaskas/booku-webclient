@@ -88,7 +88,7 @@ export class BookingNewComponent implements OnInit {
     private _tokenService: Angular2TokenService
 
   	) {
-
+      moment.locale('es-CL');
       this.place = new Place();
       this.status_ids = new Array<number>();
 
@@ -101,7 +101,7 @@ export class BookingNewComponent implements OnInit {
       this.departure_time = moment("11:00", "HH:mm").format('HH:mm');
 
       this.statusService.getStatuses().then(statuses => this.statuses = statuses);
-
+      
     }
 
   ngOnInit()

@@ -1,15 +1,13 @@
 <div class="container">
+
   <form [formGroup]="statusForm" (submit)="createStatus()">
-    <div fxLayout="row">
+        <mat-card>
 
-        <mat-card class="full-width">
-
-          <mat-card-header>
+          <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
             <mat-card-title>Nuevo Estado</mat-card-title>
             <span class="fill-remaining-space"></span>
-            <button mat-button routerLink="">Volver</button>
+            <button mat-button routerLink="/statuses/list">Volver</button>
           </mat-card-header>
-
 
         <mat-card-content fxLayout='column'>
 
@@ -21,12 +19,10 @@
 
         </mat-card-content>
 
-        <mat-card-actions class="actions">         
+        <mat-card-actions fxLayout="row" fxLayoutAlign="end center">         
           <button mat-raised-button type="submit" [disabled]="!statusForm.valid">Aceptar</button>
         </mat-card-actions>
 
     </mat-card>
-
-    </div>
   </form>
 </div>
