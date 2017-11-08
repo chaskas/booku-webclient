@@ -1,5 +1,5 @@
 export class Client{
-	
+
 	id: number;
 	rut: string;
 	first_name: string;
@@ -10,6 +10,7 @@ export class Client{
 	phone: string;
 	car_license: string;
 	car_brand: string;
-	car_model: string; 
-	car_color: string; 
+	car_model: string;
+	car_color: string;
+
 }

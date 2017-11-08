@@ -2,6 +2,10 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params }   from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/map';
+
 import { MatStepperModule } from '@angular/material';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { MatDatepicker } from '@angular/material';
@@ -75,6 +79,9 @@ export class BookingNewComponent implements OnInit {
   @ViewChild(MatDatepicker) arrival: MatDatepicker<Moment>;
   @ViewChild(MatDatepicker) departure: MatDatepicker<Moment>;
 
+  clientAutoControl = new FormControl();
+  filteredClients: Observable<Client[]>;
+
   constructor(
     private rv: RutValidator,
     public snackBar: MatSnackBar,
@@ -87,22 +94,41 @@ export class BookingNewComponent implements OnInit {
     private _router: Router,
     private _tokenService: Angular2TokenService
 
-  	) {
+  ) {
 
-      this.place = new Place();
-      this.status_ids = new Array<number>();
+    this.place = new Place();
+    this.status_ids = new Array<number>();
 
-      this._tokenService.validateToken().subscribe(
-        res =>      console.log("Token Valid!"),
-        error =>    this._handleTokenError(error)
-      );
+    this._tokenService.validateToken().subscribe(
+      res =>      console.log("Token Valid!"),
+      error =>    this._handleTokenError(error)
+    );
 
-      this.arrival_time   = moment("15:00", "HH:mm").format('HH:mm');
-      this.departure_time = moment("11:00", "HH:mm").format('HH:mm');
+    this.arrival_time   = moment("15:00", "HH:mm").format('HH:mm');
+    this.departure_time = moment("11:00", "HH:mm").format('HH:mm');
 
-      this.statusService.getStatuses().then(statuses => this.statuses = statuses);
+    this.statusService.getStatuses().then(statuses => this.statuses = statuses);
+
+  }
+
+  filter(rut: string): Client[] {
+
+    if(typeof this.clientAutoControl.value === 'object'){
+
+      this.client_id = this.clientAutoControl.value.id;
+      this.bookingForm.patchValue({ 'client_id': this.client_id });
 
     }
+
+
+    return this.clients.filter(client =>
+      client.rut.toLowerCase().indexOf(rut.toLowerCase()) === 0);
+
+  }
+
+  displayFn(client: Client): string {
+    return client ? client.rut + " " + client.first_name + " " + client.last_name : client;
+  }
 
   ngOnInit()
   {
@@ -114,8 +140,18 @@ export class BookingNewComponent implements OnInit {
     this.createBookingForm();
     this.createClientForm();
 
-    this.clientService.getClients().then(clients => this.clients = clients);
+    this.clientService.getClients().then(clients => this.handleGetClientsSuccess(clients));
 
+  }
+
+  private handleGetClientsSuccess(clients: Client[])
+  {
+    this.clients = clients;
+
+    this.filteredClients = this.clientAutoControl.valueChanges
+      .startWith(null)
+      .map(client => client && typeof client === 'object' ? client.rut : client)
+      .map(rut => rut ? this.filter(rut) : this.clients.slice());
   }
 
   handleParams(params: Params)

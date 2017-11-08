@@ -109,9 +109,12 @@
             <mat-radio-group [(ngModel)]="newClient" fxLayout="column">
               <mat-radio-button value="1" fxFlex="70px" fxLayout="row">
                 <mat-form-field [floatPlaceholder]="'never'">
-                  <mat-select [(ngModel)]="client_id">
-                    <mat-option *ngFor="let client of clients" [value]="client.id">{{ client.first_name }} {{client.last_name}}</mat-option>
-                  </mat-select>
+                  <input type="text" matInput [formControl]="clientAutoControl" [matAutocomplete]="auto">
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let client of filteredClients | async" [value]="client">
+                      {{ client.rut + " " + client.first_name + " " + client.last_name }}
+                    </mat-option>
+                  </mat-autocomplete>
                   <mat-placeholder>Seleccione...</mat-placeholder>
                 </mat-form-field>
               </mat-radio-button>
