@@ -64,7 +64,10 @@ export class PlaceNewComponent implements OnInit {
       opening: ['', [Validators.required]],
       closing: ['', [Validators.required]],
       name: ['', [Validators.required]],
-      ptype_id: ['', [Validators.required]]
+      ptype_id: ['', [Validators.required]],
+      extra_night: [''],
+      extra_passenger: [''],
+      dsep: ['']
     });
 	}
 

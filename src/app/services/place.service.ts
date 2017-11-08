@@ -28,6 +28,9 @@ export class PlaceService {
                       name: place.name,
                       capacity: place.capacity,
                       price: place.price,
+                      extra_night: place.extra_night,
+                      extra_passenger: place.extra_passenger,
+                      dsep: place.dsep,
                       opening: place.opening,
                       closing: place.closing
                     });
@@ -77,6 +80,9 @@ export class PlaceService {
                           name: place.name,
                           capacity: place.capacity,
                           price: place.price,
+                          extra_night: place.extra_night,
+                          extra_passenger: place.extra_passenger,
+                          dsep: place.dsep,
                           opening: place.opening,
                           closing: place.closing
                         });

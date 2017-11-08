@@ -1,8 +1,8 @@
 <div class="container">
-
+<form [formGroup]="placeForm" (submit)="createPlace()">
   <mat-card>
 
-    <form [formGroup]="placeForm" (submit)="createPlace()">
+
 
       <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
         <mat-card-title>Nuevo Espacio</mat-card-title>
@@ -14,7 +14,7 @@
       <div fxLayout='row' fxLayoutGap="10px" fxLayoutAlign="space-between end">
 
         <mat-input-container fxFlex="34">
-        <mat-select placeholder="Tipo Espacio" formControlName="ptype_id" required>
+        <mat-select placeholder="Tipo Espacio" formControlName="ptype_id" [(ngModel)]="ptype" required>
         <mat-option *ngFor="let ptype of ptypes" [value]="ptype.id">{{ptype.name}}</mat-option>
         </mat-select>
         </mat-input-container>
@@ -29,32 +29,49 @@
 
       </div>
 
+      <div fxLayout='row' fxLayoutGap="10px">
+        <mat-input-container fxFlex="50">
+          <input matInput placeholder="Nombre" formControlName="name" required>
+        </mat-input-container>
 
-      <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
-      <mat-input-container fxFlex="34">
-      <input matInput placeholder="Nombre" formControlName="name" required>
-      </mat-input-container>
+        <mat-input-container fxFlex="50">
+          <input matInput type="number" placeholder="Capacidad" formControlName="capacity" required>
+        </mat-input-container>
 
-      <mat-input-container fxFlex="33">
-      <input matInput type="number" placeholder="Capacidad" formControlName="capacity" required>
-      </mat-input-container>
-
-      <mat-input-container fxFlex="33">
-      <input matInput type="number" placeholder="Precio" formControlName="price" required>
-      </mat-input-container>
       </div>
+
+      <ng-container *ngIf="ptype == 1">
+
+        <div fxLayout="row" fxLayoutGap="10px">
+          <mat-input-container fxFlex="50">
+            <input matInput type="number" placeholder="Precio" formControlName="price" required>
+          </mat-input-container>
+          <mat-input-container fxFlex="50">
+            <input matInput type="number" placeholder="Precio Siguiente Noche" formControlName="extra_night">
+          </mat-input-container>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="10px">
+          <mat-input-container fxFlex="50">
+            <input matInput type="number" placeholder="Persona Adicional" formControlName="extra_passenger">
+          </mat-input-container>
+          <mat-input-container fxFlex="50">
+            <input matInput type="number" placeholder="Extensión Horaria" formControlName="dsep">
+          </mat-input-container>
+        </div>
+
+      </ng-container>
 
       </mat-card-content>
 
-      <mat-card-actions class="actions">
-      <button mat-raised-button type="submit" [disabled]="!placeForm.valid">Aceptar</button>
-
+      <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button type="submit" [disabled]="!placeForm.valid">Aceptar</button>
       </mat-card-actions>
 
-    </form>
+
 
   </mat-card>
 
-
+  </form>
 
 </div>
