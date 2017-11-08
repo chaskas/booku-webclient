@@ -15,11 +15,13 @@ import { RutValidator } from '../../../utils/rut/ng2-rut.module';
 import { rutClean } from 'rut-helpers';
 
 import { ClientService } from '../../../services/client.service';
+import { BookingService } from '../../../services/booking.service';
 import { PlaceService } from '../../../services/place.service';
 import { StatusService } from '../../../services/status.service';
 import { Angular2TokenService } from 'angular2-token';
 
 import { Client } from '../../../model/client';
+import { Booking } from '../../../model/booking';
 import { Status } from '../../../model/status';
 import { Place } from '../../../model/place';
 
@@ -78,6 +80,7 @@ export class BookingNewComponent implements OnInit {
     public snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private clientService: ClientService,
+    private bookingService: BookingService,
     private statusService: StatusService,
     private placeService: PlaceService,
   	private formBuilder: FormBuilder,
@@ -151,12 +154,9 @@ export class BookingNewComponent implements OnInit {
     this.clientService.getClients().then(clients => this.handleCreateClientSuccess(clients));
 
     this.client_id = data.id;
-    this.bookingForm.value.client_id = data.id;
 
     this.errors = null;
-    this.snackBar.open("Miembro Registrado correctamente", "OK", {
-     duration: 2000,
-    });
+
 
   }
 
@@ -165,10 +165,15 @@ export class BookingNewComponent implements OnInit {
     this.clients = clients;
 
     this.newClient = 1;
+
+    this.snackBar.open("Miembro Registrado correctamente", "OK", {
+     duration: 2000,
+    });
+
   }
 
   private _handleError(error: any) {
-      this.snackBar.open(error.json()['rut'], null, {
+      this.snackBar.open(error.json(), null, {
         duration: 2000,
       });
   }
@@ -188,6 +193,9 @@ export class BookingNewComponent implements OnInit {
     var checkDigit = (s > 0) ? String((s - 1)) : 'K';
 
     client.rut = client.rut + "-" + checkDigit;
+
+    this.bookingForm.patchValue({ 'client_id': this.client.id});
+
   }
 
   private _handleTokenError(error: any) {
@@ -264,7 +272,18 @@ export class BookingNewComponent implements OnInit {
 
   private createBooking()
   {
-    console.log(this.bookingForm.value);
+    this.bookingService.createBooking(this.bookingForm.value).then(
+      booking => this.handleCreateBookingSuccess(booking),
+      error =>    this._handleError(error)
+    );
+  }
+
+  private handleCreateBookingSuccess(booking: Booking)
+  {
+    this.snackBar.open("Reserva creada correctamente", "OK", {
+     duration: 2000,
+    });
+    this._router.navigate(['/booking/', booking.id]);
   }
 
   private createBookingForm()

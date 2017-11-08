@@ -4,6 +4,8 @@ import 'rxjs/add/operator/toPromise';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
+import { Angular2TokenService } from 'angular2-token';
+
 import { AppConfig } from '../config/app-config';
 import { Booking } from '../model/booking';
 import { Matrix } from '../model/matrix';
@@ -16,11 +18,14 @@ export class BookingService {
 
   constructor(
     private http: Http,
+    private tokenService: Angular2TokenService,
     private config: AppConfig
   ) { }
 
   createBooking(booking: Booking) : Promise<Booking>
 	{
+
+    let url = 'bookings';
 
     let body = JSON.stringify({
                           arrival: booking.arrival,
@@ -35,10 +40,7 @@ export class BookingService {
                           place_id: booking.place_id
                         });
 
-    let headers      = new Headers({ 'Content-Type': 'application/json' });
-    let options      = new RequestOptions({ headers: headers });
-
-    return this.http.post(this.url, body, options)
+    return this.tokenService.post(url, body)
               .toPromise()
               .then(response => response.json() as Booking)
               .catch(this.handleError);
