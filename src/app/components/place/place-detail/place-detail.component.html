@@ -16,8 +16,9 @@
         <mat-card-content fxLayout='column'>
 
           <div fxLayout='row' fxFlex="100" fxLayoutGap="10px">
+
             <mat-input-container fxFlex="34">
-              <input matInput placeholder="Nombre" [value]="place.name" readonly>
+              <input matInput placeholder="Tipo Espacio" [value]="place.ptype.name" readonly>
             </mat-input-container>
 
             <mat-input-container fxFlex="33">
@@ -30,11 +31,15 @@
           </div>
 
           <div fxLayout='row' fxFlex="100" fxLayoutGap="10px">
-            <mat-input-container fxFlex="50">
+            <mat-input-container fxFlex="34">
+              <input matInput placeholder="Nombre" [value]="place.name" readonly>
+            </mat-input-container>
+
+            <mat-input-container fxFlex="33">
               <input matInput placeholder="Capacidad" [value]="place.capacity" readonly>
             </mat-input-container>
 
-            <mat-input-container fxFlex="50">
+            <mat-input-container fxFlex="33">
               <input matInput placeholder="Precio" [value]="place.price" readonly>
             </mat-input-container>
           </div>
@@ -42,19 +47,16 @@
           <ng-container *ngIf="place.ptype_id == 1">
 
             <div fxLayout="row" fxLayoutGap="10px">
-              <mat-input-container fxFlex="50">
-                <input matInput type="number" placeholder="Precio" [value]="place.price" readonly>
-              </mat-input-container>
-              <mat-input-container fxFlex="50">
+
+              <mat-input-container fxFlex="34">
                 <input matInput type="number" placeholder="Precio Siguiente Noche" [value]="place.extra_night" readonly>
               </mat-input-container>
-            </div>
 
-            <div fxLayout="row" fxLayoutGap="10px">
-              <mat-input-container fxFlex="50">
+              <mat-input-container fxFlex="33">
                 <input matInput type="number" placeholder="Persona Adicional" [value]="place.extra_passenger" readonly>
               </mat-input-container>
-              <mat-input-container fxFlex="50">
+
+              <mat-input-container fxFlex="33">
                 <input matInput type="number" placeholder="Extensión Horaria" [value]="place.dsep" readonly>
               </mat-input-container>
             </div>
