@@ -52,10 +52,10 @@ export class PlaceEditComponent implements OnInit {
       .switchMap((params: Params) => this.placeService.getPlace(+params['id']))
       .subscribe(place => this._handleGetPlaceSuccess(place));
 
-       this.ptypeService.getPTypes().then(
-       ptypes => this.ptypes = ptypes,
-       errors => this._handleError(errors)
-      )
+      this.ptypeService.getPTypes().then(
+        ptypes => this.ptypes = ptypes,
+        errors => this._handleError(errors)
+      );
   }
   public openDialog() {
     this.dialogsService
@@ -72,7 +72,10 @@ export class PlaceEditComponent implements OnInit {
       opening: ['', [Validators.required]],
       closing: ['', [Validators.required]],
       name: ['', [Validators.required]],
-      ptype_id: ['', [Validators.required]]
+      ptype_id: ['', [Validators.required]],
+      extra_night: [''],
+      extra_passenger: [''],
+      dsep: ['']
     });
 	}
 
@@ -86,8 +89,10 @@ export class PlaceEditComponent implements OnInit {
       opening: new Date(place.opening).toTimeString().split(' ')[0],
       closing: new Date(place.closing).toTimeString().split(' ')[0],
       name: place.name,
-      ptype_id: place.ptype_id
-
+      ptype_id: place.ptype_id,
+      extra_night: place.extra_night,
+      extra_passenger: place.extra_passenger,
+      dsep: place.dsep
     });
   }
 

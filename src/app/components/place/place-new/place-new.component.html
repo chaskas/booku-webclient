@@ -14,7 +14,7 @@
       <div fxLayout='row' fxLayoutGap="10px" fxLayoutAlign="space-between end">
 
         <mat-input-container fxFlex="34">
-        <mat-select placeholder="Tipo Espacio" formControlName="ptype_id" [(ngModel)]="ptype" required>
+        <mat-select placeholder="Tipo Espacio" formControlName="ptype_id" required>
         <mat-option *ngFor="let ptype of ptypes" [value]="ptype.id">{{ptype.name}}</mat-option>
         </mat-select>
         </mat-input-container>
@@ -30,32 +30,32 @@
       </div>
 
       <div fxLayout='row' fxLayoutGap="10px">
-        <mat-input-container fxFlex="50">
+        <mat-input-container fxFlex="34">
           <input matInput placeholder="Nombre" formControlName="name" required>
         </mat-input-container>
 
-        <mat-input-container fxFlex="50">
+        <mat-input-container fxFlex="33">
           <input matInput type="number" placeholder="Capacidad" formControlName="capacity" required>
+        </mat-input-container>
+
+        <mat-input-container fxFlex="33">
+          <input matInput type="number" placeholder="Precio" formControlName="price" required>
         </mat-input-container>
 
       </div>
 
-      <ng-container *ngIf="ptype == 1">
+      <ng-container *ngIf="placeForm.value['ptype_id'] == 1">
 
         <div fxLayout="row" fxLayoutGap="10px">
-          <mat-input-container fxFlex="50">
-            <input matInput type="number" placeholder="Precio" formControlName="price" required>
-          </mat-input-container>
-          <mat-input-container fxFlex="50">
+          <mat-input-container fxFlex="34">
             <input matInput type="number" placeholder="Precio Siguiente Noche" formControlName="extra_night">
           </mat-input-container>
-        </div>
 
-        <div fxLayout="row" fxLayoutGap="10px">
-          <mat-input-container fxFlex="50">
+          <mat-input-container fxFlex="33">
             <input matInput type="number" placeholder="Persona Adicional" formControlName="extra_passenger">
           </mat-input-container>
-          <mat-input-container fxFlex="50">
+
+          <mat-input-container fxFlex="33">
             <input matInput type="number" placeholder="Extensión Horaria" formControlName="dsep">
           </mat-input-container>
         </div>

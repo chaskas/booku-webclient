@@ -45,6 +45,24 @@
              </mat-input-container>
           </div>
 
+          <ng-container *ngIf="placeForm.value['ptype_id'] == 1">
+
+            <div fxLayout="row" fxLayoutGap="10px">
+              <mat-input-container fxFlex="34">
+                <input matInput type="number" placeholder="Precio Siguiente Noche" formControlName="extra_night">
+              </mat-input-container>
+
+              <mat-input-container fxFlex="33">
+                <input matInput type="number" placeholder="Persona Adicional" formControlName="extra_passenger">
+              </mat-input-container>
+
+              <mat-input-container fxFlex="33">
+                <input matInput type="number" placeholder="Extensión Horaria" formControlName="dsep">
+              </mat-input-container>
+            </div>
+
+          </ng-container>
+
         </mat-card-content>
 
           <mat-card-actions class="actions">
