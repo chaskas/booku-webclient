@@ -65,6 +65,7 @@ export class BookingNewComponent implements OnInit {
   places: Place[];
   statuses: Status[];
   status_ids: Array<number>;
+  bookingStatuses: Status[];
 
   adults: number = 0;
   childrens: number = 0;
@@ -96,6 +97,8 @@ export class BookingNewComponent implements OnInit {
 
   ) {
 
+    moment.locale('es-CL');
+
     this.place = new Place();
     this.status_ids = new Array<number>();
 
@@ -111,23 +114,25 @@ export class BookingNewComponent implements OnInit {
 
   }
 
-  filter(rut: string): Client[] {
+  filter(rut: string): Client[]
+  {
 
     if(typeof this.clientAutoControl.value === 'object'){
 
       this.client_id = this.clientAutoControl.value.id;
       this.bookingForm.patchValue({ 'client_id': this.client_id });
+      this.newClient = 1;
 
     }
-
 
     return this.clients.filter(client =>
       client.rut.toLowerCase().indexOf(rut.toLowerCase()) === 0);
 
   }
 
-  displayFn(client: Client): string {
-    return client ? client.rut + " " + client.first_name + " " + client.last_name : client;
+  displayFn(client: Client): string
+  {
+    return client ? client.rut + " " + client.first_name + " " + client.last_name : null;
   }
 
   ngOnInit()
@@ -165,7 +170,8 @@ export class BookingNewComponent implements OnInit {
 
   }
 
-  handleGetPlaceSuccess(place: Place){
+  handleGetPlaceSuccess(place: Place)
+  {
     this.place = place;
     this.placeService.getPlacesByPType(place.ptype_id).then(places => this.places = places);
   }
@@ -178,14 +184,15 @@ export class BookingNewComponent implements OnInit {
     );
   }
 
-  private getClient(){
+  private getClient()
+  {
     this.route.params
     .switchMap((params: Params) => this.clientService.getClient(this.client_id))
     .subscribe(client => this._handleGetClientSuccess(client));
-
   }
 
-  private _handleUpdateSuccess(data: Client) {
+  private _handleUpdateSuccess(data: Client)
+  {
 
     this.clientService.getClients().then(clients => this.handleCreateClientSuccess(clients));
 
@@ -193,10 +200,10 @@ export class BookingNewComponent implements OnInit {
 
     this.errors = null;
 
-
   }
 
-  private handleCreateClientSuccess(clients: Client[]){
+  private handleCreateClientSuccess(clients: Client[])
+  {
 
     this.clients = clients;
 
@@ -208,14 +215,15 @@ export class BookingNewComponent implements OnInit {
 
   }
 
-  private _handleError(error: any) {
+  private _handleError(error: any)
+  {
       this.snackBar.open(error.json(), null, {
         duration: 2000,
       });
   }
 
   private _handleGetClientSuccess(client: Client)
-   {
+  {
     this.client = client;
 
     var rut = rutClean(client.rut);
@@ -234,7 +242,8 @@ export class BookingNewComponent implements OnInit {
 
   }
 
-  private _handleTokenError(error: any) {
+  private _handleTokenError(error: any)
+  {
     var config: MatSnackBarConfig = new MatSnackBarConfig();
     config.duration = 1000;
     this.snackBar.open("Su sesión ha expirado.", undefined, config);
@@ -269,16 +278,19 @@ export class BookingNewComponent implements OnInit {
 
   }
 
-  private changePlace(){
+  private changePlace()
+  {
     this.placeService.getPlace(this.place_id).then(place => this.changePlaceSuccess(place));
   }
 
-  private changePlaceSuccess(place: Place){
+  private changePlaceSuccess(place: Place)
+  {
     this.place = place;
     this.calculateSubtotal();
   }
 
-  private calculateSubtotal(){
+  private calculateSubtotal()
+  {
 
     var extra_nights: number = 0;
     var extra_passengers: number = 0;
@@ -302,7 +314,8 @@ export class BookingNewComponent implements OnInit {
 
   }
 
-  private calculateTotal(){
+  private calculateTotal()
+  {
     this.total = Number(this.subtotal) - Number(this.subtotal) * Number(this.discount)/100;
   }
 
@@ -320,6 +333,19 @@ export class BookingNewComponent implements OnInit {
      duration: 2000,
     });
     this._router.navigate(['/booking/', booking.id]);
+  }
+
+  private getStatuses()
+  {
+    this.statusService.getStatusesByIds(this.status_ids).then(
+      statuses => this.handlegetStatusesSuccess(statuses),
+      error =>    this._handleError(error)
+    );
+  }
+
+  private handlegetStatusesSuccess(statuses: Status[])
+  {
+    this.bookingStatuses = statuses;
   }
 
   private createBookingForm()

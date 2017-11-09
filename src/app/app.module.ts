@@ -5,6 +5,7 @@ import { LOCALE_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Angular2TokenService } from 'angular2-token';
 
 
@@ -119,7 +120,7 @@ import { StatusDetailComponent } from './components/status/status-detail/status-
     StatusDetailComponent
   ],
   imports: [
-    BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule
+    BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule, HttpClientModule
   ],
   entryComponents: [DialogComponent, PaymentNewComponent, BookingEditComponent],
   providers: [

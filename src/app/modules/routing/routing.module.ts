@@ -37,19 +37,30 @@ import { StatusEditComponent } from '../../components/status/status-edit/status-
 import { StatusListComponent } from '../../components/status/status-list/status-list.component';
 import { StatusDetailComponent } from '../../components/status/status-detail/status-detail.component';
 
+//Users
+// import { UserNewComponent } from '../../components/user/user-new/user-new.component';
+// import { UserEditComponent } from '../../components/user/user-edit/user-edit.component';
+// import { UserListComponent } from '../../components/user/user-list/user-list.component';
+// import { UserDetailComponent } from '../../components/user/user-detail/user-detail.component';
+
  const routes: Routes = [
   {  path: '', component: LayoutComponent,
       children:[
+        // Root
+        { path: '', component: AgendaMonthlyComponent, canActivate: [Angular2TokenService] },
+
          //Clients
          { path: 'clients/new', component: NewComponent, canActivate: [Angular2TokenService] },
          { path: 'clients/detail/:id', component: DetailComponent, canActivate: [Angular2TokenService] },
          { path: 'clients/edit/:id', component: EditComponent, canActivate: [Angular2TokenService] },
          { path: 'clients', component: ListComponent, canActivate: [Angular2TokenService] },
+
          //PType
          { path: 'ptypes/new', component: PtypeNewComponent, canActivate: [Angular2TokenService] },
          { path: 'ptypes', component: PtypeListComponent, canActivate: [Angular2TokenService] },
          { path: 'ptypes/edit/:id', component: PtypeEditComponent, canActivate: [Angular2TokenService] },
          { path: 'ptypes/detail/:id', component: PtypeDetailComponent, canActivate: [Angular2TokenService] },
+
          //Place
          { path: 'places/new', component: PlaceNewComponent, canActivate: [Angular2TokenService] },
          { path: 'places/edit/:id', component: PlaceEditComponent, canActivate: [Angular2TokenService] },
@@ -58,6 +69,7 @@ import { StatusDetailComponent } from '../../components/status/status-detail/sta
 
          // Agenda
          { path: 'agenda/monthly/:ptype', component: AgendaMonthlyComponent, canActivate: [Angular2TokenService] },
+
          // Booking
          { path: 'booking/new', component: BookingNewComponent, canActivate: [Angular2TokenService] },
          { path: 'booking/:id', component: BookingShowComponent, canActivate: [Angular2TokenService] },
@@ -66,7 +78,13 @@ import { StatusDetailComponent } from '../../components/status/status-detail/sta
          { path: 'statuses/new', component: StatusNewComponent, canActivate: [Angular2TokenService] },
          { path: 'statuses/list', component: StatusListComponent, canActivate: [Angular2TokenService] },
          { path: 'statuses/edit/:id', component: StatusEditComponent, canActivate: [Angular2TokenService] },
-         { path: 'statuses/detail/:id', component: StatusDetailComponent, canActivate: [Angular2TokenService] }
+         { path: 'statuses/detail/:id', component: StatusDetailComponent, canActivate: [Angular2TokenService] },
+
+         //Status
+        //  { path: 'users/new', component: UserNewComponent, canActivate: [Angular2TokenService] },
+        //  { path: 'users', component: UserListComponent, canActivate: [Angular2TokenService] },
+        //  { path: 'users/edit/:id', component: UserEditComponent, canActivate: [Angular2TokenService] },
+        //  { path: 'users/show/:id', component: UserDetailComponent, canActivate: [Angular2TokenService] },
        ]
   },
   { path: 'signin', component: LoginComponent },

@@ -36,7 +36,7 @@ export class AgendaMonthlyComponent implements OnInit {
     private bookingService: BookingService,
     public snackBar: MatSnackBar,
     private _tokenService: Angular2TokenService,
-    private _router: Router   
+    private _router: Router
   ) {
     moment.locale('es');
   }
@@ -45,29 +45,32 @@ export class AgendaMonthlyComponent implements OnInit {
      this._tokenService.validateToken().subscribe(
       res =>      console.log("Token Valid!"),
       error =>    this._handleTokenError(error)
-    );   
-     
+    );
+
     this.route.params
       .switchMap((params: Params) => this.placeService.getPlacesByPType(+params['ptype']))
       .subscribe(places => this.handleGetPlacesSuccess(places));
 
     this.route.params.subscribe(params => {
-       this.ptype = +params['ptype'];
+
+      if(!params['ptype'])
+        this.ptype = 1;
+      else
+        this.ptype = +params['ptype'];
     });
 
     this.days = new Array<Date>();
 
-    this.nDays = 10;
+    this.nDays = 31;
 
     this.bookingService.getBookingsByDayAndPlace(moment().add(0, 'days').endOf("day").toDate(), this.nDays, this.ptype).then(response => this.handleGetMatrixSuccess(response));
 
     var i = 0;
-    for(i = 0; i < this.nDays; i++){
+    for(i = 0; i < this.nDays; i++)
+    {
 
       var day = moment().add(i, 'days').endOf("day").toDate();
-      // console.log(day);
       this.days.push(day);
-
     }
 
   }

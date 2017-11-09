@@ -56,13 +56,18 @@ export class StatusNewComponent implements OnInit {
     });
    }
 
-	private _handleUpdateSuccess(data: any) {
-	   this.errors = null;
-	   this.snackBar.open("Registrado correctamente", "OK", {
-	     duration: 2000,
-	   });
+	private _handleUpdateSuccess(data: any)
+  {
+    this.errors = null;
 
-    }
+    this.snackBar.open("Creado correctamente", "OK", {
+      duration: 2000,
+    });
+
+    this._router.navigate(['/statuses/list']);
+
+
+  }
 
 
   private _handleError(error: any) {

@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
-
+import { MatAutocompleteModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
 import { MatRadioModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
@@ -27,7 +27,6 @@ import { MatSortModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatStepperModule } from '@angular/material';
-import { MatAutocompleteModule } from '@angular/material';
 import { CompatibilityModule } from '@angular/material';
 import { NoConflictStyleCompatibilityMode } from '@angular/material';
 
@@ -68,7 +67,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatMomentDateModule,
     MatAutocompleteModule,
     NoConflictStyleCompatibilityMode,
-    CompatibilityModule
+    CompatibilityModule,
+    MatAutocompleteModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -100,7 +100,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatMomentDateModule,
     MatAutocompleteModule,
     NoConflictStyleCompatibilityMode,
-    CompatibilityModule
+    CompatibilityModule,
+    MatAutocompleteModule
   ],
   declarations: []
 })

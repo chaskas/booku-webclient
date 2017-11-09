@@ -21,7 +21,6 @@ export class StatusService {
 
   createStatus(status: Status) : Promise<Status>
 	{
-    let url = this.config.get('host') + '/statuss';
 
     let body = JSON.stringify({
                       name: status.name
@@ -43,6 +42,23 @@ export class StatusService {
                  .then(response => response.json() as Status[])
                  .catch(this.handleError);
 
+  }
+
+  getStatusesByIds(status_ids: Array<number>): Promise<Status[]>
+  {
+    let url = this.config.get('host') + '/statuses/by/ids';
+
+    let body = JSON.stringify({
+                      status_ids: status_ids
+                    });
+
+    let headers      = new Headers({ 'Content-Type': 'application/json' });
+    let options      = new RequestOptions({ headers: headers });
+
+    return this.http.post(url, body, options)
+              .toPromise()
+              .then(response => response.json() as Status[])
+              .catch(this.handleError);
   }
 
   getStatus(id: number): Promise<Status> {
