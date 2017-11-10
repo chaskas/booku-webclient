@@ -87,6 +87,7 @@ import { StatusNewComponent } from './components/status/status-new/status-new.co
 import { StatusEditComponent } from './components/status/status-edit/status-edit.component';
 import { StatusListComponent } from './components/status/status-list/status-list.component';
 import { StatusDetailComponent } from './components/status/status-detail/status-detail.component';
+import { BookingClientEditComponent } from './components/booking/booking-client-edit/booking-client-edit.component';
 
 
 @NgModule({
@@ -117,12 +118,13 @@ import { StatusDetailComponent } from './components/status/status-detail/status-
     StatusNewComponent,
     StatusEditComponent,
     StatusListComponent,
-    StatusDetailComponent
+    StatusDetailComponent,
+    BookingClientEditComponent
   ],
   imports: [
     BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule, HttpClientModule
   ],
-  entryComponents: [DialogComponent, PaymentNewComponent, BookingEditComponent],
+  entryComponents: [DialogComponent, PaymentNewComponent, BookingEditComponent, BookingClientEditComponent],
   providers: [
       AppConfig,
       ClientService,

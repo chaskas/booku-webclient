@@ -79,7 +79,7 @@
           Cliente
         </div>
         <div>
-          <button mat-raised-button color="primary" [routerLink]="['/clients/edit',booking.client.id]">Editar</button>
+          <button mat-raised-button color="primary" (click)="openClientEditDialog()">Editar</button>
         </div>
       </mat-card-title>
 

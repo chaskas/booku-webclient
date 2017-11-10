@@ -1,0 +1,73 @@
+<div class="container">
+  <form [formGroup]="clientForm" (submit)="updateClient()">
+      <ng-container *ngIf="client">
+
+          <h2 mat-dialog-title>Editar Cliente</h2>
+
+          <mat-dialog-content fxLayout='column'>
+
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+             <mat-form-field fxFlex="34">
+               <input matInput placeholder="Rut" formControlName="rut" required>
+             </mat-form-field>
+           
+             <mat-form-field fxFlex="33">
+               <input matInput placeholder="Nombre" formControlName="first_name" required>
+             </mat-form-field>
+            
+            <mat-form-field fxFlex="33">
+               <input matInput placeholder="Apellido" formControlName="last_name" required>
+            </mat-form-field>
+
+          </div>
+
+
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">       
+            <mat-form-field fxFlex="25">
+              <input type="email" matInput placeholder="Email" formControlName="email" required>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="25">
+              <input type="number" matInput placeholder="Teléfono" formControlName="phone" required>
+            </mat-form-field>
+                      
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Dirección" formControlName="address" required>
+            </mat-form-field>
+                   
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Ciudad" formControlName="city" required>
+            </mat-form-field>
+                      
+          </div>
+
+          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Patente" formControlName="car_license" >
+            </mat-form-field>
+            
+
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Marca del auto" formControlName="car_brand" >
+            </mat-form-field>
+            
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Modelo del auto" formControlName="car_model" >
+            </mat-form-field>
+            
+            <mat-form-field fxFlex="25">
+              <input matInput placeholder="Color del auto" formControlName="car_color" >
+            </mat-form-field>
+
+          </div>
+
+          </mat-dialog-content>
+
+          <mat-dialog-actions fxLayoutAlign="end center">
+            <button mat-button mat-dialog-close>Cancelar</button>
+            <button mat-raised-button type="submit" color="primary" [disabled]="!clientForm.valid">Aceptar</button>
+          </mat-dialog-actions>
+
+      </ng-container>
+  </form>
+</div>

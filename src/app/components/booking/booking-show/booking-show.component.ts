@@ -6,6 +6,7 @@ import { BookingService } from '../../../services/booking.service';
 import { PaymentService } from '../../../services/payment.service';
 
 import { BookingEditComponent } from '../../booking/booking-edit/booking-edit.component';
+import { BookingClientEditComponent } from '../../booking/booking-client-edit/booking-client-edit.component';
 import { PaymentNewComponent } from '../../payment/payment-new/payment-new.component';
 
 import { Booking } from '../../../model/booking';
@@ -18,6 +19,8 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { Angular2TokenService } from 'angular2-token';
 
 import { AppConfig } from '../../../config/app-config';
+
+import { rutClean } from 'rut-helpers';
 
 @Component({
   selector: 'app-booking-show',
@@ -82,7 +85,18 @@ export class BookingShowComponent implements OnInit {
 
     this.arrival = moment(this.booking.arrival).format('dddd DD/MM/YY HH:mm');
     this.departure = moment(this.booking.departure).format('dddd DD/MM/YY HH:mm');
+    
+    var rut = rutClean(booking.client.rut);
+    var rutDigits = parseInt(rut, 10);
+    var m = 0;
+    var s = 1;
+    while (rutDigits > 0) {
+        s = (s + rutDigits % 10 * (9 - m++ % 6)) % 11;
+        rutDigits = Math.floor(rutDigits / 10);
+    }
+    var checkDigit = (s > 0) ? String((s - 1)) : 'K';
 
+    booking.client.rut = booking.client.rut + "-" + checkDigit;
     this.calculateDates();
 
   }
@@ -100,6 +114,16 @@ export class BookingShowComponent implements OnInit {
   openPaymentNewDialog(): void {
     let dialogRef = this.dialog.open(PaymentNewComponent, {
       data: { booking: this.booking }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
+  }
+
+  openClientEditDialog(): void {
+    let dialogRef = this.dialog.open(BookingClientEditComponent, {
+      data: { client: this.booking.client }
     });
 
     dialogRef.afterClosed().subscribe(result => {
