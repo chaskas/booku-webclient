@@ -8,6 +8,8 @@ import { BookingService } from '../../../services/booking.service';
 import { PlaceService } from '../../../services/place.service';
 import { StatusService } from '../../../services/status.service';
 
+import { DialogsServiceService } from '../../../services/dialogs-service.service';
+
 import { Booking } from '../../../model/booking';
 import { Place } from '../../../model/place';
 import { Status } from '../../../model/status';
@@ -51,7 +53,8 @@ export class BookingEditComponent implements OnInit {
     private statusService: StatusService,
     private placeService: PlaceService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private dialogsService: DialogsServiceService
   ) {
     moment.locale('es');
 
@@ -172,6 +175,22 @@ export class BookingEditComponent implements OnInit {
     this.data.booking.arrival =   moment(arrival_date.format('YYYY')   + "-" +   arrival_date.format('MM') + "-" +   arrival_date.format('DD') + "T" + this.arrival_time   + ":00.000-03:00");
     this.data.booking.departure = moment(departure_date.format('YYYY') + "-" + departure_date.format('MM') + "-" + departure_date.format('DD') + "T" + this.departure_time + ":00.000-03:00");
 
+  }
+
+  public openDestroyDialog(id: number) {
+    this.dialogsService
+      .confirm('Confirmar', '¿Seguro que quiere eliminar?')
+      .subscribe(res => this.destroyBooking(res, id));
+  }
+
+  destroyBooking(res: boolean, id: number): void
+  {
+    if(res) {
+      this.bookingService.deleteBooking(id).then((data) => {
+        this.router.navigate(['/agenda/monthly/1']);
+        this.dialogRef.close();
+      });
+    }
   }
 
 }

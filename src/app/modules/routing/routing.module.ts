@@ -47,7 +47,7 @@ import { StatusDetailComponent } from '../../components/status/status-detail/sta
   {  path: '', component: LayoutComponent,
       children:[
         // Root
-        { path: '', component: AgendaMonthlyComponent, canActivate: [Angular2TokenService] },
+        { path: '', component: AgendaMonthlyComponent },
 
          //Clients
          { path: 'clients/new', component: NewComponent, canActivate: [Angular2TokenService] },

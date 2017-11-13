@@ -77,8 +77,15 @@
 
   </mat-dialog-content>
 
-  <mat-dialog-actions fxLayoutAlign="end center">
-    <button mat-button mat-dialog-close>Cancelar</button>
-    <button type="submit" mat-raised-button color="primary" [disabled]="!bookingForm.valid">Aceptar</button>
+  <mat-dialog-actions fxLayout="column">
+    <div fxLayout="row">
+      <div fxFlex="50" fxLayoutAlign="start center">
+        <button mat-button type="button" color="warn" (click)="openDestroyDialog(data.booking.id)">Eliminar</button>
+      </div>
+      <div fxFlex="50" fxLayoutAlign="end center">
+        <button mat-button mat-dialog-close>Cancelar</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!bookingForm.valid">Aceptar</button>
+      </div>
+    </div>
   </mat-dialog-actions>
 </form>
