@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  host: "http://xsknet.dyndns.org:3001"
+  host: "http://api.reservas.ainahue.cl:3002"
 };

@@ -11,7 +11,7 @@
     <mat-table #table [dataSource]="dataSource" fxFlex="100">
       <ng-container cdkColumnDef="ptype">
         <mat-header-cell *cdkHeaderCellDef> Tipo </mat-header-cell>
-        <mat-cell *cdkCellDef="let row">{{ row.ptype.name}}</mat-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.ptype?.name}}</mat-cell>
       </ng-container>
 
       <ng-container cdkColumnDef="name">
