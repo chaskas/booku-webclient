@@ -198,6 +198,10 @@ export class BookingNewComponent implements OnInit {
 
     this.client_id = data.id;
 
+    this.client = data;
+
+    this.clientAutoControl.setValue(this.client);
+
     this.errors = null;
 
   }
@@ -209,7 +213,7 @@ export class BookingNewComponent implements OnInit {
 
     this.newClient = 1;
 
-    this.snackBar.open("Miembro Registrado correctamente", "OK", {
+    this.snackBar.open("Cliente Registrado correctamente", "OK", {
      duration: 2000,
     });
 
