@@ -1,9 +1,25 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Agenda Diaria</mat-card-title>
-    <mat-card-subtitle>Cabañas</mat-card-subtitle>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+      <div fxFlex="50">
+        <mat-card-title>Agenda Diaria</mat-card-title>
+        <mat-card-subtitle>Cabañas</mat-card-subtitle>
+      </div>
+      <div fxFlex="50" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-betwwen center">
+        <mat-form-field fxFlex="50">
+          <input matInput [matDatepicker]="starts_picker" placeholder="Desde:" [(ngModel)]="starts" (ngModelChange)="calculateDates()" [max]="maxDate">
+          <mat-datepicker-toggle matSuffix [for]="starts_picker"></mat-datepicker-toggle>
+          <mat-datepicker #starts_picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field fxFlex="50">
+          <input matInput [matDatepicker]="ends_picker" placeholder="Hasta:" [(ngModel)]="ends" (ngModelChange)="calculateDates()" [min]="minDate">
+          <mat-datepicker-toggle matSuffix [for]="ends_picker"></mat-datepicker-toggle>
+          <mat-datepicker #ends_picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
   </mat-card-header>
-  <mat-card-content class="agenda-wrapper">
+  <mat-card-content class="agenda-wrapper" fxLayout="row">
 
     <div fxLayout="column">
       <hr>
