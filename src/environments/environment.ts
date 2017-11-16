@@ -4,9 +4,8 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false,
-  host: "http://xsknet.dyndns.org:3001/" // PROD
-  //  host: "http://xsknet.dyndns.org:82"   // TEST
-  //host: "http://localhost:3000"         // DEV
-  //host: "http://192.168.1.100:3000"        // DEV
+  production: true,
+  host: "http://api.reservas.ainahue.cl:3002/" // PROD
+  //host: "http://xsknet.dyndns.org:82"   // TEST
+  // host: "http://192.168.1.100:3000"        // DEV
 };
