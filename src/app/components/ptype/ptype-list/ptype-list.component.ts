@@ -29,10 +29,11 @@ export class PtypeListComponent implements OnInit {
   ptypes: PType[];
   @Input() errors: string[];
   ptype: PType;
-  displayedColumns = ['name','plural', 'icons'];
+  displayedColumns = ['name','plural', 'schedule_type', 'icons'];
 
   dataSource: PTypeDataSource | null;
 
+  schedule_types: Array<String> = ['Días','Horas'];
 
   constructor(
   	private ptypeService: PTypeService,
@@ -42,7 +43,7 @@ export class PtypeListComponent implements OnInit {
     public _ptypesDatabase: PTypesDatabase,
     private dialogsService: DialogsServiceService,
     private _tokenService: Angular2TokenService
-  	) { 
+  	) {
 
     this._tokenService.validateToken().subscribe(
       res =>      console.log("Token Valid!"),
@@ -71,7 +72,7 @@ export class PtypeListComponent implements OnInit {
         this._router.navigate(['ptype/list']);
       });
     }
-  }  
+  }
 
   private _handleErrors(error: any)
   {

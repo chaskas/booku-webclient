@@ -12,13 +12,18 @@
         <mat-card-content fxLayout='column'>
 
           <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
-             <mat-input-container fxFlex="50">
-                 <input matInput placeholder="Nombre" [value]="ptype.name" readonly="true">
+             <mat-input-container fxFlex="34">
+                 <input matInput placeholder="Nombre" [value]="ptype.name" readonly>
                </mat-input-container>
 
-              <mat-input-container fxFlex="50">
-               <input matInput placeholder="Plural" [value]="ptype.plural" readonly="true">
+              <mat-input-container fxFlex="33">
+               <input matInput placeholder="Plural" [value]="ptype.plural" readonly>
                </mat-input-container>
+
+               <mat-input-container fxFlex="33">
+                 <input matInput placeholder="Tipo Horario" [value]="schedule_types[ptype.schedule_type]" readonly>
+               </mat-input-container>
+
             </div>
 
 

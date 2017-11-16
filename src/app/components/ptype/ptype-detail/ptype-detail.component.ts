@@ -20,13 +20,15 @@ export class PtypeDetailComponent implements OnInit {
 
 	ptype: PType;
 
+  schedule_types: Array<String> = ['Días','Horas'];
+
   constructor(
 	  private PTypeService: PTypeService,
   	private route: ActivatedRoute,
     public snackBar: MatSnackBar,
     private _router: Router,
     private _tokenService: Angular2TokenService
-  	) { 
+  	) {
 
     this._tokenService.validateToken().subscribe(
       res =>      console.log("Token Valid!"),
@@ -35,7 +37,7 @@ export class PtypeDetailComponent implements OnInit {
 	this.route.params
 	.switchMap((params: Params) => this.PTypeService.getPType(+params['id']))
 	.subscribe(ptype => this._handleGetPTypeSuccess(ptype));
-    
+
   }
 
   ngOnInit() {

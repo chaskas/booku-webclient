@@ -53,7 +53,8 @@ export class PtypeNewComponent implements OnInit {
    {
     this.ptypeForm = this.formBuilder.group({
       name: ['', [Validators.required]],
-      plural: ['', [Validators.required]]
+      plural: ['', [Validators.required]],
+      schedule_type: ['', [Validators.required]]
     });
    }
 

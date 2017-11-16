@@ -18,6 +18,11 @@
         <mat-cell *cdkCellDef="let row">{{ row.plural }}</mat-cell>
       </ng-container>
 
+      <ng-container cdkColumnDef="schedule_type">
+        <mat-header-cell *cdkHeaderCellDef> Tipo Horario </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">{{ schedule_types[row.schedule_type] }}</mat-cell>
+      </ng-container>
+
       <ng-container cdkColumnDef="icons">
         <mat-header-cell *cdkHeaderCellDef> Opciones </mat-header-cell>
         <mat-cell *cdkCellDef="let row">

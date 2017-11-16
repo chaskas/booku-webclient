@@ -23,7 +23,8 @@ export class PTypeService {
 
     let body = JSON.stringify({
                           name: ptype.name,
-                          plural: ptype.plural
+                          plural: ptype.plural,
+                          schedule_type: ptype.schedule_type
                         });
 
     let headers      = new Headers({ 'Content-Type': 'application/json' });
@@ -59,7 +60,8 @@ export class PTypeService {
     let body = JSON.stringify({
                           id: ptype.id,
                           name: ptype.name,
-                          plural: ptype.plural
+                          plural: ptype.plural,
+                          schedule_type: ptype.schedule_type
                         });
 
     let headers      = new Headers({ 'Content-Type': 'application/json' });
@@ -83,5 +85,5 @@ export class PTypeService {
   {
     return Promise.reject(error.message || error);
   }
-  
+
 }
