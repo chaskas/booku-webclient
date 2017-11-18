@@ -1,23 +1,21 @@
 <mat-toolbar color="primary">
 
   <div fxLayout="row" fxShow="false" fxShow.gt-xs>
-
-    <button mat-button [routerLink]="['/agenda/daily', 1]">Cabañas</button>
-    <button mat-button [routerLink]="['/agenda/hourly', 5]">Salas</button>
-    <button mat-button routerLink="/clients">Clientes</button>
-    <button mat-button [matMenuTriggerFor]="menu"> Administración
-      <mat-icon>keyboard_arrow_down</mat-icon>
-      <mat-menu #menu="matMenu">
-        <!-- <button mat-menu-item routerLink="#">Usuarios</button> -->
-        <button mat-menu-item routerLink="/statuses/list">Estados</button>
-        <button mat-menu-item routerLink="/places">Espacios</button>
-        <button mat-menu-item routerLink="/ptypes">Tipos</button>
-      </mat-menu>
-    </button>
+    <button mat-button *ngFor="let ptype of ptypes" [routerLink]="['/agenda/'+schedule_types[ptype.schedule_type], ptype.id]">{{ ptype.plural }}</button>
   </div>
 
   <span class="fill-remaining-space"></span>
 
+  <button mat-button routerLink="/clients">Clientes</button>
+  <button mat-button [matMenuTriggerFor]="menu"> Administración
+    <mat-icon>keyboard_arrow_down</mat-icon>
+    <mat-menu #menu="matMenu">
+      <!-- <button mat-menu-item routerLink="#">Usuarios</button> -->
+      <button mat-menu-item routerLink="/statuses/list">Estados</button>
+      <button mat-menu-item routerLink="/places">Espacios</button>
+      <button mat-menu-item routerLink="/ptypes">Tipos</button>
+    </mat-menu>
+  </button>
   <a mat-button routerLink="/signout" fxShow="false" fxShow.gt-xs><mat-icon>exit_to_app</mat-icon> Logout</a>
 
 </mat-toolbar>

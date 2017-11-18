@@ -62,17 +62,14 @@ export class AgendaHourlyComponent implements OnInit {
       error =>    this._handleTokenError(error)
     );
 
-    this.route.params.subscribe(params => {
-      if(!params['ptype']){
-        this.ptype_id = 1;
-      } else {
-        this.ptype_id = +params['ptype'];
-      }
+    this.route.params.subscribe(params => this.handleParams(params));
 
-      this.ptypeService.getPType(this.ptype_id).then(ptype => this.handleGetPTypeSuccess(ptype));
+  }
 
-    });
-
+  private handleParams(params: Params)
+  {
+    this.ptype_id = +params['ptype'];
+    this.ptypeService.getPType(this.ptype_id).then(ptype => this.handleGetPTypeSuccess(ptype));
   }
 
   private handleGetPTypeSuccess(ptype: PType)

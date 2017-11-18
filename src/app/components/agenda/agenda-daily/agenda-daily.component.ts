@@ -2,9 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params }   from '@angular/router';
 
 
+import { PTypeService } from '../../../services/ptype.service';
 import { PlaceService } from '../../../services/place.service';
 import { BookingService } from '../../../services/booking.service';
 
+import { PType } from '../../../model/ptype';
 import { Place } from '../../../model/place';
 import { Booking } from '../../../model/booking';
 import { Matrix } from '../../../model/matrix';
@@ -26,12 +28,14 @@ export class AgendaDailyComponent implements OnInit {
 
   days: Array<Date>;
 
+  ptype_id: number;
+  ptype: PType;
+
   matrix: Matrix[];
 
   places: Place[];
 
   nDays: number;
-  ptype: number;
 
   @ViewChild(MatDatepicker) starts_picker: MatDatepicker<Moment>;
   @ViewChild(MatDatepicker) ends_picker: MatDatepicker<Moment>;
@@ -44,6 +48,7 @@ export class AgendaDailyComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private ptypeService: PTypeService,
     private placeService: PlaceService,
     private bookingService: BookingService,
     public snackBar: MatSnackBar,
@@ -63,19 +68,25 @@ export class AgendaDailyComponent implements OnInit {
       error =>    this._handleTokenError(error)
     );
 
+    this.route.params.subscribe(params => this.handleParams(params));
+
+  }
+
+  private handleParams(params: Params)
+  {
+    this.ptype_id = +params['ptype'];
+    this.ptypeService.getPType(this.ptype_id).then(ptype => this.handleGetPTypeSuccess(ptype));
+  }
+
+  private handleGetPTypeSuccess(ptype: PType)
+  {
+    this.ptype = ptype;
+
     this.route.params
-      .switchMap((params: Params) => this.placeService.getPlacesByPType(+params['ptype']))
+      .switchMap((params: Params) => this.placeService.getPlacesByPType(this.ptype_id))
       .subscribe(places => this.handleGetPlacesSuccess(places));
 
-    this.route.params.subscribe(params => {
-      if(!params['ptype'])
-        this.ptype = 1;
-      else
-        this.ptype = +params['ptype'];
-    });
-
     this.calculateDates();
-
   }
 
   private calculateDates()
@@ -87,7 +98,7 @@ export class AgendaDailyComponent implements OnInit {
 
     this.nDays =  moment(this.ends).startOf('day').diff(moment(this.starts).startOf('day'), 'days') + 1;
 
-    this.bookingService.getBookingsByDayAndPlace(moment(this.starts).endOf("day").toDate(), this.nDays, this.ptype).then(response => this.handleGetMatrixSuccess(response));
+    this.bookingService.getBookingsByDayAndPlace(moment(this.starts).endOf("day").toDate(), this.nDays, this.ptype_id).then(response => this.handleGetMatrixSuccess(response));
 
     var i = 0;
     for(i = 0; i < this.nDays; i++)

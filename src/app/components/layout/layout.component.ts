@@ -15,6 +15,7 @@ export class LayoutComponent implements OnInit {
 
   ptypes: PType[];
 
+  schedule_types: Array<String> = ['daily', 'hourly'];
 
   constructor(
     private ptypeService: PTypeService,
