@@ -323,9 +323,9 @@ export class BookingNewComponent implements OnInit {
 
     if(this.status_ids.find(x => x == 2)){
       extra_dsep = Number(this.place.dsep);
-      if((this.place.ptype && this.place.ptype.schedule_type == 0)this.departure_time = moment("19:00", "HH:mm").format('HH:mm');
+      if(this.place.ptype && this.place.ptype.schedule_type == 0)this.departure_time = moment("19:00", "HH:mm").format('HH:mm');
     } else {
-      if((this.place.ptype && this.place.ptype.schedule_type == 0)this.departure_time = moment("11:00", "HH:mm").format('HH:mm');
+      if(this.place.ptype && this.place.ptype.schedule_type == 0)this.departure_time = moment("11:00", "HH:mm").format('HH:mm');
     }
 
     this.subtotal = this.place.price + extra_nights + extra_passengers + extra_dsep;
