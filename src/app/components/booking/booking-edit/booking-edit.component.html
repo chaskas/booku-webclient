@@ -80,7 +80,7 @@
   <mat-dialog-actions fxLayout="column">
     <div fxLayout="row">
       <div fxFlex="50" fxLayoutAlign="start center">
-        <button mat-button type="button" color="warn" (click)="openDestroyDialog(data.booking.id)">Eliminar</button>
+        <button mat-button type="button" color="warn" (click)="openDestroyDialog(data.booking.id, data.booking.place.ptype)">Eliminar</button>
       </div>
       <div fxFlex="50" fxLayoutAlign="end center">
         <button mat-button mat-dialog-close>Cancelar</button>

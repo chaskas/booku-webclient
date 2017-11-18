@@ -11,6 +11,7 @@ import { StatusService } from '../../../services/status.service';
 import { DialogsServiceService } from '../../../services/dialogs-service.service';
 
 import { Booking } from '../../../model/booking';
+import { PType } from '../../../model/ptype';
 import { Place } from '../../../model/place';
 import { Status } from '../../../model/status';
 
@@ -178,17 +179,20 @@ export class BookingEditComponent implements OnInit {
 
   }
 
-  public openDestroyDialog(id: number) {
+  public openDestroyDialog(id: number, ptype: PType) {
     this.dialogsService
       .confirm('Confirmar', '¿Seguro que quiere eliminar?')
-      .subscribe(res => this.destroyBooking(res, id));
+      .subscribe(res => this.destroyBooking(res, id, ptype));
   }
 
-  destroyBooking(res: boolean, id: number): void
+  destroyBooking(res: boolean, id: number, ptype: PType): void
   {
     if(res) {
+
+      let sts: Array<String> = ['daily', 'hourly'];
+
       this.bookingService.deleteBooking(id).then((data) => {
-        this.router.navigate(['/agenda/monthly/1']);
+        this.router.navigate(['/agenda/'+ sts[ptype.schedule_type] + '/' + ptype.id]);
         this.dialogRef.close();
       });
     }
