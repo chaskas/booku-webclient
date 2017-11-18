@@ -13,32 +13,25 @@
 
       <div fxLayout='row' fxLayoutGap="10px" fxLayoutAlign="space-between end">
 
-        <mat-input-container fxFlex="34">
+        <mat-input-container fxFlex="50">
         <mat-select placeholder="Tipo Espacio" formControlName="ptype_id" required>
         <mat-option *ngFor="let ptype of ptypes" [value]="ptype.id">{{ptype.name}}</mat-option>
         </mat-select>
         </mat-input-container>
 
-        <mat-input-container fxFlex="33">
-        <input matInput type="time" placeholder="Horario apertura" formControlName="opening" required>
-        </mat-input-container>
-
-        <mat-input-container fxFlex="33">
-        <input matInput type="time" placeholder="Horario cierre" formControlName="closing" required>
+        <mat-input-container fxFlex="50">
+          <input matInput placeholder="Nombre" formControlName="name" required>
         </mat-input-container>
 
       </div>
 
       <div fxLayout='row' fxLayoutGap="10px">
-        <mat-input-container fxFlex="34">
-          <input matInput placeholder="Nombre" formControlName="name" required>
-        </mat-input-container>
-
-        <mat-input-container fxFlex="33">
+        
+        <mat-input-container fxFlex="50">
           <input matInput type="number" placeholder="Capacidad" formControlName="capacity" required>
         </mat-input-container>
 
-        <mat-input-container fxFlex="33">
+        <mat-input-container fxFlex="50">
           <input matInput type="number" placeholder="Precio" formControlName="price" required>
         </mat-input-container>
 

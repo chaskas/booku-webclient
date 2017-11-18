@@ -12,7 +12,7 @@
 
         <mat-card-content fxLayout='column'>
 
-          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+          <div fxLayout='row' fxFlex="100" fxLayoutGap="10px">
              <mat-input-container fxFlex="34">
                <input matInput placeholder="Nombre" formControlName="name" required>
                </mat-input-container>
@@ -27,6 +27,16 @@
                    <mat-option [value]="1">Horas</mat-option>
                  </mat-select>
                </mat-input-container>
+          </div>
+
+          <div fxLayout='row' fxFlex="100" fxLayoutGap="10px">
+            <mat-input-container fxFlex="50">
+              <input matInput type="time" placeholder="Horario apertura" formControlName="opening" required>
+            </mat-input-container>
+
+            <mat-input-container fxFlex="50">
+              <input matInput type="time" placeholder="Horario cierre" formControlName="closing" required>
+            </mat-input-container>
           </div>
 
           </mat-card-content>

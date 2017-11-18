@@ -61,7 +61,9 @@ export class PtypeEditComponent implements OnInit {
     this.ptypeForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       plural: ['', [Validators.required]],
-      schedule_type: ['', [Validators.required]]
+      schedule_type: ['', [Validators.required]],
+      opening: ['', [Validators.required]],
+      closing: ['', [Validators.required]]
     });
 	}
 
@@ -72,7 +74,9 @@ export class PtypeEditComponent implements OnInit {
     this.ptypeForm.setValue({
       name: ptype.name,
       plural: ptype.plural,
-      schedule_type: ptype.schedule_type
+      schedule_type: ptype.schedule_type,
+      opening: new Date(ptype.opening).toTimeString().split(' ')[0],
+      closing: new Date(ptype.closing).toTimeString().split(' ')[0],
     });
   }
 

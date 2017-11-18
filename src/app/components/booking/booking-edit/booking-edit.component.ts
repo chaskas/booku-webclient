@@ -42,6 +42,7 @@ export class BookingEditComponent implements OnInit {
   arrival_time: string;
   departure_time: string;
 
+  place: Place;
   places: Place[];
   statuses: Status[];
 

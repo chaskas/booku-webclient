@@ -23,6 +23,16 @@
         <mat-cell *cdkCellDef="let row">{{ schedule_types[row.schedule_type] }}</mat-cell>
       </ng-container>
 
+      <ng-container cdkColumnDef="opening">
+        <mat-header-cell *cdkHeaderCellDef> Horario Apertura </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.opening | date: 'HH:mm'}}</mat-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="closing">
+        <mat-header-cell *cdkHeaderCellDef> Horario Cierre </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.closing | date: 'HH:mm'}}</mat-cell>
+      </ng-container>
+
       <ng-container cdkColumnDef="icons">
         <mat-header-cell *cdkHeaderCellDef> Opciones </mat-header-cell>
         <mat-cell *cdkCellDef="let row">

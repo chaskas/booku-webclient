@@ -37,7 +37,7 @@ export class PlaceListComponent implements OnInit {
   ptypes: PType[];
   @Input() errors: string[];
 
-  displayedColumns = ['ptype','name','capacity', 'price', 'opening', 'closing', 'icons'];
+  displayedColumns = ['ptype','name','capacity', 'price', 'icons'];
 
   dataSource: PlaceDataSource | null;
 
@@ -50,8 +50,8 @@ export class PlaceListComponent implements OnInit {
     private _router: Router,
     private route: ActivatedRoute,
     private _tokenService: Angular2TokenService
-  	) { 
-    
+  	) {
+
     this._tokenService.validateToken().subscribe(
       res =>      console.log("Token Valid!"),
       error =>    this._handleTokenError(error)
@@ -94,5 +94,5 @@ export class PlaceListComponent implements OnInit {
     config.duration = 1000;
     this.snackBar.open("Su sesión ha expirado.", undefined, config);
     this._router.navigate(['/signin']);
-  }   
+  }
 }

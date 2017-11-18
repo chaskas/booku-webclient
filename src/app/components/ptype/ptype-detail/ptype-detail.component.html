@@ -11,7 +11,7 @@
 
         <mat-card-content fxLayout='column'>
 
-          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+          <div fxLayout='row' fxFlex="100" fxLayoutGap="10px">
              <mat-input-container fxFlex="34">
                  <input matInput placeholder="Nombre" [value]="ptype.name" readonly>
                </mat-input-container>
@@ -24,6 +24,16 @@
                  <input matInput placeholder="Tipo Horario" [value]="schedule_types[ptype.schedule_type]" readonly>
                </mat-input-container>
 
+            </div>
+
+            <div fxLayout='row' fxFlex="100" fxLayoutGap="10px">
+              <mat-input-container fxFlex="50">
+                <input type="email" matInput placeholder="Horario apertura" [value]="ptype.opening | date: 'HH:mm'" readonly>
+              </mat-input-container>
+
+              <mat-input-container fxFlex="50">
+                <input matInput placeholder="Horario cierre" [value]="ptype.closing | date: 'HH:mm'" readonly>
+              </mat-input-container>
             </div>
 
 

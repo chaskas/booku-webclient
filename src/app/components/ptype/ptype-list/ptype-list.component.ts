@@ -29,7 +29,7 @@ export class PtypeListComponent implements OnInit {
   ptypes: PType[];
   @Input() errors: string[];
   ptype: PType;
-  displayedColumns = ['name','plural', 'schedule_type', 'icons'];
+  displayedColumns = ['name','plural', 'schedule_type', 'opening', 'closing', 'icons'];
 
   dataSource: PTypeDataSource | null;
 

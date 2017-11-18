@@ -10,7 +10,8 @@ import { NewComponent } from '../../components/clients/new/new.component';
 import { ListComponent } from '../../components/clients/list/list.component';
 import { DetailComponent } from '../../components/clients/detail/detail.component';
 import { EditComponent } from '../../components/clients/edit/edit.component';
-import { AgendaMonthlyComponent } from '../../components/agenda/agenda-monthly/agenda-monthly.component';
+import { AgendaDailyComponent } from '../../components/agenda/agenda-daily/agenda-daily.component';
+import { AgendaHourlyComponent } from '../../components/agenda/agenda-hourly/agenda-hourly.component';
 
 //Ptypes
 import { PtypeNewComponent } from '../../components/ptype/ptype-new/ptype-new.component';
@@ -47,7 +48,7 @@ import { StatusDetailComponent } from '../../components/status/status-detail/sta
   {  path: '', component: LayoutComponent,
       children:[
         // Root
-        { path: '', component: AgendaMonthlyComponent },
+        { path: '', component: AgendaDailyComponent },
 
          //Clients
          { path: 'clients/new', component: NewComponent, canActivate: [Angular2TokenService] },
@@ -68,7 +69,8 @@ import { StatusDetailComponent } from '../../components/status/status-detail/sta
          { path: 'places/detail/:id', component: PlaceDetailComponent, canActivate: [Angular2TokenService] },
 
          // Agenda
-         { path: 'agenda/monthly/:ptype', component: AgendaMonthlyComponent, canActivate: [Angular2TokenService] },
+         { path: 'agenda/daily/:ptype', component: AgendaDailyComponent, canActivate: [Angular2TokenService] },
+         { path: 'agenda/hourly/:ptype', component: AgendaHourlyComponent, canActivate: [Angular2TokenService] },
 
          // Booking
          { path: 'booking/new', component: BookingNewComponent, canActivate: [Angular2TokenService] },

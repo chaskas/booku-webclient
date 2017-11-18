@@ -69,8 +69,6 @@ export class PlaceEditComponent implements OnInit {
     this.placeForm = this.formBuilder.group({
       capacity: ['', [Validators.required]],
       price: ['', [Validators.required]],
-      opening: ['', [Validators.required]],
-      closing: ['', [Validators.required]],
       name: ['', [Validators.required]],
       ptype_id: ['', [Validators.required]],
       extra_night: [''],
@@ -86,8 +84,6 @@ export class PlaceEditComponent implements OnInit {
     this.placeForm.setValue({
       capacity: place.capacity,
       price: place.price,
-      opening: new Date(place.opening).toTimeString().split(' ')[0],
-      closing: new Date(place.closing).toTimeString().split(' ')[0],
       name: place.name,
       ptype_id: place.ptype_id,
       extra_night: place.extra_night,

@@ -49,7 +49,7 @@
       </mat-form-field>
     </div>
 
-    <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+    <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px" *ngIf="data.booking.place.ptype?.schedule_type == 0">
       <mat-form-field fxFlex="50">
         <input matInput placeholder="Días" [(ngModel)]="days" [ngModelOptions]="{standalone: true}" readonly>
       </mat-form-field>

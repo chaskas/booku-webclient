@@ -6,5 +6,7 @@ export class PType {
 	name: string;
 	plural: string;
 	schedule_type: number;
+	opening: string;
+	closing: string;
 	places: Place[];
 }

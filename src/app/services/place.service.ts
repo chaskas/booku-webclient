@@ -30,9 +30,7 @@ export class PlaceService {
                       price: place.price,
                       extra_night: place.extra_night,
                       extra_passenger: place.extra_passenger,
-                      dsep: place.dsep,
-                      opening: place.opening,
-                      closing: place.closing
+                      dsep: place.dsep
                     });
 
     let headers      = new Headers({ 'Content-Type': 'application/json' });
@@ -84,9 +82,7 @@ export class PlaceService {
                           price: place.price,
                           extra_night: place.extra_night,
                           extra_passenger: place.extra_passenger,
-                          dsep: place.dsep,
-                          opening: place.opening,
-                          closing: place.closing
+                          dsep: place.dsep
                         });
 
     let headers      = new Headers({ 'Content-Type': 'application/json' });

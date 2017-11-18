@@ -7,8 +7,6 @@ export class Place {
 	name: string;
 	capacity: number;
 	price: number;
-	opening: string;
-	closing: string;
 	created_at: string;
 	updated_at: string;
 	ptype: PType;

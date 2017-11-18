@@ -24,7 +24,9 @@ export class PTypeService {
     let body = JSON.stringify({
                           name: ptype.name,
                           plural: ptype.plural,
-                          schedule_type: ptype.schedule_type
+                          schedule_type: ptype.schedule_type,
+                          opening: ptype.opening,
+                          closing: ptype.closing
                         });
 
     let headers      = new Headers({ 'Content-Type': 'application/json' });
@@ -61,7 +63,9 @@ export class PTypeService {
                           id: ptype.id,
                           name: ptype.name,
                           plural: ptype.plural,
-                          schedule_type: ptype.schedule_type
+                          schedule_type: ptype.schedule_type,
+                          opening: ptype.opening,
+                          closing: ptype.closing
                         });
 
     let headers      = new Headers({ 'Content-Type': 'application/json' });

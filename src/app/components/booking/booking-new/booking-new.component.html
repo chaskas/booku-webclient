@@ -23,7 +23,7 @@
               </mat-form-field>
             </div>
 
-            <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px" fxLayoutAlign="start end">
+            <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px" fxLayoutAlign="start end" *ngIf="place.ptype">
 
               <mat-form-field fxFlex="25">
                 <input matInput [matDatepicker]="arrival" formControlName="arrival" placeholder="Fecha Llegada" [(ngModel)]="arrival_str" (ngModelChange)="calculateDates()"  [max]="maxDate">
@@ -42,7 +42,7 @@
               </mat-form-field>
 
               <mat-form-field fxFlex="25">
-                <input matInput placeholder="Hora Ida" type="time" [(ngModel)]="departure_time" (ngModelChange)="updateTimes()"  [ngModelOptions]="{standalone: true}">
+                <input matInput placeholder="Hora Salida" type="time" [(ngModel)]="departure_time" (ngModelChange)="updateTimes()"  [ngModelOptions]="{standalone: true}">
               </mat-form-field>
 
             </div>
@@ -57,7 +57,7 @@
               </mat-form-field>
             </div>
 
-            <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+            <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px" *ngIf="place.ptype?.schedule_type == 0">
               <mat-form-field fxFlex=“50”>
                 <input matInput placeholder="Días" [(ngModel)]="days" [ngModelOptions]="{standalone: true}" readonly>
               </mat-form-field>
@@ -204,7 +204,7 @@
 
           <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
             <mat-form-field fxFlex="50" *ngIf="place">
-              <input matInput placeholder="Fecha Llegada" [(ngModel)]="place.name">
+              <input matInput placeholder="Lugar" [(ngModel)]="place.name">
             </mat-form-field>
             <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center">
               <div matTooltip="Pendiente de Pago" class="status bs0"></div>
@@ -227,7 +227,7 @@
             </mat-form-field>
 
             <mat-form-field fxFlex="25">
-              <input matInput placeholder="Hora Ida" type="time" [(ngModel)]="departure_time">
+              <input matInput placeholder="Hora Salida" type="time" [(ngModel)]="departure_time">
             </mat-form-field>
 
           </div>

@@ -61,8 +61,6 @@ export class PlaceNewComponent implements OnInit {
     this.placeForm = this.formBuilder.group({
       capacity: ['', [Validators.required]],
       price: ['', [Validators.required]],
-      opening: ['', [Validators.required]],
-      closing: ['', [Validators.required]],
       name: ['', [Validators.required]],
       ptype_id: ['', [Validators.required]],
       extra_night: [''],

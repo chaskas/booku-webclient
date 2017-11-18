@@ -28,6 +28,7 @@ import { Client } from '../../../model/client';
 import { Booking } from '../../../model/booking';
 import { Status } from '../../../model/status';
 import { Place } from '../../../model/place';
+import { PType } from '../../../model/ptype';
 
 @Component({
   selector: 'app-booking-new',
@@ -57,7 +58,6 @@ export class BookingNewComponent implements OnInit {
 
   days: number;
   nights: number;
-
 
   clients: Client[];
   client: Client;
@@ -106,9 +106,6 @@ export class BookingNewComponent implements OnInit {
       res =>      console.log("Token Valid!"),
       error =>    this._handleTokenError(error)
     );
-
-    this.arrival_time   = moment("15:00", "HH:mm").format('HH:mm');
-    this.departure_time = moment("11:00", "HH:mm").format('HH:mm');
 
     this.statusService.getStatuses().then(statuses => this.statuses = statuses);
 
@@ -162,9 +159,7 @@ export class BookingNewComponent implements OnInit {
   handleParams(params: Params)
   {
     this.place_id = +params['p'];
-    this.arrival_str = moment.unix(params['d']).format('YYYY-MM-DD');
-
-    this.calculateDates();
+    this.arrival_str = moment.unix(params['d']).format("YYYY-MM-DDTHH:mm:ss.000-03:00");
 
     this.placeService.getPlace(this.place_id).then(place => this.handleGetPlaceSuccess(place));
 
@@ -173,7 +168,27 @@ export class BookingNewComponent implements OnInit {
   handleGetPlaceSuccess(place: Place)
   {
     this.place = place;
-    this.placeService.getPlacesByPType(place.ptype_id).then(places => this.places = places);
+
+    if(this.place.ptype.schedule_type == 1){
+
+      this.departure_str = moment(this.arrival_str).add(1,'hours').format("YYYY-MM-DDTHH:mm:ss.000-03:00");
+
+      this.arrival_time   = moment(this.arrival_str).format('HH:mm');
+      this.departure_time   = moment(this.departure_str).format('HH:mm');
+
+
+    } else {
+
+      this.departure_str = moment(this.arrival_str).startOf('day').add(1, 'days').format("YYYY-MM-DDTHH:mm:ss.000-03:00");
+
+      this.arrival_time   = moment("15:00", "HH:mm").format('HH:mm');
+      this.departure_time   = moment("11:00", "HH:mm").format('HH:mm');
+
+    }
+
+    this.calculateDates();
+
+    this.placeService.getPlacesByPType(place.ptype.id).then(places => this.places = places);
   }
 
   createClient()
@@ -257,8 +272,6 @@ export class BookingNewComponent implements OnInit {
   private calculateDates()
   {
 
-    if(!this.departure_str) { this.departure_str = moment(this.arrival_str).startOf('day').add(1, 'days').format("YYYY-MM-DDTHH:mm:ss.000-03:00"); };
-
     this.nights = moment(this.departure_str).startOf('day').diff(moment(this.arrival_str).startOf('day'), 'days');
     this.days = this.nights + 1;
 
@@ -310,9 +323,9 @@ export class BookingNewComponent implements OnInit {
 
     if(this.status_ids.find(x => x == 2)){
       extra_dsep = Number(this.place.dsep);
-      this.departure_time = moment("19:00", "HH:mm").format('HH:mm');
+      if((this.place.ptype && this.place.ptype.schedule_type == 0)this.departure_time = moment("19:00", "HH:mm").format('HH:mm');
     } else {
-      this.departure_time = moment("11:00", "HH:mm").format('HH:mm');
+      if((this.place.ptype && this.place.ptype.schedule_type == 0)this.departure_time = moment("11:00", "HH:mm").format('HH:mm');
     }
 
     this.subtotal = this.place.price + extra_nights + extra_passengers + extra_dsep;

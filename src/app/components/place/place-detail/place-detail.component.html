@@ -17,29 +17,23 @@
 
           <div fxLayout='row' fxFlex="100" fxLayoutGap="10px">
 
-            <mat-input-container fxFlex="34">
+            <mat-input-container fxFlex="50">
               <input matInput placeholder="Tipo Espacio" [value]="place.ptype?.name" readonly>
             </mat-input-container>
 
-            <mat-input-container fxFlex="33">
-              <input type="email" matInput placeholder="Horario apertura" [value]="place.opening | date: 'HH:mm'" readonly>
-            </mat-input-container>
-
-            <mat-input-container fxFlex="33">
-              <input matInput placeholder="Horario cierre" [value]="place.closing | date: 'HH:mm'" readonly>
-            </mat-input-container>
-          </div>
-
-          <div fxLayout='row' fxFlex="100" fxLayoutGap="10px">
-            <mat-input-container fxFlex="34">
+            <mat-input-container fxFlex="50">
               <input matInput placeholder="Nombre" [value]="place.name" readonly>
             </mat-input-container>
 
-            <mat-input-container fxFlex="33">
+          </div>
+
+          <div fxLayout='row' fxFlex="100" fxLayoutGap="10px">
+          
+            <mat-input-container fxFlex="50">
               <input matInput placeholder="Capacidad" [value]="place.capacity" readonly>
             </mat-input-container>
 
-            <mat-input-container fxFlex="33">
+            <mat-input-container fxFlex="50">
               <input matInput placeholder="Precio" [value]="place.price | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL'" readonly="true">
             </mat-input-container>
           </div>

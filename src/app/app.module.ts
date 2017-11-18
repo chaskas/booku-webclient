@@ -44,7 +44,8 @@ import { NewComponent } from './components/clients/new/new.component';
 import { EditComponent } from './components/clients/edit/edit.component';
 
 // Components - Agenda
-import { AgendaMonthlyComponent } from './components/agenda/agenda-monthly/agenda-monthly.component';
+import { AgendaDailyComponent } from './components/agenda/agenda-daily/agenda-daily.component';
+import { AgendaHourlyComponent } from './components/agenda/agenda-hourly/agenda-hourly.component';
 
 // Components - Place
 import { PlaceNewComponent } from './components/place/place-new/place-new.component';
@@ -98,7 +99,8 @@ import { StatusDetailComponent } from './components/status/status-detail/status-
     NewComponent,
     EditComponent,
     DialogComponent,
-    AgendaMonthlyComponent,
+    AgendaDailyComponent,
+    AgendaHourlyComponent,
     PtypeNewComponent,
     PtypeEditComponent,
     PtypeDetailComponent,

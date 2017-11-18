@@ -18,11 +18,11 @@ import * as moment from 'moment';
 import { Angular2TokenService } from 'angular2-token';
 
 @Component({
-  selector: 'app-agenda-monthly',
-  templateUrl: './agenda-monthly.component.html',
-  styleUrls: ['./agenda-monthly.component.css']
+  selector: 'app-agenda-daily',
+  templateUrl: './agenda-daily.component.html',
+  styleUrls: ['./agenda-daily.component.css']
 })
-export class AgendaMonthlyComponent implements OnInit {
+export class AgendaDailyComponent implements OnInit {
 
   days: Array<Date>;
 
