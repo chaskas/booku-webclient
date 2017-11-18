@@ -68,7 +68,7 @@ export class AgendaHourlyComponent implements OnInit {
 
   private handleParams(params: Params)
   {
-    this.ptype_id = +params['ptype'];
+    this.ptype_id = params['ptype'] ? +params['ptype'] : 1;
     this.ptypeService.getPType(this.ptype_id).then(ptype => this.handleGetPTypeSuccess(ptype));
   }
 
