@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute, Params }   from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -93,7 +93,8 @@ export class BookingNewComponent implements OnInit {
     private placeService: PlaceService,
   	private formBuilder: FormBuilder,
     private _router: Router,
-    private _tokenService: Angular2TokenService
+    private _tokenService: Angular2TokenService,
+    private cdRef: ChangeDetectorRef
 
   ) {
 
@@ -272,9 +273,6 @@ export class BookingNewComponent implements OnInit {
   private calculateDates()
   {
 
-    this.nights = moment(this.departure_str).startOf('day').diff(moment(this.arrival_str).startOf('day'), 'days');
-    this.days = this.nights + 1;
-
     this.minDate = moment(this.arrival_str).startOf('day').format();
     this.maxDate = moment(this.departure_str).endOf('day').format();
 
@@ -292,6 +290,15 @@ export class BookingNewComponent implements OnInit {
 
     this.arrival_str =   arrival_date.format('YYYY')   + "-" +   arrival_date.format('MM') + "-" +   arrival_date.format('DD') + "T" + this.arrival_time   + ":00.000-03:00";
     this.departure_str = departure_date.format('YYYY') + "-" + departure_date.format('MM') + "-" + departure_date.format('DD') + "T" + this.departure_time + ":00.000-03:00";
+
+    if(this.place.ptype.schedule_type == 1)
+    {
+      this.nights = moment(this.departure_str).diff(moment(this.arrival_str), 'hours');
+    } else {
+      this.nights = moment(this.departure_str).startOf('day').diff(moment(this.arrival_str).startOf('day'), 'days');
+    }
+
+    this.days = this.nights + 1;
 
   }
 
@@ -314,7 +321,12 @@ export class BookingNewComponent implements OnInit {
     var extra_dsep: number = 0;
 
     if(this.nights > 1){
-      extra_nights = Number(this.place.extra_night) * (this.nights - 1);
+      if(this.place.ptype.schedule_type == 1)
+      {
+        extra_nights = Number(this.place.price) * Number(this.nights -1);
+      } else {
+        extra_nights = Number(this.place.extra_night) * Number(this.nights - 1);
+      }
     }
 
     if((Number(this.adults) + Number(this.childrens)) > Number(this.place.capacity)){
@@ -332,6 +344,11 @@ export class BookingNewComponent implements OnInit {
 
     this.calculateTotal();
 
+  }
+
+  ngAfterViewChecked()
+  {
+    this.cdRef.detectChanges();
   }
 
   private calculateTotal()
