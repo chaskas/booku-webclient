@@ -24,7 +24,6 @@ import { PlaceEditComponent } from '../../components/place/place-edit/place-edit
 import { PlaceDetailComponent } from '../../components/place/place-detail/place-detail.component';
 
 import { LoginComponent } from '../../components/session/login/login.component';
-import { RegisterComponent } from '../../components/session/register/register.component';
 import { LogoutComponent } from '../../components/session/logout/logout.component';
 
 // Booking
@@ -38,9 +37,9 @@ import { StatusListComponent } from '../../components/status/status-list/status-
 import { StatusDetailComponent } from '../../components/status/status-detail/status-detail.component';
 
 //Users
-// import { UserNewComponent } from '../../components/user/user-new/user-new.component';
-// import { UserEditComponent } from '../../components/user/user-edit/user-edit.component';
-// import { UserListComponent } from '../../components/user/user-list/user-list.component';
+import { UserNewComponent } from '../../components/user/user-new/user-new.component';
+import { UserEditComponent } from '../../components/user/user-edit/user-edit.component';
+import { UserListComponent } from '../../components/user/user-list/user-list.component';
 // import { UserDetailComponent } from '../../components/user/user-detail/user-detail.component';
 
  const routes: Routes = [
@@ -80,10 +79,10 @@ import { StatusDetailComponent } from '../../components/status/status-detail/sta
          { path: 'statuses/edit/:id', component: StatusEditComponent, canActivate: [Angular2TokenService] },
          { path: 'statuses/detail/:id', component: StatusDetailComponent, canActivate: [Angular2TokenService] },
 
-         //Status
-        //  { path: 'users/new', component: UserNewComponent, canActivate: [Angular2TokenService] },
-        //  { path: 'users', component: UserListComponent, canActivate: [Angular2TokenService] },
-        //  { path: 'users/edit/:id', component: UserEditComponent, canActivate: [Angular2TokenService] },
+         //User
+         { path: 'users/new', component: UserNewComponent, canActivate: [Angular2TokenService] },
+         { path: 'users', component: UserListComponent, canActivate: [Angular2TokenService] },
+         { path: 'users/edit/:id', component: UserEditComponent, canActivate: [Angular2TokenService] },
         //  { path: 'users/show/:id', component: UserDetailComponent, canActivate: [Angular2TokenService] },
        ]
   },

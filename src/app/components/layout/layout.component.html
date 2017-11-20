@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" >
 
   <div fxLayout="row" fxShow="false" fxShow.gt-xs>
 
@@ -7,7 +7,7 @@
     <button mat-button [matMenuTriggerFor]="menu"> Administración
       <mat-icon>keyboard_arrow_down</mat-icon>
       <mat-menu #menu="matMenu">
-        <!-- <button mat-menu-item routerLink="#">Usuarios</button> -->
+        <button mat-menu-item routerLink="/users">Usuarios</button>
         <button mat-menu-item routerLink="/statuses/list">Estados</button>
         <button mat-menu-item routerLink="/places">Espacios</button>
         <button mat-menu-item routerLink="/ptypes">Tipos</button>
@@ -16,7 +16,7 @@
   </div>
 
   <span class="fill-remaining-space"></span>
-
+  <a mat-button *ngIf="user" [routerLink]="['/users/edit',user.id]"><mat-icon>person</mat-icon>Perfil</a>
   <a mat-button routerLink="/signout" fxShow="false" fxShow.gt-xs><mat-icon>exit_to_app</mat-icon> Logout</a>
 
 </mat-toolbar>

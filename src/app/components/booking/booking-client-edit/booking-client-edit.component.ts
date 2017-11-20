@@ -14,6 +14,7 @@ import { CustomValidators } from 'ng2-validation';
 import { RutValidator } from '../../../utils/rut/ng2-rut.module'
 
 import { rutClean } from 'rut-helpers';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-booking-client-edit',
@@ -21,11 +22,18 @@ import { rutClean } from 'rut-helpers';
   styleUrls: ['./booking-client-edit.component.css']
 })
 export class BookingClientEditComponent implements OnInit {
-	client: Client;
-	clientForm: FormGroup;
+	client: Client
+  clients: Client[];
+  clientForm: FormGroup;
+  client_id: number;
+  newClient: number;
 
  	@Input() errors: string[];
-    @Input() success: string;
+  @Input() success: string;
+
+  rut = new FormControl();
+  filteredClients: Observable<Client[]>;
+
 
   constructor(
       public dialogRef: MatDialogRef<BookingClientEditComponent>,
@@ -33,7 +41,7 @@ export class BookingClientEditComponent implements OnInit {
   	  private clientService: ClientService,
       private dialogsService: DialogsServiceService,
   	  private rv: RutValidator,
-	  private formBuilder: FormBuilder,
+	    private formBuilder: FormBuilder,
       private route: ActivatedRoute,
       public snackBar: MatSnackBar,
       private _router: Router,
@@ -45,11 +53,57 @@ export class BookingClientEditComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  filter(rut: string): Client[]
+  {
 
-	this.clientService.getClient(this.data.client.id).then(client => this.client = client);
+    if(typeof this.rut.value === 'object'){
+
+      this.client_id = this.rut.value.id;
+
+      
+      this.clientService.getClient(this.client_id).then(client => this.fillForm(client));
+
+      this.newClient = 1;
+    }
+
+    return this.clients.filter(client =>
+      client.rut.toLowerCase().indexOf(rut.toLowerCase()) === 0);
 
   }
+  
+  displayFn(client: Client): string
+  {
+      
+      return client ? client.rut: null;
+ 
+  }
+
+  ngOnInit() {
+
+	  this.clientService.getClient(this.data.client.id).then(client => this.getClientSuccess(client));
+    this.clientService.getClients().then(clients => this.handleGetClientsSuccess(clients));
+
+  }
+
+  private getClientSuccess(client: Client){
+    this.client = client;
+  }
+
+   private fillForm(client: Client){
+    this.clientForm.patchValue({ 
+      'rut': client.rut,
+      'first_name': client.first_name,
+      'last_name': client.last_name,
+      'email': client.email,
+      'address': client.address,
+      'city': client.city,
+      'phone': client.phone,
+      'car_license': client.car_license,
+      'car_brand': client.car_brand,
+      'car_model': client.car_model,
+      'car_color': client.car_color
+     });
+   }
 
    private createForm()
 	{
@@ -61,12 +115,14 @@ export class BookingClientEditComponent implements OnInit {
 		address: [this.data.client.address, [Validators.required]],
 		city: [this.data.client.city, [Validators.required]],
 		phone: [this.data.client.phone, [Validators.required]],
-		car_license: ['', ],
-		car_brand: ['', ],
-		car_model: ['', ],
-		car_color: ['', ]
+		car_license: [this.data.client.car_license],
+		car_brand: [this.data.client.car_brand],
+		car_model: [this.data.client.car_model],
+		car_color: [this.data.client.car_color]
 
     });
+
+    this.rut.setValue(this.data.client);
 	}
 
   updateClient()
@@ -95,4 +151,15 @@ export class BookingClientEditComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+  private handleGetClientsSuccess(clients: Client[])
+  {
+    this.clients = clients;
+
+    this.filteredClients = this.rut.valueChanges
+      .startWith(null)
+      .map(client => client && typeof client === 'object' ? client.rut : client)
+      .map(rut => rut ? this.filter(rut) : this.clients.slice());
+  }
+
 }

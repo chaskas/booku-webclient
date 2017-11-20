@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { BookingService } from '../../../services/booking.service';
 import { PaymentService } from '../../../services/payment.service';
+import { DialogsServiceService } from '../../../services/dialogs-service.service';
 
 import { BookingEditComponent } from '../../booking/booking-edit/booking-edit.component';
 import { BookingClientEditComponent } from '../../booking/booking-client-edit/booking-client-edit.component';
@@ -40,7 +41,7 @@ export class BookingShowComponent implements OnInit {
   arrival: string;
   departure: string;
 
-  displayedColumns = ['date','bill','method', 'amount'];
+  displayedColumns = ['date','bill','method', 'amount', 'icons'];
   paymentDataSource: PaymentDataSource | null;
 
   methods: Array<String> = [ "Transferencia", "Efectivo", "WebPay", "Cheque" ];
@@ -56,6 +57,7 @@ export class BookingShowComponent implements OnInit {
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     private _tokenService: Angular2TokenService,
+    private dialogsService: DialogsServiceService,    
     private _router: Router,
     private config: AppConfig
   ) {
@@ -131,6 +133,23 @@ export class BookingShowComponent implements OnInit {
     });
   }
 
+  public openDialog(id: number) {
+    this.dialogsService
+      .confirm('Confirmar', '¿Seguro que quiere eliminar?')
+      .subscribe(res => this.deletePayment(res, id));
+  }
+
+  deletePayment(res: boolean, id: number): void
+  {
+    if(res) {
+      this.paymentService.deletePayment(id).then((data) => {
+        this.paymentDatabase = new PaymentsDatabase(this.route, this.paymentService);
+        this.paymentDataSource = new PaymentDataSource(this.paymentDatabase);
+      });
+    }
+  }  
+
+   
   private calculateDates(){
 
     this.nights = moment(this.booking.departure).startOf('day').diff(moment(this.booking.arrival).startOf('day'), 'days');

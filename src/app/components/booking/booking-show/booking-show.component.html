@@ -215,6 +215,13 @@
               <mat-cell *cdkCellDef="let row">{{ row.amount | currency: 'CLP' : 'symbol-narrow' : '3.0-0': 'es-CL' }}</mat-cell>
             </ng-container>
 
+            <ng-container cdkColumnDef="icons">
+              <mat-header-cell *cdkHeaderCellDef> Opciones </mat-header-cell>
+              <mat-cell *cdkCellDef="let row">
+              <button  mat-icon-button (click)="openDialog(row.id)"><mat-icon>delete</mat-icon></button>
+              </mat-cell>
+            </ng-container> 
+
             <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
           </mat-table>
