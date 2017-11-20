@@ -21,6 +21,8 @@ export class PaymentNewComponent implements OnInit {
   @Input() errors: string[];
   @Input() success: string;
 
+  allowPayments: boolean = true;
+
   constructor(
     public dialogRef: MatDialogRef<PaymentNewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -48,13 +50,19 @@ export class PaymentNewComponent implements OnInit {
 
   createPayment()
   {
-    this.paymentService.createPayment(this.paymentForm.value).then(
-      res =>      this.handleCreateSuccess(res),
-      error =>    this.handleError(error)
-    );
+    if(this.allowPayments){
+      this.allowPayments = false;
+      this.paymentService.createPayment(this.paymentForm.value).then(
+        res =>      this.handleCreateSuccess(res),
+        error =>    this.handleError(error)
+      );
+    } else {
+      console.log("ROJO");
+    }
   }
 
   private handleCreateSuccess(data: any) {
+    this.allowPayments = true;
 	  this.errors = null;
     this.snackBar.open("Pago Registrado correctamente", "OK", {
       duration: 2000,
