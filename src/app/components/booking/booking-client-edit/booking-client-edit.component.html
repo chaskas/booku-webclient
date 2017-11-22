@@ -1,30 +1,30 @@
 <div class="container">
   <form [formGroup]="clientForm" (submit)="updateClient()">
-    <div fxLayout="row">
-      <ng-container *ngIf="client">
-        <mat-card class="full-width">
+      <ng-container *ngIf="data.client">
 
-          <mat-card-header>
-            <mat-card-title>Editar</mat-card-title>
-            <span class="fill-remaining-space"></span>
-            <button type="button" mat-button [routerLink]="['/clients/detail',client.id]">Volver</button>
-          </mat-card-header>
+          <h2 mat-dialog-title>Editar Cliente</h2>
 
-          <mat-card-content fxLayout='column'>
+          <mat-dialog-content fxLayout='column'>
 
           <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
-             <mat-form-field fxFlex="34">
-               <input matInput placeholder="Rut" formControlName="rut" required>
-             </mat-form-field>
+
            
              <mat-form-field fxFlex="33">
-               <input matInput placeholder="Nombre" formControlName="first_name" required>
+               <input matInput placeholder="Nombre" formControlName="first_name" required autofocus>
              </mat-form-field>
             
             <mat-form-field fxFlex="33">
                <input matInput placeholder="Apellido" formControlName="last_name" required>
             </mat-form-field>
 
+             <mat-form-field fxFlex="34">
+	          <input type="text" matInput placeholder="Rut" formControlName="rut" required [formControl]="rut" [matAutocomplete]="auto" (value)="data.client.rut">
+	          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+	            <mat-option *ngFor="let client of filteredClients | async" [value]="client">
+	              {{ client.rut }}
+	            </mat-option>
+	          </mat-autocomplete>
+             </mat-form-field>
           </div>
 
 
@@ -67,16 +67,13 @@
 
           </div>
 
-          </mat-card-content>
+          </mat-dialog-content>
 
-          <mat-card-actions class="actions">
-            <button mat-button type="button" (click)="openDialog()" confirm color="accent">Eliminar</button>
-            <button mat-raised-button type="submit" [disabled]="!clientForm.valid">Aceptar</button>
-          </mat-card-actions>
-
-        </mat-card>
+          <mat-dialog-actions fxLayoutAlign="end center">
+            <button type="button" mat-button mat-dialog-close>Cancelar</button>
+            <button mat-raised-button type="submit" color="primary" [disabled]="!clientForm.valid">Aceptar</button>
+          </mat-dialog-actions>
 
       </ng-container>
-    </div>
   </form>
 </div>

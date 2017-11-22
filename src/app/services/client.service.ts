@@ -86,6 +86,7 @@ export class ClientService {
                           rut: rut,
                           first_name: client.first_name,
                           last_name: client.last_name,
+                          city: client.city,
                           email: client.email,
                           address: client.address,
                           phone: client.phone,

@@ -189,7 +189,7 @@
         </div>
 
         <div fxLayout="row" fxFlex="100%" fxLayoutAlign="end center">
-          <button mat-raised-button matStepperPrevious>Volver</button>
+          <button type="button" mat-raised-button matStepperPrevious>Volver</button>
           <button mat-raised-button matStepperNext (click)="getClient(client_id)" [disabled]="!client_id">Siguiente</button>
         </div>
 
@@ -312,7 +312,7 @@
 
 
         <div fxLayout="row" fxLayoutAlign="end center">
-          <button mat-raised-button matStepperPrevious>Volver</button>
+          <button type="button" mat-raised-button matStepperPrevious>Volver</button>
           <button mat-raised-button (click)="createBooking()">Confirmar Reserva</button>
         </div>
 

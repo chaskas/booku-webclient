@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PType } from '../../model/ptype';
+import { User } from '../../model/user';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { PTypeService } from '../../services/ptype.service';
+import { UserService } from '../../services/user.service';
 import { Angular2TokenService } from 'angular2-token';
+
+import { CustomValidators } from 'ng2-validation';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
@@ -17,28 +22,46 @@ export class LayoutComponent implements OnInit {
 
   schedule_types: Array<String> = ['daily', 'hourly'];
 
+  user: User;
+
   constructor(
     private ptypeService: PTypeService,
+    private userService: UserService,
     private _router: Router,
     private route: ActivatedRoute,
     private _tokenService: Angular2TokenService,
+    private formBuilder: FormBuilder,
     private snackBar: MatSnackBar
 
     ) {
+
+    this.user = new User();
+
     this._tokenService.validateToken().subscribe(
-      res =>      console.log("Token Valid!"),
+      res =>      this.user.id = this._tokenService.currentUserData.id,
       error =>    this._handleTokenError(error)
     )
     this.ptypeService.getPTypes().then(ptypes => this.handleGetPtypesSuccess(ptypes));
+
   }
 
-  ngOnInit() {
+  ngOnInit()
+  {
+
   }
 
-  handleGetPtypesSuccess(ptypes: PType[]){
+  handleGetPtypesSuccess(ptypes: PType[])
+  {
     this.ptypes = ptypes;
   }
-  private _handleTokenError(error: any) {
+
+  private _handleGetUserSuccess(user: User)
+  {
+    this.user = user;
+  }
+
+  private _handleTokenError(error: any)
+  {
     var config: MatSnackBarConfig = new MatSnackBarConfig();
     config.duration = 1000;
     this.snackBar.open("Su sesión ha expirado.", undefined, config);

@@ -21,7 +21,7 @@ import { MaterialModule } from './modules/material/material.module';
 //Services
 import { ClientService } from './services/client.service';
 import { BookingService } from './services/booking.service';
-
+import { UserService } from './services/user.service';
 import { PlaceService } from './services/place.service';
 import { PTypeService } from './services/ptype.service';
 import { SessionService } from './services/session.service';
@@ -62,16 +62,21 @@ import { PtypeListComponent } from './components/ptype/ptype-list/ptype-list.com
 // Components - Sessions
 import { LoginComponent } from './components/session/login/login.component';
 import { LogoutComponent } from './components/session/logout/logout.component';
-import { RegisterComponent } from './components/session/register/register.component';
 
 // Components - Booking
 import { BookingNewComponent } from './components/booking/booking-new/booking-new.component';
 import { BookingShowComponent } from './components/booking/booking-show/booking-show.component';
 import { BookingEditComponent } from './components/booking/booking-edit/booking-edit.component';
+import { BookingClientEditComponent } from './components/booking/booking-client-edit/booking-client-edit.component';
 
 // Components - Dialogs
 import { DialogComponent } from './utils/dialog/dialog.component';
 import { PaymentNewComponent } from './components/payment/payment-new/payment-new.component';
+
+// Components - Users
+import { UserNewComponent } from './components/user/user-new/user-new.component';
+import { UserEditComponent } from './components/user/user-edit/user-edit.component';
+import { UserListComponent } from './components/user/user-list/user-list.component';
 
 // Validators
 import { CustomValidators } from 'ng2-validation';
@@ -82,12 +87,14 @@ import { ClientsDatabase } from './components/clients/list/clients-database';
 import { PTypesDatabase } from './components/ptype/ptype-list/ptypes-database';
 import { PlacesDatabase } from './components/place/place-list/places-database';
 import { StatusesDatabase } from './components/status/status-list/statuses-database';
+import { UsersDatabase } from './components/user/user-list/users-database';
 
 import { PaymentsDatabase } from './components/booking/booking-show/payments-database';
 import { StatusNewComponent } from './components/status/status-new/status-new.component';
 import { StatusEditComponent } from './components/status/status-edit/status-edit.component';
 import { StatusListComponent } from './components/status/status-list/status-list.component';
 import { StatusDetailComponent } from './components/status/status-detail/status-detail.component';
+
 
 
 @NgModule({
@@ -111,7 +118,6 @@ import { StatusDetailComponent } from './components/status/status-detail/status-
     PlaceListComponent,
     LoginComponent,
     LogoutComponent,
-    RegisterComponent,
     BookingNewComponent,
     BookingShowComponent,
     PaymentNewComponent,
@@ -119,23 +125,29 @@ import { StatusDetailComponent } from './components/status/status-detail/status-
     StatusNewComponent,
     StatusEditComponent,
     StatusListComponent,
-    StatusDetailComponent
+    StatusDetailComponent,
+    BookingClientEditComponent,
+    UserNewComponent,
+    UserEditComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule, HttpClientModule
   ],
-  entryComponents: [DialogComponent, PaymentNewComponent, BookingEditComponent],
+  entryComponents: [DialogComponent, PaymentNewComponent, BookingEditComponent, BookingClientEditComponent],
   providers: [
       AppConfig,
       ClientService,
       BookingService,
       PTypeService,
       PlaceService,
+      UserService,
       RutValidator,
       PaymentService,
       ClientsDatabase,
       PTypesDatabase,
       PlacesDatabase,
+      UsersDatabase,
       StatusesDatabase,
       StatusService,
       PaymentsDatabase,

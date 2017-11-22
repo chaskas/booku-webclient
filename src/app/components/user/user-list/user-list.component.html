@@ -1,0 +1,34 @@
+<div class="container">
+
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h2>Usuarios</h2>
+    <a routerLink="/users/new" mat-raised-button> <mat-icon>add</mat-icon> Nuevo</a>
+  </div>
+
+  <div fxLayout="row">
+
+    <mat-table #table [dataSource]="dataSource" fxFlex="100">
+      <ng-container cdkColumnDef="name">
+        <mat-header-cell *cdkHeaderCellDef> Nombre </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.name }}</mat-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="email">
+        <mat-header-cell *cdkHeaderCellDef> Email </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.email }}</mat-cell>
+      </ng-container>
+<!--
+      <ng-container cdkColumnDef="icons">
+        <mat-header-cell *cdkHeaderCellDef> Opciones </mat-header-cell>
+        <mat-cell *cdkCellDef="let row">
+        <button  mat-icon-button (click)="openDialog()"><mat-icon>delete</mat-icon></button>
+        </mat-cell>
+      </ng-container> 
+-->
+      <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+  </div>
+
+</div>
