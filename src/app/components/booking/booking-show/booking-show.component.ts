@@ -115,7 +115,8 @@ export class BookingShowComponent implements OnInit {
 
   openPaymentNewDialog(): void {
     let dialogRef = this.dialog.open(PaymentNewComponent, {
-      data: { booking: this.booking }
+      data: { booking: this.booking },
+      width: '750px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

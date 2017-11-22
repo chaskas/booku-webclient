@@ -41,7 +41,7 @@ export class PaymentNewComponent implements OnInit {
   private createForm()
   {
     this.paymentForm = this.formBuilder.group({
-      amount: ['', [Validators.required]],
+      amount: ['', [Validators.required, Validators.max(this.data.booking.pending)]],
       method: ['', [Validators.required]],
       bill: ['', [Validators.required]],
       booking_id: [this.data.booking.id, [Validators.required]]

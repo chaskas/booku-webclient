@@ -1,12 +1,12 @@
-<form [formGroup]="paymentForm" (submit)="createPayment()">
+<form [formGroup]="paymentForm" (submit)="createPayment()" fxLayout="column">
   <h2 mat-dialog-title>Realizar Pago</h2>
-  <mat-dialog-content>
+  <mat-dialog-content fxFlex="100">
 
-    <mat-form-field>
+    <mat-form-field fxFlex="25">
       <input matInput placeholder="Boleta / Factura" formControlName="bill" required>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field fxFlex="35">
       <mat-select placeholder="Método de Pago" formControlName="method" required>
         <mat-option value="0">Transferencia</mat-option>
         <mat-option value="1">Efectivo</mat-option>
@@ -15,8 +15,9 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field fxFlex="40">
       <input matInput placeholder="Monto" formControlName="amount" required>
+      <mat-error *ngIf="paymentForm.controls.amount.hasError('max')">No puede ser superior al Saldo Pendiente.</mat-error>
     </mat-form-field>
 
   </mat-dialog-content>
