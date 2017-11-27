@@ -330,7 +330,7 @@ export class BookingNewComponent implements OnInit {
     }
 
     if((Number(this.adults) + Number(this.childrens)) > Number(this.place.capacity)){
-      extra_passengers = Number(this.place.extra_passenger);
+      extra_passengers = Number(this.place.extra_passenger) * Number(this.nights);
     }
 
     if(this.status_ids.find(x => x == 2)){
