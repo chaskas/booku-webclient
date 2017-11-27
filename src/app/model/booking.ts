@@ -15,6 +15,7 @@ export class Booking {
 	status_ids: Array<number>;
 	adults: number;
 	childrens: number;
+	notes: string;
 	pending: number;
 	client_id: number;
 	place_id: number;

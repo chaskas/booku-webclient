@@ -85,6 +85,7 @@ export class BookingEditComponent implements OnInit {
       status_ids: [this.data.booking.status_ids],
       adults: [this.data.booking.adults, [Validators.required]],
       childrens: [this.data.booking.childrens, [Validators.required]],
+      notes: [this.data.booking.notes],
       client_id: [this.data.booking.client_id, [Validators.required]],
       place_id: [this.data.booking.place_id, [Validators.required]]
     });

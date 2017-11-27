@@ -36,6 +36,7 @@ export class BookingService {
                           status_ids: booking.status_ids,
                           adults: booking.adults,
                           childrens: booking.childrens,
+                          notes: booking.notes,
                           client_id: booking.client_id,
                           place_id: booking.place_id
                         });
@@ -94,6 +95,7 @@ export class BookingService {
                           status_ids: booking.status_ids,
                           adults: booking.adults,
                           childrens: booking.childrens,
+                          notes: booking.notes,
                           client_id: booking.client_id,
                           place_id: booking.place_id
                         });

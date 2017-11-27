@@ -22,16 +22,28 @@
   <mat-card-content class="agenda-wrapper" fxLayout="row">
 
     <div fxLayout="column" fxFlex="100">
-      <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="5px">
+      <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="5px">
+
+
+      <div fxLayout="row" fxLayoutGap="5px">
         <div fxLayout="column" fxLayoutGap="5px">
           <div class="date th">Fecha</div>
-          <div class="date" *ngFor="let day of days">{{ day | date: 'EEEE, dd/MM/y' }}</div>
-        </div>
-        <div fxLayout="column" fxLayoutGap="5px" class="over">
-          <div fxLayout="row" fxLayoutGap="5px">
-            <div class="th" fxLayoutAlign="center center" *ngFor="let place of places">{{ place.name }}</div>
-          </div>
+        </div> 
 
+        <div fxLayout="column" fxFlex="100" fxLayoutGap="5px">
+          <div fxLayout="row" fxLayoutGap="5px">
+            <div class="th" fxFlex="1 0 190px" fxLayoutAlign="center center" *ngFor="let place of places">{{ place.name }}</div>
+          </div>
+        </div> 
+      </div>
+
+
+      <div fxLayout="row" fxLayoutGap="5px">
+        <div fxLayout="column" fxLayoutGap="5px">
+          <div class="date" *ngFor="let day of days">{{ day | date: 'EEEE, dd/MM/y' }}</div>
+        </div>        
+
+        <div fxLayout="column" fxLayoutGap="5px" class="over">
           <div fxLayout="row" fxLayoutGap="5px" *ngFor="let day of matrix; let i = index">
             <div class="item" fxFlex="1 0 190px" *ngFor="let place of day" fxLayout="row" fxLayoutAlign="space-between stretch">
               <div *ngIf="place.booking != 0" [routerLink]="['/booking',place.booking.id]" fxLayout="column" fxFlex="100" fxLayoutAlign="space-between stretch">
@@ -51,6 +63,10 @@
             </div>
           </div>
         </div>
+      </div>
+
+
+
       </div>
     </div>
 

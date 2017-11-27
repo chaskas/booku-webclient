@@ -396,6 +396,7 @@ export class BookingNewComponent implements OnInit {
       status_ids: [''],
       adults: ['', [Validators.required]],
       childrens: ['', [Validators.required]],
+      notes: [''],
       client_id: ['', [Validators.required]],
       place_id: ['', [Validators.required]]
     });

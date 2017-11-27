@@ -61,7 +61,11 @@
             <input matInput placeholder="Noches" [(ngModel)]="nights" readonly>
           </mat-form-field>
         </div>
-
+        <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
+          <mat-form-field fxFlex="100">
+            <textarea matInput placeholder="Notas / Observaciones" [value]="booking.notes"></textarea>
+          </mat-form-field>
+        </div>  
       </mat-card-content>
 
     </mat-card>
