@@ -144,7 +144,7 @@ export class BookingEditComponent implements OnInit {
     }
 
     if((Number(this.data.booking.adults) + Number(this.data.booking.childrens)) > Number(this.data.booking.place.capacity)){
-      extra_passengers = Number(this.data.booking.place.extra_passenger);
+      extra_passengers = Number(this.data.booking.place.extra_passenger) * Number(this.nights);
     }
 
     if(this.data.booking.status_ids.find(x => x == 2)){
