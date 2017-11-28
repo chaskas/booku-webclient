@@ -235,9 +235,15 @@ export class BookingNewComponent implements OnInit {
 
   }
 
-  private _handleError(error: any)
-  {
-      this.snackBar.open(error.json(), null, {
+  private _handleError(error: any) {
+    var errorMsg = '';
+
+      if(error.json()['rut']){
+           errorMsg = 'El rut ingresado ya existe';
+      }else{
+        errorMsg = 'Ha ocurrido un error';
+      }
+      this.snackBar.open(errorMsg, null, {
         duration: 2000,
       });
   }
