@@ -63,9 +63,9 @@
         </div>
         <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
           <mat-form-field fxFlex="100">
-            <textarea matInput placeholder="Notas / Observaciones" [value]="booking.notes"></textarea>
+            <textarea matInput placeholder="Notas / Observaciones" [value]="booking.notes" readonly></textarea>
           </mat-form-field>
-        </div>  
+        </div>
       </mat-card-content>
 
     </mat-card>
@@ -224,7 +224,7 @@
               <mat-cell *cdkCellDef="let row">
               <button  mat-icon-button (click)="openDialog(row.id)"><mat-icon>delete</mat-icon></button>
               </mat-cell>
-            </ng-container> 
+            </ng-container>
 
             <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
