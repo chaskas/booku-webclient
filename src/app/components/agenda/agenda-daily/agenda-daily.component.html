@@ -45,7 +45,7 @@
                 </div>
               </div>
 
-              <div fxLayout="row" fxLayoutAlign="center center" [appHighlight]="places[j]?.name" fxFlex="100%" *ngIf="place.booking == 0" [routerLink]="['/booking/new']" [queryParams]="{ p: place.id, d: days[i] / 1000 }">
+              <div fxLayout="row" fxLayoutAlign="center center" appHighlight [name]="places[j]?.name" [date]="days[i]" fxFlex="100%" *ngIf="place.booking == 0" [routerLink]="['/booking/new']" [queryParams]="{ p: place.id, d: days[i] / 1000 }">
 
               </div>
             </div>
