@@ -94,6 +94,7 @@ import { StatusNewComponent } from './components/status/status-new/status-new.co
 import { StatusEditComponent } from './components/status/status-edit/status-edit.component';
 import { StatusListComponent } from './components/status/status-list/status-list.component';
 import { StatusDetailComponent } from './components/status/status-detail/status-detail.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 
@@ -129,7 +130,8 @@ import { StatusDetailComponent } from './components/status/status-detail/status-
     BookingClientEditComponent,
     UserNewComponent,
     UserEditComponent,
-    UserListComponent
+    UserListComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule, HttpClientModule

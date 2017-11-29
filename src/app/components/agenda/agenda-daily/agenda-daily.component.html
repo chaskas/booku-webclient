@@ -33,7 +33,7 @@
           </div>
 
           <div fxLayout="row" fxLayoutGap="5px" *ngFor="let day of matrix; let i = index">
-            <div class="item" fxFlex="1 0 190px" *ngFor="let place of day" fxLayout="row" fxLayoutAlign="space-between stretch">
+            <div class="item" fxFlex="1 0 190px" *ngFor="let place of day; let j = index" fxLayout="row" fxLayoutAlign="space-between stretch">
               <div *ngIf="place.booking != 0" [routerLink]="['/booking',place.booking.id]" fxLayout="column" fxFlex="100" fxLayoutAlign="space-between stretch">
                 <div fxLayout="row" fxLayoutAlign="center end" fxFlex="50">
                   <div fxLayout="column" fxFlex="80"><span class="booking-client-name">{{ place.client.first_name }} {{ place.client.last_name }}</span></div>
@@ -45,7 +45,7 @@
                 </div>
               </div>
 
-              <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100%" *ngIf="place.booking == 0" [routerLink]="['/booking/new']" [queryParams]="{ p: place.id, d: days[i] / 1000 }">
+              <div fxLayout="row" fxLayoutAlign="center center" [appHighlight]="places[j]?.name" fxFlex="100%" *ngIf="place.booking == 0" [routerLink]="['/booking/new']" [queryParams]="{ p: place.id, d: days[i] / 1000 }">
 
               </div>
             </div>
