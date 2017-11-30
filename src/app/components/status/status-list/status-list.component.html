@@ -16,9 +16,18 @@
           <mat-cell *cdkCellDef="let row">{{ row.name }}</mat-cell>
         </ng-container>
 
+        <ng-container cdkColumnDef="color">
+          <mat-header-cell *cdkHeaderCellDef fxLayoutAlign="center"> Color </mat-header-cell>
+          <mat-cell *cdkCellDef="let row" fxLayoutAlign="center">
+            <mat-chip-list *ngIf="row.color">
+              <mat-chip [ngStyle]="{ 'background-color': row.color }">{{ row.color | uppercase }}</mat-chip>
+            </mat-chip-list>
+          </mat-cell>
+        </ng-container>
+
         <ng-container cdkColumnDef="icons">
-          <mat-header-cell *cdkHeaderCellDef> Opciones </mat-header-cell>
-          <mat-cell *cdkCellDef="let row">
+          <mat-header-cell *cdkHeaderCellDef fxLayoutAlign="center"> Opciones </mat-header-cell>
+          <mat-cell *cdkCellDef="let row" fxLayoutAlign="center">
           <button  mat-icon-button [routerLink]="['/statuses/detail',row.id]"><mat-icon>visibility</mat-icon></button>
           </mat-cell>
         </ng-container>

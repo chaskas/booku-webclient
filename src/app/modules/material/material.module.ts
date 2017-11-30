@@ -27,6 +27,7 @@ import { MatSortModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatStepperModule } from '@angular/material';
+import { MatChipsModule } from '@angular/material';
 import { CompatibilityModule } from '@angular/material';
 import { NoConflictStyleCompatibilityMode } from '@angular/material';
 
@@ -66,6 +67,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatTooltipModule,
     MatMomentDateModule,
     MatAutocompleteModule,
+    MatChipsModule,
     NoConflictStyleCompatibilityMode,
     CompatibilityModule,
     MatAutocompleteModule
@@ -99,6 +101,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatTooltipModule,
     MatMomentDateModule,
     MatAutocompleteModule,
+    MatChipsModule,
     NoConflictStyleCompatibilityMode,
     CompatibilityModule,
     MatAutocompleteModule

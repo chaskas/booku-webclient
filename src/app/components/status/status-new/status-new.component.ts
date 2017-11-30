@@ -1,5 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 import { StatusService } from '../../../services/status.service';
 import { Status } from '../../../model/status';
 
@@ -8,6 +10,8 @@ import { CustomValidators } from 'ng2-validation';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
+
+import { ColorPickerComponent } from '../../../utils/color-picker/color-picker.component';
 
 @Component({
   selector: 'app-status-new',
@@ -20,11 +24,14 @@ export class StatusNewComponent implements OnInit {
   @Input() errors: string[];
   @Input() success: string;
 
+  color: string;
+
   constructor(
   	private statusService: StatusService,
   	private formBuilder: FormBuilder,
     public snackBar: MatSnackBar,
     private _router: Router,
+    public dialog: MatDialog,
     private _tokenService: Angular2TokenService
   	) {
     this._tokenService.validateToken().subscribe(
@@ -52,7 +59,8 @@ export class StatusNewComponent implements OnInit {
   private createForm()
    {
     this.statusForm = this.formBuilder.group({
-      name: ['', [Validators.required]]
+      name: ['', [Validators.required]],
+      color: ['', [Validators.required]]
     });
    }
 
@@ -67,6 +75,16 @@ export class StatusNewComponent implements OnInit {
     this._router.navigate(['/statuses/list']);
 
 
+  }
+
+  openColorPickerDialog(): void {
+    let dialogRef = this.dialog.open(ColorPickerComponent, {
+      width: '618px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.color = result;
+    });
   }
 
 

@@ -12,14 +12,18 @@
         <mat-card-content fxLayout='column'>
 
           <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
-             <mat-input-container fxFlex="100">
+             <mat-input-container fxFlex="50">
                <input matInput placeholder="Nombre" formControlName="name" required>
+             </mat-input-container>
+             <mat-input-container fxFlex="50">
+               <input matInput placeholder="Color" formControlName="color" required [(ngModel)]="color">
+               <button type="button" [ngStyle]="{ 'background-color': color }" mat-button mat-icon-button matSuffix (click)="openColorPickerDialog()"><mat-icon>mode_edit</mat-icon></button>
              </mat-input-container>
           </div>
 
         </mat-card-content>
 
-        <mat-card-actions fxLayout="row" fxLayoutAlign="end center">         
+        <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
           <button mat-raised-button type="submit" [disabled]="!statusForm.valid">Aceptar</button>
         </mat-card-actions>
 

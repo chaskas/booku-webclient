@@ -1,0 +1,7 @@
+<mat-dialog-content>
+  <mat-grid-list cols="19" rowHeight="30px" gutterSize="2px">
+    <mat-grid-tile  *ngFor="let color of colors">
+        <div fxLayout="row" fxLayoutAlign="center center" appColorHover class="color" [ngStyle]="{ 'background-color': color }" (click)="chooseColor(color)"></div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-dialog-content>

@@ -30,7 +30,7 @@ export class StatusListComponent implements OnInit {
   statuses: Status[];
   @Input() errors: string[];
   status: Status;
-  displayedColumns = ['name', 'icons'];
+  displayedColumns = ['name', 'color', 'price', 'icons'];
 
   dataSource: StatusDataSource | null;
 
@@ -42,7 +42,7 @@ export class StatusListComponent implements OnInit {
     public _statusesDatabase: StatusesDatabase,
     private dialogsService: DialogsServiceService,
     private _tokenService: Angular2TokenService
-  	) { 
+  	) {
 
     this._tokenService.validateToken().subscribe(
       res =>      console.log("Token Valid!"),
@@ -69,7 +69,7 @@ export class StatusListComponent implements OnInit {
         this._router.navigate(['statuses/list']);
       });
     }
-  }  
+  }
 
   private _handleErrors(error: any)
   {

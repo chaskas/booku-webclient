@@ -95,6 +95,8 @@ import { StatusEditComponent } from './components/status/status-edit/status-edit
 import { StatusListComponent } from './components/status/status-list/status-list.component';
 import { StatusDetailComponent } from './components/status/status-detail/status-detail.component';
 import { HighlightDirective } from './directives/highlight.directive';
+import { ColorPickerComponent } from './utils/color-picker/color-picker.component';
+import { ColorHoverDirective } from './directives/color-hover.directive';
 
 
 
@@ -131,12 +133,14 @@ import { HighlightDirective } from './directives/highlight.directive';
     UserNewComponent,
     UserEditComponent,
     UserListComponent,
-    HighlightDirective
+    HighlightDirective,
+    ColorPickerComponent,
+    ColorHoverDirective
   ],
   imports: [
     BrowserModule, RoutingModule, MaterialModule, RouterModule, FormsModule, HttpModule, ReactiveFormsModule, HttpClientModule
   ],
-  entryComponents: [DialogComponent, PaymentNewComponent, BookingEditComponent, BookingClientEditComponent],
+  entryComponents: [DialogComponent, PaymentNewComponent, BookingEditComponent, BookingClientEditComponent, ColorPickerComponent],
   providers: [
       AppConfig,
       ClientService,

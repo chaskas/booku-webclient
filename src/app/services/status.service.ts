@@ -23,7 +23,9 @@ export class StatusService {
 	{
 
     let body = JSON.stringify({
-                      name: status.name
+                      name: status.name,
+                      color: status.color,
+                      price: status.price
                     });
 
     let headers      = new Headers({ 'Content-Type': 'application/json' });
@@ -75,7 +77,9 @@ export class StatusService {
 
     let body = JSON.stringify({
                           id: status.id,
-                          name: status.name
+                          name: status.name,
+                          color: status.color,
+                          price: status.price
                         });
 
     let headers      = new Headers({ 'Content-Type': 'application/json' });

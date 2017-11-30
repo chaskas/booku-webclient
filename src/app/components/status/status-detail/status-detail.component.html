@@ -9,9 +9,15 @@
 
         <mat-card-content fxLayout='column'>
 
-          <div fxLayout='row' fxFlex="100%" fxLayoutGap="10px">
-            <mat-input-container fxFlex="100">
-                <input matInput placeholder="Nombre" [value]="status.name" readonly="true">
+          <div fxLayout='row' fxFlex="100%" fxLayoutAlign="space-between end" fxLayoutGap="10px">
+            <mat-input-container fxFlex="50">
+              <input matInput placeholder="Nombre" [value]="status.name" readonly>
+            </mat-input-container>
+            <mat-input-container fxFlex="50">
+              <mat-chip-list #chipList>
+                <mat-chip *ngIf="status.color" [ngStyle]="{ 'background-color': status.color }">{{ status.color | uppercase }}</mat-chip>
+                <input placeholder="Color" readonly [matChipInputFor]="chipList">
+              </mat-chip-list>
             </mat-input-container>
           </div>
         </mat-card-content>

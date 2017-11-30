@@ -11,6 +11,12 @@ import { CustomValidators } from 'ng2-validation';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Angular2TokenService } from 'angular2-token';
 
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
+
+import { ColorPickerComponent } from '../../../utils/color-picker/color-picker.component';
+
+
 @Component({
   selector: 'app-status-edit',
   templateUrl: './status-edit.component.html',
@@ -23,13 +29,16 @@ export class StatusEditComponent implements OnInit {
   @Input() errors: string[];
   @Input() success: string;
 
+  color: string;
+
   constructor(
       private dialogsService: DialogsServiceService,
       private statusService: StatusService,
-	  private formBuilder: FormBuilder,
+	    private formBuilder: FormBuilder,
       private route: ActivatedRoute,
       public snackBar: MatSnackBar,
       private _router: Router,
+      public dialog: MatDialog,
       private _tokenService: Angular2TokenService
   	) {
 
@@ -59,7 +68,8 @@ ngOnInit() {
 	private createForm()
 	{
     this.statusForm = this.formBuilder.group({
-      name: ['', [Validators.required]]
+      name: ['', [Validators.required]],
+      color: ['', [Validators.required]]
     });
 	}
 
@@ -67,9 +77,11 @@ ngOnInit() {
   {
     this.status = status;
 
-    this.statusForm.setValue({
-      name: status.name
+    this.color = status.color;
 
+    this.statusForm.setValue({
+      name: status.name,
+      color: status.color
     });
   }
 
@@ -90,7 +102,17 @@ ngOnInit() {
     }
   }
 
-   private _handleUpdateSuccess(data: any) {
+  openColorPickerDialog(): void {
+    let dialogRef = this.dialog.open(ColorPickerComponent, {
+      width: '618px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.color = result;
+    });
+  }
+
+  private _handleUpdateSuccess(data: any) {
     this.errors = null;
     this.snackBar.open("Actualizado correctamente", undefined, {
       duration: 2000,
@@ -100,7 +122,7 @@ ngOnInit() {
 
   private _handleError(error: any) {
       this.errors = error.json().errors.full_messages;
-  } 
+  }
 
   private _handleTokenError(error: any) {
     var config: MatSnackBarConfig = new MatSnackBarConfig();
