@@ -30,7 +30,7 @@ export class StatusListComponent implements OnInit {
   statuses: Status[];
   @Input() errors: string[];
   status: Status;
-  displayedColumns = ['name', 'color', 'price', 'icons'];
+  displayedColumns = ['name', 'color', 'icons'];
 
   dataSource: StatusDataSource | null;
 
